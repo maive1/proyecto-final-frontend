@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "materialize-css/dist/css/materialize.min.css"
-import injectContext from "./store/appContext";
-import injectContext from "./store/appContext";
+import injectContext from "./store/AppContext";
+import Home from "./views/User/Home"
+
 
 export const Layout = () => {
 	return (

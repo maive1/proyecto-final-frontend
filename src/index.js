@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import { Layout } from './Layout';
-import * as serviceWorker from '../serviceWorker';
+import './styles/Index.css';
+import Layout from './js/Layout';
+import * as serviceWorker from './serviceWorker';
 
 import "jquery";
 import "popper.js";
