@@ -16,7 +16,7 @@ class ButonExit extends React.Component {
 
     render() {
         return (
-        <a class="waves-effect waves-light btn" href="www.google.com">{this.props.link}</a>
+        <a className="waves-effect waves-light btn" href="www.google.com">{this.props.link}</a>
         );
     }
 
