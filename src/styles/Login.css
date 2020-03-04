@@ -1,0 +1,9 @@
+.title {
+    margin-top: 8vh;
+}
+.input-field-row {
+    margin-top: 15vh;
+}
+.display-password:focus {
+    background-color: transparent!important;
+  }
