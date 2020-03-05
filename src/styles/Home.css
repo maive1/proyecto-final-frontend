@@ -6,6 +6,12 @@
   text-align: center;
 }
 
+.title-home {
+  padding-top: 20px;
+  font-size: 25px !important;
+  padding-bottom: 15px;
+}
+
 .image_card {
   background-image: url(https://49.media.tumblr.com/93061ab7ff1e2b03748301f93d3929c3/tumblr_o4uglbq4cw1rg51u5o1_1280.gif);
   background-size: cover;
@@ -43,7 +49,7 @@
   text-align: justify;
   padding: 0 !important;
   box-shadow:none !important;
-  margin-top: 25px !important;
+  margin-top: 15px !important;
 }
 
 .letters {
