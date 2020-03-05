@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "materialize-css/dist/css/materialize.min.css"
 import injectContext from "./store/AppContext";
 import Home from "./views/User/Home"
 import Register from "./views/User/Register";
@@ -14,6 +13,9 @@ import RegisterCompletePro from "./views/professional/RegisterCompletePro";
 import Perfil from "./views/professional/Perfil";
 import GroupChat from "./views/professional/Groupchat";
 import ExitPro from "./views/professional/ExitPro";
+import Materialize from 'materialize-css'
+import 'materialize-css/dist/css/materialize.min.css'
+Materialize.AutoInit();
 
 export const Layout = () => {
 	return (
