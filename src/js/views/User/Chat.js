@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 
 export default function Chat () {
     return (
-        <div className="chat">
-            <h1>Chat</h1>
-            <Link className="link" to="/exitchat">
-                Última página
-            </Link>
+        <div className="container">
+            <div>
+                <h4 className="title-under">Chat developing</h4>
+            </div>
+            <div className="col s12 m12">
+                <div className="card-panel image-under"></div>
+                <div><Link className="link_style" to="/exitchat">Exit Page</Link></div>
+            </div>
         </div>
     );
 }
