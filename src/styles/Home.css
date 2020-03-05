@@ -16,6 +16,11 @@
   font-family: 'Amatic SC', cursive;
   text-align: center;
 }
+.title-home {
+  padding-top: 20px;
+  font-size: 25px !important;
+  padding-bottom: 15px;
+}
 
 .image_card {
   background-image: url(https://49.media.tumblr.com/93061ab7ff1e2b03748301f93d3929c3/tumblr_o4uglbq4cw1rg51u5o1_1280.gif);
@@ -38,7 +43,34 @@
   background: -webkit-linear-gradient(#9575cd,#64B5F6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  min-height: 160px;
+  margin-top: -20px !important;
+}
+
+.link_style {
+  float: right;
+  padding-top: 15px;
+}
+
+.proiconstyle {
+  padding-top: 15px;
+  display: inline-block;
+  float: right;
+  color: #64B5F6;
 } 
+
+.btn-floating {
+  background-color: white !important;
+  width: 25px !important;
+  height: 25px !important;
+  line-height: 38px !important;
+  box-shadow: 0 2px 2px 0 #64B5F6, 0 3px 1px -2px #64B5F6, 0 1px 5px 0 #64B5F6 !important;
+}
+
+.btn-floating i {
+  line-height: 0px !important;
+  color:#9575CD !important;
+}
 
 .imageLogo {
   width: 50px;
@@ -48,6 +80,8 @@
   float: left;
   margin-top: 5px;
   margin-right: 10px;
+  margin-top: 33px;
+  margin-right: 19px;
 }
 
 .card_info {
@@ -55,6 +89,7 @@
   padding: 0 !important;
   box-shadow:none !important;
   margin-top: 25px !important;
+  margin-top: 15px !important;
 }
 
 .letters {
