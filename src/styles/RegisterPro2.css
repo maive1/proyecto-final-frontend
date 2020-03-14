@@ -1,0 +1,16 @@
+
+.file-container {
+    margin-top: 10%;
+}
+.file-label {
+    margin-left: 10.5vw;
+    color: #707070;
+    font-size: 17px;
+}
+.file-field {
+    margin-top: 10px;
+}
+.submit-but {
+    margin:auto;
+    width: 100%;
+}
