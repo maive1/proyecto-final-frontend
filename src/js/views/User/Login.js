@@ -86,6 +86,11 @@ class Login extends React.Component {
                     <GenerateInput onKeyPress={this.validatePassword} name="password" onChange={this.handleChange} id="login-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
                     <p className="gen-error">{this.state.generalError}</p>
                     <button onClick={e => this.handleSubmit(e)} id="signin" className="submit-but btn waves-effect waves-light" type="submit" name="action">Solicitar Atención</button>
+                    <GenerateInput onKeyPress={this.validateEmail} onChange={this.handleChangeEmail} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
+                    <GenerateInput onKeyPress={this.validatePassword} onChange={this.handleChangePassword} id="login-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
+                    <Link onClick={e => this.handleSubmit(e)} className="link" to="/chat" >
+                        <button id="signin" className="submit-but btn waves-effect waves-light" type="submit" name="action">Solicitar Atención</button>
+                    </Link>
                     <div className="row">
                         <div className="col s12 m12 login-link">
                             <Link className="link to-login" to="/register">
