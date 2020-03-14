@@ -50,18 +50,23 @@ class Login extends React.Component {
     render() {
         return (
             <div className="login">
-                <h4 className="title">Iniciar sesión</h4>
+                <h2 className="title">Iniciar sesión</h2>
                 <div className="form-container format">
                     <GenerateInput onKeyPress={this.validateEmail} onChange={this.handleChangeEmail} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
                     <GenerateInput onKeyPress={this.validatePassword} onChange={this.handleChangePassword} id="login-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
                     <Link onClick={e => this.handleSubmit(e)} className="link" to="/chat" >
-                        <button id="signin" className="submit-but btn waves-effect waves-light" type="submit" name="action">Iniciar Sesión</button>
+                        <button id="signin" className="submit-but btn waves-effect waves-light" type="submit" name="action">Solicitar Atención</button>
                     </Link>
                     <div className="row">
                         <div className="col s12 m12 login-link">
                             <Link className="link to-login" to="/register">
                                 ¿No tienes cuenta? Regístrate
-                </Link>
+                            </Link>
+                        </div>
+                        <div className="col s12 m12 login-link">
+                            <Link className="link to-login" >
+                                ¿Olvidaste tu contraseña?
+                            </Link>
                         </div>
                     </div>
                 </div>

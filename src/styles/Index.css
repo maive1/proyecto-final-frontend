@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Spartan&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Handlee&display=swap');
 
 body {
   margin: 0;
@@ -12,7 +12,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-body * {
-  font-family: 'Spartan';
 }

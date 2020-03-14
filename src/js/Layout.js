@@ -16,8 +16,7 @@ import ExitPro from "./views/professional/ExitPro";
 export const Layout = () => {
 	return (
 		<div className="d-flex flex-column h-100">
-			<BrowserRouter>
-							
+			<BrowserRouter>	
 					<Switch>
 						{/*Rutas de Usuario */}
 						<Route exact path="/" component={Home}/>
