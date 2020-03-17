@@ -5,7 +5,7 @@ import InfoChatNav from '../component/Chat/InfoChatNav';
 import InputMessage from '../component/Chat/InputMessage';
 import MessagesList from '../component/Chat/MessagesList';
 
-let endPoint = "";
+let endPoint = "http://localhost:5000";
 let socket = io.connect(`${endPoint}`);
 
 class Chat extends React.Component {
