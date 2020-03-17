@@ -11,7 +11,7 @@ import ExitChat from "./views/User/ExitChat";
 import RegisterPro from "./views/professional/RegisterPro";
 import RegisterTwoPro from "./views/professional/RegisterTwoPro";
 import RegisterCompletePro from "./views/professional/RegisterCompletePro";
-import GroupChat from "./views/professional/Groupchat";
+import Perfil from "./views/professional/Perfil";
 import ExitPro from "./views/professional/ExitPro";
 
 export const Layout = () => {
@@ -31,7 +31,7 @@ export const Layout = () => {
 						<Route exact path="/registerpro" component={RegisterPro} />
 						<Route exact path="/registertwopro" component={RegisterTwoPro} />
 						<Route exact path="/registercompletepro" component={RegisterCompletePro} />
-						<Route exat path="/groupchat" component={GroupChat}/>
+						<Route exat path="/perfil" component={Perfil}/>
 						<Route exact path="/chat" component={Chat}/>
 						<Route exact path="/exitpro" component={ExitPro} />
 						<Route render={() => <h1>Not found!</h1>} />
