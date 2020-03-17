@@ -66,7 +66,6 @@ class Chat extends React.Component {
     };
 
     render() {
-<<<<<<< HEAD
         const { messages, message, nameUser } = this.state;
         
         return (
@@ -75,12 +74,6 @@ class Chat extends React.Component {
                     nameUsuario={nameUser}
                     logout={this.props.logout}
                 />   
-=======
-        const { messages, message } = this.state;
-        return (
-            <div className="wrapper">  
-                <InfoChatNav nameUsuario="NOMBRE USUARIO"/>   
->>>>>>> Vistas chat, exit-chat, waiting chat
                 <MessagesList messages={messages}/>            
                 <InputMessage
                     onChange={(e)=>this.handleChange(e)} 
