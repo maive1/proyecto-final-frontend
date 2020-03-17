@@ -16,6 +16,7 @@ import GroupChat from "./views/professional/Groupchat";
 import ExitPro from "./views/professional/ExitPro";
 import Materialize from 'materialize-css'
 import 'materialize-css/dist/css/materialize.min.css'
+
 Materialize.AutoInit();
 
 export const Layout = () => {
