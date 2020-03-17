@@ -1,10 +1,13 @@
 import React from 'react';
-import MenuHome from '../../component/Menu_Home';
+import MessageHome from '../../component/MessageHome';
 
 export default function Home() {
     return (
-        <div className="container">
-            <MenuHome />
-        </div>
+        <>
+            <div className="container">
+                <MessageHome />
+            </div>
+        </>
     );
 }   
+
