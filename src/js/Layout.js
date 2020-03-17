@@ -6,6 +6,7 @@ import Register from "./views/User/Register";
 import Login from "./views/User/Login";
 import Chat from "./views/User/Chat";
 import ExitChat from "./views/User/ExitChat";
+import HomeMenu from "./views/User/HomeMenu";
 import RegisterPro from "./views/professional/RegisterPro";
 import RegisterTwoPro from "./views/professional/RegisterTwoPro";
 import RegisterCompletePro from "./views/professional/RegisterCompletePro";
@@ -13,6 +14,7 @@ import ChatPro from "./views/professional/ChatPro";
 import ExitPro from "./views/professional/ExitPro";
 import Materialize from 'materialize-css'
 import 'materialize-css/dist/css/materialize.min.css'
+
 Materialize.AutoInit();
 
 export const Layout = () => {
@@ -23,6 +25,7 @@ export const Layout = () => {
 					<Switch>
 						{/*Rutas de Usuario */}
 						<Route exact path="/" component={Home}/>
+						<Route exact path="/homemenu" component={HomeMenu}/>
 						<Route exact path="/register" component={Register}/>
 						<Route exact path="/login" component={Login}/>
 						<Route exact path="/chat" component={Chat}/>
