@@ -72,4 +72,12 @@ h2 {
     border-color: whitesmoke ;
 }
 
+.perfil nav {
+    height: 125px;
+    padding: 10px;
+}
 
+.title {
+    margin-bottom: 0;
+    padding: 0;
+}
