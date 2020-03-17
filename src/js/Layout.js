@@ -13,6 +13,7 @@ import RegisterTwoPro from "./views/professional/RegisterTwoPro";
 import RegisterCompletePro from "./views/professional/RegisterCompletePro";
 import Perfil from "./views/professional/Perfil";
 //import GroupChat from "./views/professional/Groupchat";
+import GroupChat from "./views/professional/Groupchat";
 import ExitPro from "./views/professional/ExitPro";
 import Materialize from 'materialize-css'
 import 'materialize-css/dist/css/materialize.min.css'
@@ -38,6 +39,7 @@ export const Layout = () => {
 						<Route exact path="/registercompletepro" component={RegisterCompletePro} />
 						<Route exat path="/perfil" component={Perfil}/>
 						{/*<Route exat path="/groupchat" component={GroupChat}/>*/}
+						<Route exat path="/groupchat" component={GroupChat}/>
 						<Route exact path="/chat" component={Chat}/>
 						<Route exact path="/exitpro" component={ExitPro} />
 						<Route render={() => <h1>Not found!</h1>} />
