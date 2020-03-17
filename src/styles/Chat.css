@@ -44,7 +44,6 @@ nav h1 {
     display: flex;
     margin-top: 15px;   
     height: auto; 
-
     height: auto !important;
     width: 70%;
     display: inline-block;
