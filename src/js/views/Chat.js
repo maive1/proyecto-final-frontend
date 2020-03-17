@@ -12,10 +12,10 @@ class Chat extends React.Component {
     constructor(props) {
       super(props);        
       this.state = {
-          message:'',
-          messages: ['Hola, mi nombre es...'],
-          nameUsuario: '',
-          nameProfesional: '',
+        message:'',
+        messages: ['Hola, mi nombre es...'],
+        nameUser: "",
+        nameProfessional: "",
       };
       this.getMessages = this.getMessages.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -66,10 +66,14 @@ class Chat extends React.Component {
     };
 
     render() {
-        const { messages, message } = this.state;
+        const { messages, message, nameUser } = this.state;
+        
         return (
             <div className="wrapper">  
-                <InfoChatNav nameUsuario="NOMBRE USUARIO"/>   
+                <InfoChatNav 
+                    nameUsuario={nameUser}
+                    logout={this.props.logout}
+                />   
                 <MessagesList messages={messages}/>            
                 <InputMessage
                     onChange={(e)=>this.handleChange(e)} 
