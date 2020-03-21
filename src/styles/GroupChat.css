@@ -43,4 +43,33 @@ h2 {
     border-color: whitesmoke ;
 }
 
+.icon .material-icons {
+    font-size: 45px;
+}
+
+.collection {
+    border-color:#64B5F6 ;
+}
+
+.file {
+    font-size: 30px;
+    color: #9575CD !important;
+    border: 2px solid #64b5f6!important;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.collection {
+    border-color: whitesmoke ;
+}
+
+.perfil nav {
+    height: 125px;
+    padding: 10px;
+}
+
+.title {
+    margin-bottom: 0;
+    padding: 0;
+}
 
