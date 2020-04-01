@@ -23,12 +23,12 @@ class Register extends React.Component {
         this.hidPassword = this.hidPassword.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-    handleChangeNombre(e) {
+    handleChangeNombre(e){
         this.setState({
             nombre: e.target.value
         })
     }
-    handleChangeEmail(e) {
+    handleChangeEmail(e){
         setTimeout(this.setState({
             email: e.target.value
         }), 1000)
