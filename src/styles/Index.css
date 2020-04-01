@@ -14,12 +14,6 @@ body {
   background-position: center;
   min-height: 300px;
 }
-.image-under{
-  background-image: url(https://i.gifer.com/PJFG.gif);
-  background-size: cover;
-  background-position: center;
-  min-height: 300px;
-}
 
 .title-under{
   font-size: 31px !important;
