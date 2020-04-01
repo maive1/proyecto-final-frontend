@@ -39,7 +39,10 @@ export const Layout = () => {
 						<Route exact path="/registercompletepro" component={RegisterCompletePro} />
 						<Route exat path="/perfil" component={Perfil}/>
 						{/*<Route exat path="/groupchat" component={GroupChat}/>*/}
+<<<<<<< HEAD
 						<Route exat path="/groupchat" component={GroupChat}/>
+=======
+>>>>>>> Funciones de Registro y Login
 						<Route exact path="/chat" component={Chat}/>
 						<Route exact path="/exitpro" component={ExitPro} />
 						<Route render={() => <h1>Not found!</h1>} />

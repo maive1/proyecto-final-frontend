@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+}
 .image-under{
   background-image: url(https://i.gifer.com/PJFG.gif);
   background-size: cover;

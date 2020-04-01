@@ -131,7 +131,7 @@ class Register extends React.Component {
                         </button>
                         <Link onClick={e => this.handleSubmit(e)} to="/chat">
                             <button id="signup" className="submit-but btn waves-effect waves-light" type="submit" name="action">Solicitar atención</button>
-                        </Link>
+                        </button>
                     </div>
                     <div className="row">
                         <div className="col s12 m12 login-link">
