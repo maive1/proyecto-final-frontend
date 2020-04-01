@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Handlee&display=swap');
+
+h1 {
+    font-size: 50px;
+    color: #7E7F80 !important;
+    font-family: 'Amatic SC', cursive;
+}
+
+h2 {
+    font-size: 35px;
+    color: #7E7F80 !important;
+    font-family: 'Amatic SC', cursive;
+}
+.tab a {
+    color: #7E7F80 !important;
+}
+
+.collection .collection-item {
+    font-family: 'Handlee', cursive;
+    font-size: 20px;
+    margin: 15px 5px 15px;
+    padding: 10px;
+}
+
+.row .col.s1 {
+    margin-top: 10px;
+}
+
+.collection {
+    border-color:#64B5F6 ;
+}
+
+.file {
+    font-size: 30px;
+    color: #9575CD !important;
+    border: 2px solid #64b5f6!important;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.collection {
+    border-color: whitesmoke ;
+}
+
+.icon .material-icons {
+    font-size: 45px;
+}
+
+.collection {
+    border-color:#64B5F6 ;
+}
+
+.file {
+    font-size: 30px;
+    color: #9575CD !important;
+    border: 2px solid #64b5f6!important;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.collection {
+    border-color: whitesmoke ;
+}
+
+.perfil nav {
+    height: 125px;
+    padding: 10px;
+}
+
+.title {
+    margin-bottom: 0;
+    padding: 0;
+}
+

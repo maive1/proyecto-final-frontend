@@ -23,12 +23,12 @@ class Register extends React.Component {
         this.hidPassword = this.hidPassword.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-    handleChangeNombre(e) {
+    handleChangeNombre(e){
         this.setState({
             nombre: e.target.value
         })
     }
-    handleChangeEmail(e) {
+    handleChangeEmail(e){
         setTimeout(this.setState({
             email: e.target.value
         }), 1000)
@@ -92,7 +92,7 @@ class Register extends React.Component {
     render() {
         return (
             <div className="register">
-                <h4 className="title">Crear Cuenta</h4>
+                <h2 className="title">Crear Cuenta</h2>
                 <div className="view-bottom">
                     <div className="form-container format">
                         <GenerateInput onChange={this.handleChangeNombre} id="register-nombre" placeholder="Nombre" type="text" errorMsg={this.state.nombreError} />
@@ -100,14 +100,14 @@ class Register extends React.Component {
                         <GenerateInput onKeyPress={this.validatePassword} minLength="6" onChange={this.handleChangePassword} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
                         <button onTouchEnd={() => this.hidPassword()} onMouseUp={() => this.hidPassword()} onTouchStart={() => this.displayPassword()} onMouseDown={() => this.displayPassword()} type="button" className="show-password">Show</button>
                         <Link onClick={e => this.handleSubmit(e)} to="/chat">
-                            <button id="signup" className="submit-but btn waves-effect waves-light" type="submit" name="action">Crear cuenta</button>
+                            <button id="signup" className="submit-but btn waves-effect waves-light" type="submit" name="action">Solicitar atención</button>
                         </Link>
                     </div>
                     <div className="row">
                         <div className="col s12 m12 login-link">
                             <Link className="link to-login" to="/login">
                                 ¿Tienes una cuenta? Inicia sesión
-                </Link>
+                            </Link>
                         </div>
                     </div>
                 </div>

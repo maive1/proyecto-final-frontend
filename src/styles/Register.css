@@ -12,19 +12,22 @@
   .register {
     margin-top:50px;
   }
+  .register * {
+    font-family: 'Handlee', cursive;
+  }
   .form-container {
     margin:auto;
     text-align: center;
   }
   .show-password {
-      position: absolute;
-      top:68%;
-      margin-bottom: 10%;
-      left:75%;
-      background-color: transparent;    
-      border: none;
-      color:#64B5F6 ;
-      cursor: pointer;
+    position: absolute;
+    top:65%;
+    margin-bottom: 10%;
+    left:75%;
+    background-color: transparent;    
+    border: none;
+    color:#64B5F6 ;
+    cursor: pointer;
   }
   .show-password:focus {
     background-color: transparent!important;
@@ -34,6 +37,7 @@
     margin-top: 5%;
     width: 300px;
     background-color:  #9575CD!important;
+    font-family: 'Handlee', cursive;
   }
   .submit-but:hover {
     background-color: rgb(110, 86, 151)!important;
@@ -43,6 +47,8 @@
     width: 80%;
     margin:auto;
     text-align: left;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
   }
   .login-link {
     text-align: center;
@@ -58,12 +64,13 @@
     width: 80%;
     top:15%;
     margin:auto;
-  
     text-align: center;
   }
+  
   .input-field-row {
     margin-top:8%;
   }
   #contrasenya {
      z-index: -1;
   }
+  
