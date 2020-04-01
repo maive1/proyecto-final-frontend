@@ -8,12 +8,13 @@ class Register extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            nombre: '',
             email: '',
             password: '',
+            fullname: '',
             nombreError: 'Este campo es obligatorio.',
             emailError: 'Introduzca email válido.',
             passwordError: 'Este campo es obligatorio',
+            generalError: ''
         }
         this.handleChangeNombre = this.handleChangeNombre.bind(this)
         this.handleChangeEmail = this.handleChangeEmail.bind(this)
@@ -25,7 +26,7 @@ class Register extends React.Component {
     }
     handleChangeNombre(e) {
         this.setState({
-            nombre: e.target.value
+            fullname: e.target.value
         })
     }
     handleChangeEmail(e) {
@@ -82,8 +83,33 @@ class Register extends React.Component {
             })
         }
         if (isEmailValid === true && isNameValid === true && isPasswordValid === true) {
-            console.log("Account created successfully!")
+            let email = this.state.email
+            let nombre = this.state.nombre
+            let password = this.state.password
+            let entry = {
+                "email": email,
+                "password": password,
+                "username": nombre
+            }
+            fetch("http://localhost:5000/api/register", {
+                method: 'POST',
+                body: JSON.stringify(entry),
+                headers: { "Content-Type": "application/json" }
+            })
+                .then(resp => {
+                    if (resp.ok) {
+                        console.log("Registro correcto")
+                        this.props.history.push('/chat')
+                    }
+                    else {
+                        console.log("Algo salió mal")
+                        this.setState({
+                            generalError: 'El correo ingresado ya está en uso'
+                        })
+                    }
+                })
         }
+
         else {
             e.preventDefault()
             console.log("All inputs must be valid...")
@@ -99,9 +125,10 @@ class Register extends React.Component {
                         <GenerateInput onKeyPress={this.validateEmail} onChange={this.handleChangeEmail} id="register-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
                         <GenerateInput onKeyPress={this.validatePassword} minLength="6" onChange={this.handleChangePassword} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
                         <button onTouchEnd={() => this.hidPassword()} onMouseUp={() => this.hidPassword()} onTouchStart={() => this.displayPassword()} onMouseDown={() => this.displayPassword()} type="button" className="show-password">Show</button>
-                        <Link onClick={e => this.handleSubmit(e)} to="/chat">
+                        <p className="gen-error">{this.state.generalError}</p>
+                        <button onClick={e => this.handleSubmit(e)}>
                             <button id="signup" className="submit-but btn waves-effect waves-light" type="submit" name="action">Solicitar atención</button>
-                        </Link>
+                        </button>
                     </div>
                     <div className="row">
                         <div className="col s12 m12 login-link">

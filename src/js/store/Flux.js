@@ -1,12 +1,14 @@
-const getState = ({getStore, setStore }) => {
+const getState = ({ getStore, setStore }) => {
 	return {
 		store: {
-					
+			currentUser: null,
+			isAuthenticated: false,
+			
 		},
 
 		actions: {
 			
-			
+
 		}
 	};
 };
