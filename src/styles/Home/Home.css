@@ -13,20 +13,6 @@
   font-family: 'Amatic SC', cursive;
   text-align: center;
 }
-.title-home {
-  padding-top: 20px;
-  font-size: 50px !important;
-  padding-bottom: 15px;
-  font-family: 'Amatic SC', cursive;
-  text-align: center;
-}
-.title-home {
-  padding-top: 20px;
-  font-size: 50px !important;
-  padding-bottom: 15px;
-  font-family: 'Amatic SC', cursive;
-  text-align: center;
-}
 
 .image_card {
   background-image: url(https://49.media.tumblr.com/93061ab7ff1e2b03748301f93d3929c3/tumblr_o4uglbq4cw1rg51u5o1_1280.gif);
@@ -34,23 +20,6 @@
   background-position: center;
   min-height: 220px;
   margin-top: 10px !important;
-}
-
-.link_style {
-  float: left;
-  padding-top: 4px;
-  padding-left: 5px;
-}
-
-.proiconstyle {
-  padding-top: 3px;
-  display: inline-block;
-  float: left;
-  background: -webkit-linear-gradient(#9575cd,#64B5F6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  min-height: 160px;
-  margin-top: -20px !important;
 }
 
 .link_style {

@@ -11,7 +11,6 @@ import LoginPro from "./views/professional/LoginPro";
 import RegisterPro from "./views/professional/RegisterPro";
 import Perfil from "./views/professional/Perfil";
 //import GroupChat from "./views/professional/Groupchat";
-import GroupChat from "./views/professional/Groupchat";
 import ExitPro from "./views/professional/ExitPro";
 //import Chat from "./views/Chat";
 import PasswordRecovery from "./views/PasswordRecovery";
@@ -33,16 +32,13 @@ export const Layout = () => {
 						<Route exact path="/login" component={Login}/>
 						<Route exact path="/ForgotPassword" component={PasswordRecovery}/>
 						<Route exact path="/waiting-window" component={waitingWindow}/>
-					{/*	<Route exact path="/chat" component={Chat}/>*/}
+					 {/*	<Route exact path="/chat" component={Chat}/>*/}
 						<Route exact path="/exitchat" component={ExitChat}/>
 						{/*Rutas de Profesional*/}
 						<Route exact path="/registerpro" component={RegisterPro} />
 						<Route exact path="/loginpro" component={LoginPro} />
 						<Route exat path="/perfil" component={Perfil}/>
 						{/*<Route exat path="/groupchat" component={GroupChat}/>*/}
-						<Route exat path="/groupchat" component={GroupChat}/>
-
-						<Route exact path="/chat" component={Chat}/>
 						<Route exact path="/exitpro" component={ExitPro} />
 						{/*<Route exact path="/chat" component={Chat}/>*/}
 						<Route render={() => <h1>Not found!</h1>} />
