@@ -1,5 +1,4 @@
 .title-menu {
-<<<<<<< HEAD
   padding-top: 20px;
   font-size: 50px !important;
   padding-bottom: 15px;
@@ -8,8 +7,6 @@
 }
 
 .title-home {
-=======
->>>>>>> Home select and Profesional register View
   padding-top: 20px;
   font-size: 50px !important;
   padding-bottom: 15px;
@@ -77,8 +74,6 @@
   border-radius: 30px;
   display: inline-block;
   float: left;
-  margin-top: 5px;
-  margin-right: 10px;
 }
 
 .card_info {
@@ -96,21 +91,8 @@
   font-size: 17px;
 }
 
-.text_order-1 {
+.text_order-profile {
   padding-left: 10px;
-}
-
-.text_order-2 {
-  padding-left: 35px;
-  padding-bottom: 15px;
-}
-
-.color-text {
-  color:#7e7f80; 
-}
-
-.color-text-2 {
-  color:#9e9e9e;
 }
 
 .home-box-links {

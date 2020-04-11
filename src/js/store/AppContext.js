@@ -23,6 +23,7 @@ const injectContext = PassedComponent => {
 
 		useEffect(() => {
 			//Action Function
+			state.actions.isUserAuthenticated();
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
@@ -30,7 +31,7 @@ const injectContext = PassedComponent => {
 		// on the state of this component
 		return (
 			<Context.Provider value={state}>
-				<PassedComponent {...props} />
+				<PassedComponent {...props}/>
 			</Context.Provider>
 		);
 	};

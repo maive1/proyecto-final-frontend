@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GenerateInput } from "../../component/InputGenerator"
-import "../../../styles/Register.css"
-import "materialize-css"
+import { GenerateInput } from "../../component/GenericComponent/InputGenerator"
+import "../../../styles/Registers/RegisterUser.css"
 
 class Register extends React.Component {
     constructor(props) {
@@ -118,20 +117,16 @@ class Register extends React.Component {
     render() {
         return (
             <div className="register">
-                <h2 className="title">Crear Cuenta</h2>
+                <h2 className="title-register-user color-text">Crear Cuenta</h2>
                 <div className="view-bottom">
                     <div className="form-container format">
                         <GenerateInput onChange={this.handleChangeNombre} id="register-nombre" placeholder="Nombre" type="text" errorMsg={this.state.nombreError} />
                         <GenerateInput onKeyPress={this.validateEmail} onChange={this.handleChangeEmail} id="register-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
                         <GenerateInput onKeyPress={this.validatePassword} minLength="6" onChange={this.handleChangePassword} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
                         <button onTouchEnd={() => this.hidPassword()} onMouseUp={() => this.hidPassword()} onTouchStart={() => this.displayPassword()} onMouseDown={() => this.displayPassword()} type="button" className="show-password">Show</button>
-                        <p className="gen-error">{this.state.generalError}</p>
-                        <button onClick={e => this.handleSubmit(e)}>
-                            <button id="signup" className="submit-but btn waves-effect waves-light" type="submit" name="action">Solicitar atención</button>
-                        </button>
-                        <Link onClick={e => this.handleSubmit(e)} to="/chat">
-                            <button id="signup" className="submit-but btn waves-effect waves-light" type="submit" name="action">Solicitar atención</button>
-                        </button>
+                        <Link onClick={e => this.handleSubmit(e)} to="/waiting-window">
+                            <button id="signup" className="submit-but-user btn waves-effect waves-light button-letters" type="submit" name="action">Iniciar</button>
+                        </Link>
                     </div>
                     <div className="row">
                         <div className="col s12 m12 login-link">

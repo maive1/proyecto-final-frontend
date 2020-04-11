@@ -1,0 +1,119 @@
+.title-profile {
+    margin-top: 5vh;
+    font-family: 'Amatic SC', cursive !important;
+    font-size: 50px !important;
+    text-align: center;
+}
+
+.box-links-profile {
+    display: inline-block;
+    width: 110%;
+    border-top: 1px solid #64B5F6;
+}
+
+.profile-box-border-bottom {
+    border-bottom: 1px solid #64B5F6;
+    padding-top: 12px;
+}
+
+.profile-links-icon {
+    display: inline-block;
+    float: left;
+    width: 10%;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 30px;
+    background: -webkit-linear-gradient(#9575cd,#64B5F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text_order-1 {
+    padding-left: 10px;
+}
+
+.home-links-text {
+    display: inline-block;
+    float: right;
+    width: 90%;
+    text-align: left;
+}
+
+.text-body{
+    font-family: 'Handlee', cursive;
+    font-size: 16px;
+}
+
+.profile-links-text {
+    display: inline-block;
+    width: 90%;
+    text-align: left;
+    padding-top: 10px;
+}
+
+.title-autorized {
+    font-family: 'Amatic SC', cursive !important;
+    font-size: 35px !important;
+    text-align: left;
+}
+
+.title-notifications {
+    font-family: 'Amatic SC', cursive !important;
+    font-size: 30px !important;
+    text-align: left;
+}
+
+.autorized-icon {
+    display: inline-block;
+    float: right;
+    width: 10%;
+    padding-right: 130px;
+    font-size: 30px;
+    background: -webkit-linear-gradient(#9575cd,#64B5F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.status-icon {
+    display: inline-block;
+    float: right;
+    width: 10%;
+    padding-right: 170px;
+    padding-top: 4px;
+    font-size: 30px;
+    background: -webkit-linear-gradient(#9575cd,#64B5F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.back-home-p{
+    padding-top: 20px;
+    padding-bottom: 5px;
+    font-family: 'Handlee', cursive;
+    color: #7e7f80;
+    font-size: 15px;
+    text-align: center;
+}
+
+.switch{
+    display: grid;
+    float: right;
+    padding-right: 80px;
+}
+
+.label-text{
+    font-weight: 700 !important;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #64B5F6 !important;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background: -webkit-linear-gradient(#9575cd,#64B5F6) !important;
+}
+
+.switch label .lever:after {
+    background: -webkit-linear-gradient(#9575cd,#64B5F6) !important;
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+}

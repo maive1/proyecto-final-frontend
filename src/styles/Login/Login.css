@@ -1,0 +1,47 @@
+.login *{
+    font-family: 'Handlee', cursive;
+}
+
+.title-login {
+    margin-top: 5vh;
+    font-family: 'Amatic SC', cursive !important;
+    padding-top: 55px;
+    font-size: 50px !important;
+    padding-bottom: 50px;
+    text-align: center;
+}
+  
+.display-password:focus {
+    background-color: transparent!important;
+}
+
+.iniciate-but-user{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 200px;
+    background-color: #4188fa !important;
+}
+
+.iniciate-but-user:hover {
+    background-color:  #64B5F6 !important;
+}
+
+.iniciate-but-pro{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 200px;
+    background-color: #9575CD !important;
+}
+
+.iniciate-but-pro:hover {
+    background-color:  rgb(185, 151, 243) !important;
+}
+
+.title-forgot{
+    margin-top: 5vh;
+    font-family: 'Amatic SC', cursive !important;
+    padding-top: 70px;
+    font-size: 48px !important;
+    padding-bottom: 50px;
+    text-align: center;
+}

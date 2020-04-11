@@ -10,7 +10,7 @@ const InfoChatNav = (props) => {
             <div className="nav-wrapper">
                 <div className="row">
                     <div className="col s1 arrow">
-                        <Link className="link" to="/register">
+                        <Link className="link" to="/">
                         <i className="material-icons">keyboard_arrow_left</i>
                         </Link>
                     </div>
