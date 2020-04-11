@@ -1,5 +1,5 @@
 import React from 'react';
-import Homeselect from '../../component/HomeSelect';
+import Homeselect from '../../component/Home/HomeSelect';
 
 export default function HomeMenu() {
     return (

@@ -1,11 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../../store/AppContext'
-import { GenerateInput } from "../../component/InputGenerator"
-import "../../../styles/Login.css"
-
-
-
+import { GenerateInput } from "../../component/GenericComponent/InputGenerator"
+import "../../../styles/Login/Login.css"
 
 class Login extends React.Component {
     constructor(props) {
@@ -79,18 +76,14 @@ class Login extends React.Component {
     render() {
         return (
             <div className="login">
-                <h2 className="title">Iniciar sesión</h2>
+                <h2 className="title-login color-text">Iniciar sesión</h2>
                 <div className="form-container format">
                     <GenerateInput onKeyPress={this.validateEmail} name="email" onChange={this.handleChange} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
 
                     <GenerateInput onKeyPress={this.validatePassword} name="password" onChange={this.handleChange} id="login-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
                     <p className="gen-error">{this.state.generalError}</p>
-                    <button onClick={e => this.handleSubmit(e)} id="signin" className="submit-but btn waves-effect waves-light" type="submit" name="action">Solicitar Atención</button>
-                    <GenerateInput onKeyPress={this.validateEmail} onChange={this.handleChangeEmail} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
-                    <GenerateInput onKeyPress={this.validatePassword} onChange={this.handleChangePassword} id="login-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
-                    <Link onClick={e => this.handleSubmit(e)} className="link" to="/chat" >
-                        <button id="signin" className="submit-but btn waves-effect waves-light" type="submit" name="action">Solicitar Atención</button>
-                    </Link>
+                    <button onClick={e => this.handleSubmit(e)} id="signin" className="submit-but iniciate-but-user button-letters btn waves-effect waves-lightt" type="submit" name="action">Solicitar Atención</button>
+
                     <div className="row">
                         <div className="col s12 m12 login-link">
                             <Link className="link to-login" to="/register">
@@ -98,7 +91,7 @@ class Login extends React.Component {
                             </Link>
                         </div>
                         <div className="col s12 m12 login-link">
-                            <Link className="link to-login" >
+                            <Link className="link to-login" to="/ForgotPassword">
                                 ¿Olvidaste tu contraseña?
                             </Link>
                         </div>

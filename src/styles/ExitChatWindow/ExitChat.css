@@ -1,0 +1,39 @@
+
+.card-panel-exit{
+    font-family: 'Handlee', cursive;
+    font-weight: 900;
+    margin-top: 0;
+}
+
+.collection {
+    border-color: #64b5f6 white;
+}
+
+.links-info {
+    font-family: 'Handlee', cursive;
+    color: #7E7F80 !important;
+    border-color: #64b5f6 white !important;
+}
+
+.title-exit{
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+    font-size: 40px;
+    color: #7e7f80;
+}
+
+.exit-message{
+    padding-top: 20px;
+    font-family: 'Handlee', cursive;
+    color: #9575cd;
+    text-align: center;
+    font-size: 18px;
+}
+
+.back-home-q{
+    padding-bottom: 5px;
+    font-family: 'Handlee', cursive;
+    color: #7e7f80;
+    font-size: 15px;
+    text-align: center;
+}

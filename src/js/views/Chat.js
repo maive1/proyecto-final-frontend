@@ -1,6 +1,6 @@
 import React from 'react';
 import io from "socket.io-client";
-import '../../styles/Chat.css';
+import '../../styles/ChatWindow/Chat.css';
 import InfoChatNav from '../component/Chat/InfoChatNav';
 import InputMessage from '../component/Chat/InputMessage';
 import MessagesList from '../component/Chat/MessagesList';
