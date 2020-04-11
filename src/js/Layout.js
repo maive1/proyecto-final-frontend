@@ -40,6 +40,7 @@ export const Layout = () => {
 						<Route exat path="/perfil" component={Perfil}/>
 						{/*<Route exat path="/groupchat" component={GroupChat}/>*/}
 						<Route exat path="/groupchat" component={GroupChat}/>
+
 						<Route exact path="/chat" component={Chat}/>
 						<Route exact path="/exitpro" component={ExitPro} />
 						<Route render={() => <h1>Not found!</h1>} />

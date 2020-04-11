@@ -23,6 +23,13 @@
   font-family: 'Amatic SC', cursive;
   text-align: center;
 }
+.title-home {
+  padding-top: 20px;
+  font-size: 50px !important;
+  padding-bottom: 15px;
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+}
 
 .image_card {
   background-image: url(https://49.media.tumblr.com/93061ab7ff1e2b03748301f93d3929c3/tumblr_o4uglbq4cw1rg51u5o1_1280.gif);
