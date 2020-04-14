@@ -40,25 +40,37 @@ class Login extends React.Component {
                 "email": email,
                 "password": password
             }
-            fetch("http://localhost:5000/api/login", {
+            fetch("http://localhost:5000/api/patient/login", {
                 method: 'POST',
                 body: JSON.stringify(entry),
                 headers: { "Content-Type": "application/json" }
             })
                 .then(resp => {
-                    if (resp.status == 200) {
+                    if (resp.status === 200) {
                         console.log(resp)
                         console.log("Inicio de sesión exitoso")
-                        this.props.history.push('/chat')
+        
+                        this.props.history.push('/waiting-window')
+
+                        let requestEntry = {"sintomas": sessionStorage.getItem("sintomas")}
+                        fetch("http://localhost:5000/api/patient_request", {
+                            method: 'POST',
+                            body: JSON.stringify(requestEntry),
+                            headers: { "Content-Type": "application/json"}
+                        })
+                        .then(resp => {if (resp.ok) {
+                            console.log("Petición de ayuda enviada a todos los profesionales disponibles.")
+                        }})
+
                     }
-                    else if(resp.status == 404) {
+                    else if(resp.status === 404) {
                         console.log(resp)
                         console.log("There was a problem")
                         this.setState({
                             generalError: 'Usuario no encontrado'
                         })
                     }
-                    else if(resp.status == 401) {
+                    else if(resp.status === 401) {
                         this.setState({
                             generalError: 'Contraseña incorrecta'
                         })

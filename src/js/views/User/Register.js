@@ -84,14 +84,14 @@ class Register extends React.Component {
         }
         if (isEmailValid === true && isNameValid === true && isPasswordValid === true) {
             let email = this.state.email
-            let nombre = this.state.nombre
+            let nombre = this.state.fullname
             let password = this.state.password
             let entry = {
                 "email": email,
                 "password": password,
                 "username": nombre
             }
-            fetch("http://localhost:5000/api/register", {
+            fetch("http://localhost:5000/api/patient/register", {
                 method: 'POST',
                 body: JSON.stringify(entry),
                 headers: { "Content-Type": "application/json" }
@@ -99,7 +99,18 @@ class Register extends React.Component {
                 .then(resp => {
                     if (resp.ok) {
                         console.log("Registro correcto")
-                        this.props.history.push('/chat')
+                        this.props.history.push('/waiting-window')
+                        let requestEntry = {"sintomas": sessionStorage.getItem("sintomas")}
+                        console.log(sessionStorage.getItem("sintomas"))
+                        fetch("http://localhost:5000/api/patient_request", {
+                            method: 'POST',
+                            body: JSON.stringify(requestEntry),
+                            headers: { "Content-Type": "application/json"}
+                        })
+                        .then(resp => {if (resp.ok) {
+                            console.log("Petición de ayuda enviada a todos los profesionales disponibles.")
+                        }})
+                        
                     }
                     else {
                         console.log("Algo salió mal")

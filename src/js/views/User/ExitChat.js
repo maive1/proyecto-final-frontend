@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import '../../../styles/ExitChat.css'
 import MessageCard from '../../component/MessageCard';
 import TabInformation from '../../component/TabInformation';
 import TabHelpChannels from '../../component/TabHelpChannels';
 import ButtonHome from '../../component/ButtonHome';
+import { Context } from '../../store/AppContext'
 
-export default function ExitChat() {
-
-    let wordsmessage="Esperamos que te hayas sentido cómod@ en la conversación, y que te sientas más tranquil@. Te recordamos que la conversación fue completamente confidencial. Sugerimos que busques ayuda psicológica en un centro de atención especializado. Un abrazo"
-
+export default function ExitChat(props) {
+    let wordsmessage="Esperamos que te hayas sentido cómod@ en la conversación, y que te sientas más tranquil@. Te recordamos que la conversación fue completamente confidencial. Sugerimos que busques ayuda psicológica en un centro de atención especializado. Un abrazo" 
     return (
         <div className="view-exit" id="exit-window">
             <div className="row message">

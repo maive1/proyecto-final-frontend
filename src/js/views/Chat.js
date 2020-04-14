@@ -4,11 +4,13 @@ import '../../styles/Chat.css';
 import InfoChatNav from '../component/Chat/InfoChatNav';
 import InputMessage from '../component/Chat/InputMessage';
 import MessagesList from '../component/Chat/MessagesList';
+import AppContext from '../store/AppContext'
 
 let endPoint = "";
 let socket = io.connect(`${endPoint}`);
 
 class Chat extends React.Component {
+    
     constructor(props) {
       super(props);        
       this.state = {
@@ -23,9 +25,6 @@ class Chat extends React.Component {
       this.handleClickAddMessage = this.handleClickAddMessage.bind(this);
     }
 
-    componentDidMount = () => {
-        this.getMessages();
-    };
 
     getMessages = () => {
         socket.on("message", msg => {

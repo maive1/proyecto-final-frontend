@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import '../../../styles/WaitingWindow.css'
 import ButtonHome from '../../component/ButtonHome';
 import MessageCard from '../../component/MessageCard';
+import { Context } from '../../store/AppContext'
 
 
-export default function waitingWindow () {
+
+export default function WaitingWindow (props) {
     let waitingMessage="Estamos a unos segundos de que tu solicitud sea atendida. Respira, inhala y exhala. Te recomendamos que veas el video mientras esperas."
     
     return (

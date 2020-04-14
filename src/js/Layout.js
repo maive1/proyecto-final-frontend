@@ -4,7 +4,7 @@ import injectContext from "./store/AppContext";
 import Home from "./views/User/Home"
 import Register from "./views/User/Register";
 import Login from "./views/User/Login";
-import waitingWindow from "./views/User/WaitingWindow";
+import WaitingWindow from "./views/User/WaitingWindow";
 import Chat from "./views/Chat";
 import ExitChat from "./views/User/ExitChat";
 import HomeMenu from "./views/User/HomeMenu";
@@ -26,20 +26,20 @@ export const Layout = () => {
 					<Switch>
 						{/*Rutas de Usuario */}
 						<Route exact path="/" component={Home}/>
-						<Route exact path="/homemenu" component={HomeMenu}/>
+						<Route exact path="/homemenu" component={HomeMenu}/> 
 						<Route exact path="/register" component={Register}/>
 						<Route exact path="/login" component={Login}/>
-						<Route exact path="/waiting-window" component={waitingWindow}/>
-						<Route exact path="/chat" component={Chat}/>
-						<Route exact path="/exitchat" component={ExitChat}/>
+						<Route exact path="/waiting-window" component={WaitingWindow}/> {/*Private*/}
+						<Route exact path="/chat" component={Chat}/> {/*Private*/}
+						<Route exact path="/exitchat" component={ExitChat}/> {/*Private*/}
 						{/*Rutas de Profesional*/}
 						<Route exact path="/registerpro" component={RegisterPro} />
 						<Route exact path="/registertwopro" component={RegisterTwoPro} />
-						<Route exact path="/registercompletepro" component={RegisterCompletePro} />
-						<Route exat path="/perfil" component={Perfil}/>
+						<Route exact path="/registercompletepro" component={RegisterCompletePro} /> {/*Private*/}
+						<Route exat path="/perfil" component={Perfil}/> {/*Private*/}
 						{/*<Route exat path="/groupchat" component={GroupChat}/>*/}
-						<Route exact path="/chat" component={Chat}/>
-						<Route exact path="/exitpro" component={ExitPro} />
+						<Route exact path="/chat" component={Chat}/> {/*Private*/}
+						<Route exact path="/exitpro" component={ExitPro} /> {/*Private*/}
 						<Route render={() => <h1>Not found!</h1>} />
 					</Switch>					
 										

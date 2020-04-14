@@ -3,7 +3,6 @@ const getState = ({ getStore, setStore }) => {
 		store: {
 			currentUser: null,
 			isAuthenticated: false,
-			
 		},
 
 		actions: {
