@@ -1,0 +1,32 @@
+.card-panel-waiting {
+    padding-bottom: 15px !important;
+    margin: 2.5rem 0 -5rem 0 !important;
+    border-radius: 2px;
+    background-color: #fff;
+    font-family: 'Handlee', cursive;
+}
+
+.video-message{
+    padding-top: 70px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-family: 'Handlee', cursive;
+    font-size: 18px;
+    color: #9575cd;
+    text-align: center;
+}
+
+.z-depth-1{
+    box-shadow: none !important;
+}
+
+.card-message{
+    font-size: 24px;
+}
+
+.title-back-home{
+    font-family: 'Handlee', cursive;
+    color: #7e7f80;
+    font-size: 18px;
+    text-align: center;
+}

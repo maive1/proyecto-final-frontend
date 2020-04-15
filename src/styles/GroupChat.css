@@ -51,6 +51,10 @@ h2 {
     border-color:#64B5F6 ;
 }
 
+.collection {
+    border-color:#64B5F6 ;
+}
+
 .file {
     font-size: 30px;
     color: #9575CD !important;
@@ -61,6 +65,20 @@ h2 {
 
 .collection {
     border-color: whitesmoke ;
+}
+
+.perfil nav {
+    height: 125px;
+    padding: 10px;
+}
+
+.collection {
+    border-color: whitesmoke ;
+}
+
+.title {
+    margin-bottom: 0;
+    padding: 0;
 }
 
 .perfil nav {

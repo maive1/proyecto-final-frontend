@@ -1,27 +1,35 @@
 import React, { useContext, useEffect } from 'react';
-import '../../../styles/ExitChat.css'
-import MessageCard from '../../component/MessageCard';
-import TabInformation from '../../component/TabInformation';
-import TabHelpChannels from '../../component/TabHelpChannels';
-import ButtonHome from '../../component/ButtonHome';
+import '../../../styles/ExitChatWindow/ExitChat.css'
+import TabInformation from '../../component/ExitChatUser/TabInformation';
+import TabHelpChannels from '../../component/ExitChatUser/TabHelpChannels';
+import ButtonHome from '../../component/GenericComponent/ButtonHome';
+import ScrollTop from '../../component/GenericComponent/ScrolltoTop';
 import { Context } from '../../store/AppContext'
 
 export default function ExitChat(props) {
-    let wordsmessage="Esperamos que te hayas sentido cómod@ en la conversación, y que te sientas más tranquil@. Te recordamos que la conversación fue completamente confidencial. Sugerimos que busques ayuda psicológica en un centro de atención especializado. Un abrazo" 
+    const {store, actions} =  useContext(Context)
+    
+    useEffect( () => {
+        if (store.isAuthenticated !== 'true') {
+            props.history.push("/")
+        }
+    })
     return (
         <div className="view-exit" id="exit-window">
-            <div className="row message">
-                <MessageCard message={wordsmessage}/> 
+            <div className="container">
+                <div className="row">
+                    <div className="exit-message">Esperamos que te hayas sentido cómod@ en la conversación, y que te sientas más tranquil@. Sugerimos que busques ayuda psicológica en un centro de atención especializado. Un abrazo <i className="material-icons color-especial">favorite</i></div>
+                </div>
             </div>
-            <div className="row">    
-                <TabInformation titleTab="¿Dónde buscar ayuda?"/>
+            <div className="row">
+                <TabInformation titleTab="Links de ayuda" />
             </div>
-            <div className="row">    
-                <TabHelpChannels titleTab="Canales de Ayuda 24 horas"/>
+                <TabHelpChannels titleTab="Canales de Ayuda 24 horas" />
+            <div className="row">
+                <div className="back-home-q">¿Quieres volver al inicio?</div>
+                <ButtonHome iconname="home"/>
             </div>
-            <div className="row ">
-                <ButtonHome/>  
-            </div>  
-        </div>
+                <ScrollTop />
+        </div>        
     );
 }

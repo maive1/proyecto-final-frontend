@@ -1,0 +1,170 @@
+.title-menu {
+  padding-top: 20px;
+  font-size: 50px !important;
+  padding-bottom: 15px;
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+}
+
+.title-home {
+  padding-top: 20px;
+  font-size: 50px !important;
+  padding-bottom: 15px;
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+}
+
+.image_card {
+  background-image: url(https://49.media.tumblr.com/93061ab7ff1e2b03748301f93d3929c3/tumblr_o4uglbq4cw1rg51u5o1_1280.gif);
+  background-size: cover;
+  background-position: center;
+  min-height: 220px;
+  margin-top: 10px !important;
+}
+
+.link_style {
+  float: left;
+  padding-top: 4px;
+  padding-left: 5px;
+}
+
+.proiconstyle {
+  padding-top: 3px;
+  display: inline-block;
+  float: left;
+  background: -webkit-linear-gradient(#9575cd,#64B5F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} 
+
+.imageLogo {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+  display: inline-block;
+  float: left;
+}
+
+.card_info {
+  text-align: justify;
+  padding: 0 !important;
+  box-shadow:none !important;
+  margin-top: 25px !important;
+}
+
+.letters {
+  color:#9575CD !important;
+  text-align: center; 
+  font-weight: 500; 
+  font-family: 'Handlee', cursive;
+  font-size: 17px;
+}
+
+.text_order-profile {
+  padding-left: 10px;
+}
+
+.home-box-links {
+  display: inline-block;
+  width: 100%;
+  padding: 16px 10px;
+  border-top: 1px solid #64B5F6;
+}
+
+.home-links-icon {
+  display: inline-block;
+  float: left;
+  width: 10%;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 30px;
+  background: -webkit-linear-gradient(#9575cd,#64B5F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home-links-text {
+  display: inline-block;
+  float: right;
+  width: 90%;
+  text-align: left;
+}
+
+.home-box-border-bottom {
+  border-bottom: 1px solid #64B5F6;
+}
+
+.home-no-padding {
+  padding: 0 !important;
+}
+
+.home-no-margin {
+  margin: 0 !important;
+}
+
+.home-container {
+  width: 100% !important;
+}
+
+.home-standar-padding {
+  padding: 0 30px !important;
+}
+
+.home-options-container h6 {
+  padding: 20px 0 12px;
+}
+
+.text-body{
+  font-family: 'Handlee', cursive;
+  font-size: 16px;
+}
+
+.text-subtitle{
+  font-family: 'Handlee', cursive;
+  font-size: 18px;
+  text-align: justify;
+}
+
+.title-app{
+  padding-top: 5px;
+  font-size: 45px !important;
+  font-family: 'Neucha', cursive;
+  background: -webkit-linear-gradient(#9575cd,#64B5F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-body-home{
+  font-family: 'Handlee', cursive;
+  font-size: 16px;
+}
+
+.icon-next{
+  float: right;
+  font-size: 30px;
+  background: -webkit-linear-gradient(#9575cd,#64B5F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome-text{
+  font-size: 35px !important;
+  padding-bottom: 15px;
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.link-style-next{
+  float: right;
+  font-family: 'Handlee', cursive;
+  font-size: 15px;
+}
+
+.icon-next-letter{
+  float: left;
+  font-size: 16px;
+  padding-top: 4px;
+  font-weight: 500;
+  color: #039be5;;
+}

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GenerateInput } from "../../component/InputGenerator"
-import "../../../styles/Register.css"
-import "materialize-css"
+import { GenerateInput } from "../../component/GenericComponent/InputGenerator"
+import "../../../styles/Registers/RegisterUser.css"
+import { Context } from '../../store/AppContext';
+import getState from '../../store/Flux'
 
 class Register extends React.Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class Register extends React.Component {
             email: '',
             password: '',
             fullname: '',
+            user_type: 'patient',
             nombreError: 'Este campo es obligatorio.',
             emailError: 'Introduzca email válido.',
             passwordError: 'Este campo es obligatorio',
@@ -24,6 +26,17 @@ class Register extends React.Component {
         this.hidPassword = this.hidPassword.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+    static contextType = Context;
+
+    componentDidMount() {
+        const { store } = this.context
+        if (store.isAuthenticated == "true") {
+            console.log("you're authenticated")
+            this.props.history.push('waiting-window')
+        }
+    }
+
     handleChangeNombre(e) {
         this.setState({
             fullname: e.target.value
@@ -59,7 +72,9 @@ class Register extends React.Component {
         let passwordField = document.getElementById("register-contrasenya")
         passwordField.type = "password"
     }
-    handleSubmit(e) {
+    handleSubmit(e, data) {
+        e.preventDefault()
+        const { store, actions } = this.context
         let password = this.state.password
         let isPasswordValid = document.getElementById("register-contrasenya").checkValidity()
         let isNameValid = document.getElementById("register-nombre").checkValidity()
@@ -83,42 +98,23 @@ class Register extends React.Component {
             })
         }
         if (isEmailValid === true && isNameValid === true && isPasswordValid === true) {
-            let email = this.state.email
-            let nombre = this.state.fullname
-            let password = this.state.password
-            let entry = {
-                "email": email,
-                "password": password,
-                "username": nombre
+            var entry = {
+                "email": this.state.email,
+                "username": this.state.fullname,
+                "password": this.state.password
+            }
+            const sintomas = sessionStorage.getItem("sintomas")
+            const entryHelp = {
+                "sintomas": sintomas
             }
             fetch("http://localhost:5000/api/patient/register", {
                 method: 'POST',
                 body: JSON.stringify(entry),
-                headers: { "Content-Type": "application/json" }
+                headers: { "Content-Type": "application/json" }                
             })
-                .then(resp => {
-                    if (resp.ok) {
-                        console.log("Registro correcto")
-                        this.props.history.push('/waiting-window')
-                        let requestEntry = {"sintomas": sessionStorage.getItem("sintomas")}
-                        console.log(sessionStorage.getItem("sintomas"))
-                        fetch("http://localhost:5000/api/patient_request", {
-                            method: 'POST',
-                            body: JSON.stringify(requestEntry),
-                            headers: { "Content-Type": "application/json"}
-                        })
-                        .then(resp => {if (resp.ok) {
-                            console.log("Petición de ayuda enviada a todos los profesionales disponibles.")
-                        }})
-                        
-                    }
-                    else {
-                        console.log("Algo salió mal")
-                        this.setState({
-                            generalError: 'El correo ingresado ya está en uso'
-                        })
-                    }
-                })
+            .then(resp => resp.json())
+            .then(data => { actions.setRegisterPatient(data); console.log(data); {this.props.history.push('/waiting-window')}})
+            .then(actions.sendHelpRequest(entryHelp))
         }
 
         else {
@@ -129,17 +125,14 @@ class Register extends React.Component {
     render() {
         return (
             <div className="register">
-                <h2 className="title">Crear Cuenta</h2>
+                <h2 className="title-register-user color-text">Crear Cuenta</h2>
                 <div className="view-bottom">
                     <div className="form-container format">
                         <GenerateInput onChange={this.handleChangeNombre} id="register-nombre" placeholder="Nombre" type="text" errorMsg={this.state.nombreError} />
                         <GenerateInput onKeyPress={this.validateEmail} onChange={this.handleChangeEmail} id="register-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
                         <GenerateInput onKeyPress={this.validatePassword} minLength="6" onChange={this.handleChangePassword} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
                         <button onTouchEnd={() => this.hidPassword()} onMouseUp={() => this.hidPassword()} onTouchStart={() => this.displayPassword()} onMouseDown={() => this.displayPassword()} type="button" className="show-password">Show</button>
-                        <p className="gen-error">{this.state.generalError}</p>
-                        <button onClick={e => this.handleSubmit(e)}>
-                            <button id="signup" className="submit-but btn waves-effect waves-light" type="submit" name="action">Solicitar atención</button>
-                        </button>
+                        <button onClick={e => this.handleSubmit(e)} id="signup" className="submit-but-user btn waves-effect waves-light button-letters" type="button" name="action">Iniciar</button>
                     </div>
                     <div className="row">
                         <div className="col s12 m12 login-link">
