@@ -165,3 +165,14 @@ button:focus {
   font-family: 'Handlee', cursive;
 }
 
+@media screen and (min-width:640px) {
+  .view-bottom{
+   
+  }
+  .register-professional{
+    width: 50% !important;
+    display: inline-block;
+    padding: 20px;
+  }
+  
+}

@@ -197,7 +197,7 @@ class Register extends React.Component {
                 <div>
                 <h4 className="title-menu-pro color-text">Bienvenido</h4>
 
-                <h4 className="menu-section-upload color-text">Tus datos para Login</h4>
+                
                 </div>
                 
                 <div className="view-bottom-pro">
@@ -212,6 +212,8 @@ class Register extends React.Component {
                         <button onTouchEnd={() => this.hidPasswordRePro()} onMouseUp={() => this.hidPasswordRePro()} onTouchStart={() => this.displayPasswordRePro()} onMouseDown={() => this.displayPasswordRePro()} type="button" className="show-password-pro">Show</button>
 
                     </div>
+                    <div className="form-container register-professional col s12 l5"> 
+                        <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">Carga de documentos</h4>
 
                     <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">Carga de documentos</h4>
 
@@ -223,6 +225,8 @@ class Register extends React.Component {
 
                     <ValidateFiles file={"Curriculum profesional"} errorMsg={this.state.CvIdFileError} id="professional-cv"/>
 
+                        <ValidateFiles file={"Cursos relacionados (Opcional)"} />
+                    </div>
                 </div>
 
                 <ScrollTop />

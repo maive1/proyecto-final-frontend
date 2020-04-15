@@ -69,19 +69,23 @@ class Chat extends React.Component {
         const { messages, message, nameUser } = this.state;
         
         return (
-            <div className="wrapper">  
-                <InfoChatNav 
-                    nameUsuario={nameUser}
-                    logout={this.props.logout}
-                />   
-                <MessagesList messages={messages}/>            
-                <InputMessage
-                    onChange={(e)=>this.handleChange(e)} 
-                    onKeyPress={(e)=>this.handleKeyPress(e)} 
-                    onClick={(e)=>this.handleClickAddMessage(e)}
-                    value={message} 
-                    name="message"
-                />
+            <div className="chat">
+                <div className="row"> 
+                    <div className="col s12 l7"> 
+                        <InfoChatNav 
+                            nameUsuario={nameUser}
+                            logout={this.props.logout}
+                        />   
+                        <MessagesList messages={messages}/>            
+                        <InputMessage
+                            onChange={(e)=>this.handleChange(e)} 
+                            onKeyPress={(e)=>this.handleKeyPress(e)} 
+                            onClick={(e)=>this.handleClickAddMessage(e)}
+                            value={message} 
+                            name="message"
+                        />
+                    </div>
+                </div> 
             </div>
         );
     }

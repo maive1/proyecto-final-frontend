@@ -1,5 +1,5 @@
 nav {
-    height: 100px;
+    height: 100px !important;
     padding: 10px;
 }
 
@@ -21,7 +21,7 @@ nav h1 {
     text-align: center;
     width: 100%;
     padding: 20px 45px 10px;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
     border-top: 2px solid transparent !important;
 } 
 
@@ -51,5 +51,8 @@ nav h1 {
     margin-top: 15px;    
 }
 
+.col .row {
+    margin-right: -5px;
+}
 
 
