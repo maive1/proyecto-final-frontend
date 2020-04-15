@@ -1,76 +1,87 @@
 .input-field input:focus + label {
-    color:  #9575CD!important;
-  }
-  .input-field input:focus {
-    border-bottom: 1px solid #9575CD!important;
-    box-shadow: 0 1px 0 0 #9575CD!important;
-  }
-  .view-bottom {
-    margin-top:10vh;
-    position:relative;
-  }
-  .register {
-    margin-top:50px;
-  }
-  .register * {
-    font-family: 'Handlee', cursive;
-  }
-  .form-container {
-    margin:auto;
-    text-align: center;
-  }
-  .show-password {
-    position: absolute;
-    top:65%;
-    margin-bottom: 10%;
-    left:75%;
-    background-color: transparent;    
-    border: none;
-    color:#64B5F6 ;
-    cursor: pointer;
-  }
-  .show-password:focus {
-    background-color: transparent!important;
-  }
-  .submit-but {
-    margin:auto;
-    margin-top: 5%;
-    width: 300px;
-    background-color:  #9575CD!important;
-    font-family: 'Handlee', cursive;
-  }
-  .submit-but:hover {
-    background-color: rgb(110, 86, 151)!important;
-  }
-  .title {
-    margin-top:50vh;
-    width: 80%;
-    margin:auto;
-    text-align: left;
-    font-family: 'Amatic SC', cursive;
-    font-weight: bold;
-  }
-  .login-link {
-    text-align: center;
-    margin-top: 5%;
-  }
-  .to-login {
-    color:#64B5F6;
-  }
-  .to-login:hover {
-    color: rgb(72, 131, 179)
-  }
-  .input-field {
-    width: 80%;
-    top:15%;
-    margin:auto;
-    text-align: center;
-  }
+  color:  #9575CD!important;
+}
+.input-field input:focus {
+  border-bottom: 1px solid #9575CD!important;
+  box-shadow: 0 1px 0 0 #9575CD!important;
+}
+.view-bottom {
+  margin-top:0 !important;  
   
+}
+.register {
+  margin-top:50px;
+}
+.register * {
+  font-family: 'Handlee', cursive;
+}
+.form-container {
+  margin:auto;
+  text-align: center;
+}
+.show-password {
+  position: absolute;
+  bottom: -9%;
+  margin-bottom: 10%;
+  left:75%;
+  background-color: transparent;    
+  border: none;
+  color:#64B5F6 ;
+  cursor: pointer;
+}
+.show-password:focus {
+  background-color: transparent!important;
+}
+.submit-but {
+  margin:auto;
+  margin-top: 50px !important;
+  width: 300px !important;
+  background-color:  #9575CD!important;
+  font-family: 'Handlee', cursive;
+}
+.submit-but:hover {
+  background-color: rgb(110, 86, 151)!important;
+}
+.title {
+  margin-top:50vh;
+  width: 80%;
+  margin:auto;
+  text-align: left;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+}
+.login-link {
+  text-align: center;
+  margin-top: 5%;
+}
+.to-login {
+  color:#64B5F6;
+}
+.to-login:hover {
+  color: rgb(72, 131, 179)
+}
+.input-field {
+  width: 80%;
+  top:15%;
+  margin:auto;
+  text-align: center;
+}
+
+.input-field-row {
+  margin-top:8%;
+}
+#contrasenya {
+    z-index: -1;
+}
+
+@media screen and (min-width:640px) {
   .input-field-row {
-    margin-top:8%;
+    margin-top:9% !important;
   }
-  #contrasenya {
-     z-index: -1;
+  .register{
+    margin: 0 auto !important;
+    width: 50% !important;
   }
-  
+}
+
+

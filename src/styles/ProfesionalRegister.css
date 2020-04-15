@@ -184,3 +184,15 @@ button:focus {
 .submit-but:hover {
   background-color: rgb(110, 86, 151)!important;
 }
+
+@media screen and (min-width:640px) {
+  .view-bottom{
+   
+  }
+  .register-professional{
+    width: 50% !important;
+    display: inline-block;
+    padding: 20px;
+  }
+  
+}

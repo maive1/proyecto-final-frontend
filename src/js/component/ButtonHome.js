@@ -10,7 +10,6 @@ const ButtonHome = (props) => {
             <div className="col s">
                 <Link className="icon-exit waves-effect waves-circle btn-small deep-purple lighten-2 " to="/"><i class="material-icons" id="icon-home">home</i></Link>
             </div>
-            
         </>
     );   
 }

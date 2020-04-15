@@ -124,12 +124,12 @@ class Register extends React.Component {
                 <div>
                 <h4 className="title-menu-pro color-text">Bienvenido</h4>
 
-                <h4 className="menu-section-upload color-text">Tus datos para Login</h4>
+                
                 </div>
                 
-                <div className="view-bottom">
-                    <div className="form-container format">
-
+                <div className="view-bottom row">
+                    <div className="form-container format register-professional col s12 l5">
+                    <h4 className="menu-section-upload color-text">Tus datos para Login</h4>
                         <GenerateInput onChange={this.handleChangeNombre} id="register-nombre" placeholder="Nombre" type="text" errorMsg={this.state.nombreError} />
 
                         <GenerateInput onKeyPress={this.validateEmail} onChange={this.handleChangeEmail} id="register-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
@@ -139,17 +139,17 @@ class Register extends React.Component {
                         <button onTouchEnd={() => this.hidPassword()} onMouseUp={() => this.hidPassword()} onTouchStart={() => this.displayPassword()} onMouseDown={() => this.displayPassword()} type="button" className="show-password">Show</button>
 
                     </div>
+                    <div className="form-container register-professional col s12 l5"> 
+                        <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">Carga de documentos</h4>
 
-                    <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">Carga de documentos</h4>
+                        <ValidateFiles file={"RUT"} />
 
-                    <ValidateFiles file={"RUT"} />
+                        <ValidateFiles file={"Certificado profesional"} />
 
-                    <ValidateFiles file={"Certificado profesional"} />
+                        <ValidateFiles file={"Nro registro - Supersalud"} />
 
-                    <ValidateFiles file={"Nro registro - Supersalud"} />
-
-                    <ValidateFiles file={"Cursos relacionados (Opcional)"} />
-
+                        <ValidateFiles file={"Cursos relacionados (Opcional)"} />
+                    </div>
                 </div>
                 <button title='Back to top' className='scroll'
                     onClick={() => { this.scrollToTop(); }}>

@@ -2,7 +2,6 @@ import React from 'react'
 import 'materialize-css'
 
 export const FileInput = (props) => (
-
     <form className="col s12 file-container">
         <div className="row">
             <label className="file-label">{props.label}</label>
@@ -19,5 +18,4 @@ export const FileInput = (props) => (
             </div>
         </div>
     </form>
-
 )

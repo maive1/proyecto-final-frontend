@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from "prop-types";
 
 const MessageCard = (props) => {
-
     return (  
             <div className="card">
                 <div className="col s1 l3"></div>
