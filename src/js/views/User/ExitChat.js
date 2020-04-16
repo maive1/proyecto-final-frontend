@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import '../../../styles/ExitChatWindow/ExitChat.css'
 import TabInformation from '../../component/ExitChatUser/TabInformation';
 import TabHelpChannels from '../../component/ExitChatUser/TabHelpChannels';
 import ButtonHome from '../../component/GenericComponent/ButtonHome';
 import ScrollTop from '../../component/GenericComponent/ScrolltoTop';
+import { Context } from '../../store/AppContext'
 
-export default function ExitChat() {
-
+export default function ExitChat(props) {
+    const {store, actions} =  useContext(Context)
+    
+    useEffect( () => {
+        if (store.isAuthenticated !== 'true') {
+            props.history.push("/")
+        }
+    })
     return (
         <div className="view-exit" id="exit-window">
             <div className="container">

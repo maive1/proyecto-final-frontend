@@ -159,7 +159,7 @@ class Register extends React.Component {
 
           const { actions } = this.context;
 
-          actions.createRegister(formData);
+          actions.createRegister(formData, 'professional');
         }
         else {
           console.log("All inputs must be valid...")

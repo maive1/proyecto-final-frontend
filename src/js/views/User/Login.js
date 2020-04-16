@@ -17,6 +17,15 @@ class Login extends React.Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+    static contextType = Context;
+
+    componentDidMount() {
+        const { store } = this.context
+        if(store.isAuthenticated == true && store.currentUser.user_type == "patient") {
+            this.props.history.push('/waiting-window')
+        }
+    }
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
@@ -31,36 +40,25 @@ class Login extends React.Component {
         document.getElementById("login-contrasenya").focus()
         document.getElementById("signin").focus()
         if (isEmailValid === true && isPasswordValid === true) {
+            let { actions } = this.context
             let email = this.state.email
             let password = this.state.password
+            let sintomas = sessionStorage.getItem("sintomas")
             let entry = {
                 "email": email,
                 "password": password
             }
-            fetch("http://localhost:5000/api/login", {
+            let entryHelp = {
+                "sintomas": sintomas
+            }
+            fetch("http://localhost:5000/api/patient/login", {
                 method: 'POST',
                 body: JSON.stringify(entry),
                 headers: { "Content-Type": "application/json" }
             })
-                .then(resp => {
-                    if (resp.status == 200) {
-                        console.log(resp)
-                        console.log("Inicio de sesión exitoso")
-                        this.props.history.push('/chat')
-                    }
-                    else if(resp.status == 404) {
-                        console.log(resp)
-                        console.log("There was a problem")
-                        this.setState({
-                            generalError: 'Usuario no encontrado'
-                        })
-                    }
-                    else if(resp.status == 401) {
-                        this.setState({
-                            generalError: 'Contraseña incorrecta'
-                        })
-                    }
-                })
+                .then(resp => resp.json())
+                .then(data => { actions.setLoginPatient(data); console.log(data); {this.props.history.push('/waiting-window')}})
+                .then(actions.sendHelpRequest(entryHelp))
         }
         else if (this.state.email !== '' && isEmailValid === false) {
             e.preventDefault()
