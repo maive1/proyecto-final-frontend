@@ -39,6 +39,26 @@ class Login extends React.Component {
         document.getElementById("login-email").focus()
         document.getElementById("login-contrasenya").focus()
         document.getElementById("signin").focus()
+
+
+        //BORRAR CUANDO ESTE LISTO LO DE JUAN-------------------------------
+        e.preventDefault()
+        console.log("AQUIIIII");
+        sessionStorage.setItem("currentUser", JSON.stringify(
+            {
+                "id": 2,
+                "email": "paciente1@example.com",
+                "user_type": "patient"
+           }
+        ));
+        sessionStorage.setItem("isAuthenticated", true);
+        this.props.history.push('/waiting-window')
+        // ------------------------------------------------------------------
+
+
+
+
+        /*
         if (isEmailValid === true && isPasswordValid === true) {
             let { actions } = this.context
             let email = this.state.email
@@ -69,6 +89,7 @@ class Login extends React.Component {
         else {
             e.preventDefault()
         }
+        */
     }
 
     render() {

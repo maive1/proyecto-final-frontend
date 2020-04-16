@@ -1,6 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			domain: "http://127.0.0.1:5000",
+			channel_id: null,
 			currentUser: null,
 			isAuthenticated: "false",
 			access_token: null,
@@ -11,7 +13,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			login: {
 				error: "",
 				finish: "false"
-			}
+			},
+			requests: [],
+			messages: []
 		},
 
 		actions: {
@@ -83,6 +87,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 						isAuthenticated: null
 					});
 				}
+				if(sessionStorage.getItem("channel_id")){
+					sessionStorage.removeItem("channel_id");
+					setStore({channel_id: null});
+				}
+				if(sessionStorage.getItem("sendRequest")){
+					sessionStorage.removeItem("sendRequest");
+				}
+
 			},
 
 			isUserAuthenticated: () => {
@@ -96,13 +108,116 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 			},
+	
+			isUserImChannel: () => {
+				const store = getStore();
+				if(sessionStorage.getItem("channel_id") && !store.channel_id){
+					setStore({ channel_id: sessionStorage.getItem("channel_id")})
+				}
+			},
+
+			getAllRequests: async () => {
+				const store = getStore();
+				await fetch(store.domain + "/api/professional/requests", {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					if(data.channels){
+						setStore({requests: data.channels})
+					}else {
+						setStore({requests: []})
+					}
+				})
+				.catch(error => {
+					console.log(error);
+					setStore({requests: []})
+
+				});
+			},
+
+			getAllMessages: async (channel_id) => {
+				const store = getStore();
+				await fetch(store.domain + "/api/channel/"+channel_id+"/messages", {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					if(data.messages){
+						setStore({messages: data.messages})
+					}else {
+						setStore({messages: []})
+					}
+				})
+				.catch(error => {
+					console.log(error);
+					setStore({messages: []})
+
+				});
+			},
+	
+
+
+			recibeNewMessage: (message) => {
+				const store = getStore();
+				if(message){
+					let messages = store.messages;
+					messages.push(message)
+					setStore({ messages: messages})
+				}
+			},
+
+
+
+			setChannelId: (channel_id) => {
+				if(channel_id){
+					setStore({ channel_id: channel_id})
+					sessionStorage.setItem("channel_id", channel_id);
+				}
+			},
+
+
+
+
+			takeRequestAndOpenChat: async (channel) => {
+				const store = getStore();
+				let user_id = JSON.parse(sessionStorage.getItem("currentUser")).id
+				await fetch(store.domain + "/api/professional/" + user_id + "/take/"+ channel, {
+					method: 'POST',
+					body: {},
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					if(data.channel_id){
+						sessionStorage.setItem("channel_id", data.channel_id);
+					}else if(sessionStorage.getItem("channel_id")){
+						sessionStorage.removeItem("channel_id");
+					}
+				})
+				.catch(error => {
+					console.log(error);
+					if(sessionStorage.getItem("channel_id")){
+						sessionStorage.removeItem("channel_id");
+					}
+				});
+			},
+
 
 			createRegister(params) {
 				const store = getStore();
 
 				console.log("FORMULARIO ENVIADO CON EXITO");
 
-				fetch('http://localhost:5000/api/professional/register', {
+				fetch(store.domain + '/api/professional/register', {
 					method: "POST",
 					body: params,
 					headers: { "Content-Type": "application/json" }
@@ -148,7 +263,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			loginProfessional: async (data) => {
 				const store = getStore();
-				await fetch("http://localhost:5000/api/professional/login", {
+				await fetch(store.domain + "/api/professional/login", {
 					method: 'POST',
 					body: JSON.stringify(data),
 					headers: {

@@ -2,85 +2,171 @@ import React from 'react';
 import io from "socket.io-client";
 import '../../styles/ChatWindow/Chat.css';
 import InfoChatNav from '../component/Chat/InfoChatNav';
-import InputMessage from '../component/Chat/InputMessage';
-import MessagesList from '../component/Chat/MessagesList';
-import AppContext from '../store/AppContext'
+import { Context } from '../store/AppContext';
 
-let endPoint = "";
-let socket = io.connect(`${endPoint}`);
+let socket = io.connect("http://127.0.0.1:5000");
 
 class Chat extends React.Component {
     
     constructor(props) {
-      super(props);        
+      super(props);
       this.state = {
-        message:'',
-        messages: ['Hola, mi nombre es...'],
-        nameUser: "",
-        nameProfessional: "",
+        channel_id: null,
+        currentUser: {},
+        message: "",
+        messages: [],
       };
-      this.getMessages = this.getMessages.bind(this);
-      this.handleChange = this.handleChange.bind(this);
-      this.handleKeyPress = this.handleKeyPress.bind(this);
+      this.getMessagesOnline = this.getMessagesOnline.bind(this);
       this.handleClickAddMessage = this.handleClickAddMessage.bind(this);
+      this.handleChangeMessage = this.handleChangeMessage.bind(this);
+      this.redirectUserNotAuthenticated = this.redirectUserNotAuthenticated.bind(this);
+      this.setChannelByUser = this.setChannelByUser.bind(this);
+      this.openChatToPatient = this.openChatToPatient.bind(this);
+      
+      socket.on("connect", function() {
+        socket.send("CONECTADOOOO");
+      })
+
     }
 
+    static contextType = Context;
 
-    getMessages = () => {
-        socket.on("message", msg => {
-          this.setState({
-            messages: [...this.state.messages, msg]
-          });
-        });  
-    };
- 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        });  
+    componentDidMount = () => {
+        const { store, actions } = this.context;
+        this.redirectUserNotAuthenticated(store, actions);    
+        this.setChannelByUser(store, actions);
+        this.getAllMessages(actions);
+        this.openChatToPatient(store);
+        this.getMessagesOnline(store, actions);
     };
 
-    handleKeyPress = (e) =>{
-        const { message } = this.state;
-        if(e.keyCode === 13 && e.target.value !== ''){
-            this.setState({
-                message: ""
-                });
-                socket.emit("message", message);
-            } else {
-                console.log("No ha escrito un mensaje");
-            }
-    };
-
-    handleClickAddMessage = (e) =>{
-        const { message } = this.state;
-        if (message !== "") {
-            this.setState({
-            message: ""
+    openChatToPatient = (store) => {
+        if (store.currentUser && store.currentUser.user_type === "professional"){
+            socket.emit('open_chat_to_patient', {
+                channel_id: store.channel_id
             });
-            socket.emit("message", message);
-        } else {
-            console.log("No ha escrito un mensaje");
+            console.log("Abierto el chat para el paciente");
         }
     };
 
-    render() {
-        const { messages, message, nameUser } = this.state;
-        
+    redirectUserNotAuthenticated = (store, actions) =>{
+        actions.isUserAuthenticated();
+        if (store.isAuthenticated !== "true"){
+            this.props.history.push('/');
+        }else{
+            this.setState({currentUser: store.currentUser});
+        }
+    };
+
+    setChannelByUser = (store, actions) => {
+        actions.isUserImChannel();
+        if (!store.channel_id){
+            this.props.history.push('/perfil');
+        }else{
+            this.setState({channel_id: store.channel_id});
+        }
+    };
+
+    getAllMessages = (actions) =>{
+        let channel_id = sessionStorage.getItem("channel_id");
+        actions.getAllMessages(channel_id);
+    };
+
+    classNameBubbleBy = (user_id) =>{
+        if(parseInt(user_id) === parseInt(this.state.currentUser.id)){
+            return "right-bubble";
+        }else{
+            return "left-bubble";
+        }
+    };
+
+    getMessagesOnline = (store, actions) => {
+        //escucha los mensajes que son emitidos en el chat
+        socket.on('channel-' + store.channel_id, message => {
+            console.log("Llego un nuevo mensaje: " + message.user_id);
+            actions.recibeNewMessage(message);
+            this.setState({messages: store.messages});
+		});
+    };
+
+    handleChangeMessage = (e) =>{
+        this.setState({message: e.target.value});
+    };
+
+    handleClickAddMessage = (e) =>{
+        e.preventDefault();
+        if (this.state.message !== "") {
+            // Enviamos el nuevo mensaje
+            let data = {
+                channel_id: this.state.channel_id,
+                user_id: this.state.currentUser.id,
+                text: this.state.message
+            }
+            socket.emit('new_message', data);
+
+            console.log("Mensaje enviado");
+            console.log(data);
+            console.log("este es el mensaje: " + this.state.message);
+        } else {
+            console.log("No ha escrito un mensaje");
+        }
+        // Clear text
+        this.setState({message: ""});
+        document.getElementById("message").value = "";
+    };
+
+    render() {  
+        const { store } = this.context;
+
         return (
             <div className="wrapper">  
-                <InfoChatNav 
-                    nameUsuario={nameUser}
-                    logout={this.props.logout}
-                />   
-                <MessagesList messages={messages}/>            
-                <InputMessage
-                    onChange={(e)=>this.handleChange(e)} 
-                    onKeyPress={(e)=>this.handleKeyPress(e)} 
-                    onClick={(e)=>this.handleClickAddMessage(e)}
-                    value={message} 
-                    name="message"
-                />
+            <i className="material-icons exit-chat-icon">highlight_off</i><div className="exit-chat-letters color-text">Abandonar chat</div>
+            
+            <i className="material-icons icon-active-chat">done_all</i><div className="status-active-letter">Chat inciado</div>
+
+            <div className="home-box-border-bottom"></div>
+                
+                <div className="view-messages row">  
+                    <ul className="col s12 l6">
+                        {
+                            store.messages.map((msg,i) =>
+                              <li key={i} className={this.classNameBubbleBy(msg.user_id)}>
+                                    <div>
+                                        <span>Current Uuser: {store.currentUser.id}</span>
+                                        <span>Mensaje de: {msg.user_id}</span>
+                                        <span>Canal: {msg.channel_id}</span>
+                                        <span>Mensaje: {msg.text}</span>
+                                    </div>
+                                </li> 
+                            )
+                        }
+                    </ul>
+                </div>   
+
+                <div className="row input-chat color-icons">
+                    <form className="col s12 form" onSubmit={this.handleClickAddMessage}>
+                        <div className="row">
+                            <div className=" col s10">  
+                                <input 
+                                    className="msg_input style-chat-input" 
+                                    id="message"
+                                    type="text" 
+                                    name="message"
+                                    placeholder="Escribe un mensaje" 
+                                    onChange={this.handleChangeMessage}
+                                 />  
+                            </div>
+                            <div className="col s1">
+                                <button 
+                                    className="btn-floating z-depth-2 button-chat-style text-send" 
+                                    onClick={this.handleClickAddMessage}>
+                                    <i className="material-icons left icon-send-text">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>      
+                </div>
+
             </div>
         );
     }

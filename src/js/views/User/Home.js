@@ -16,11 +16,10 @@ class Home extends React.Component {
     componentDidMount() {
         const { store, actions } = this.context;
         actions.isUserAuthenticated();
-
     
-        if (store.isAuthenticated===  "true" && store.currentUser && store.currentUser.user_type === "professional"){
+        if (store.isAuthenticated ===  "true" && store.currentUser && store.currentUser.user_type === "professional"){
           this.props.history.push('/perfil');
-        } else if (store.isAuthenticated===  "true" && store.currentUser && store.currentUser.user_type === "patient"){
+        } else if (store.isAuthenticated ===  "true" && store.currentUser && store.currentUser.user_type === "patient"){
             this.props.history.push('/homemenu');
         };
       }

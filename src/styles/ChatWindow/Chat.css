@@ -28,7 +28,7 @@ nav h1 {
 
 .msg_input{   
     border: 0 !important;
-    border-radius: 12px !important;
+    border-radius: 30px !important;
     background-color: white !important;
 }
 
@@ -51,5 +51,109 @@ nav h1 {
     margin-top: 15px;    
 }
 
+.view-messages ul li {
+    display: inline-block;
+    width: 100%;
+    padding: 13px;
+    position: relative;
+}
 
+.view-messages ul li.left-bubble div {
+    background: #64b5f6;
+    float: left;
+}
+
+.view-messages ul li div {
+    display: inline-block;
+    width: 50%;
+    padding: 16px;
+    overflow-wrap: break-word;
+}
+
+.view-messages ul li div span {
+    display: inline-block;
+    width: 100%;
+    color: #ffffff !important;
+}
+
+.view-messages ul li.right-bubble div {
+    background: rgb(196, 177, 228);
+    float: right;
+}
+
+.input-chat {
+    bottom: 0;
+    position: fixed;
+    margin-bottom: 0 !important;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+}
+
+.view-messages {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    overflow-y: scroll;
+    height: 467px;
+}
+
+.style-chat-input{
+    margin: 10px 0px 10px -30px !important;
+    width: 115% !important;
+    padding-left: 15px !important;
+}
+
+.button-chat-style{
+    margin-top: 10px !important;
+    background-color: white !important;
+}
+
+.icon-send-text{
+    color: #9575cd !important;
+    padding-left: 5px !important;
+}
+
+.text-send:focus{
+    background-color: white !important;
+}
+
+.exit-chat-icon{
+    float: right;
+    padding-right: 30px;
+    font-size: 22px;
+    display: inline-block;
+    color: #7e7f80;
+    padding-top: 9px;
+}
+
+.exit-chat-icon:hover{
+    color: #ef5350;
+}
+
+.exit-chat-letters{
+    display: inline-block;
+    float: right;
+    font-family: 'Handlee', cursive;
+    font-size: 15px;
+    padding-top: 10px;
+    padding-right: 5px;
+}
+
+.status-active-letter{
+    display: inline-block;
+    float: left;
+    padding-left: 15px;
+    padding-top: 10px;
+    font-family: 'Handlee', cursive;
+    font-size: 15px;
+    color: #1bd127
+}
+
+.icon-active-chat{
+    padding-top: 9px;
+    padding-left: 5px;
+    font-size: 22px;
+    color: #1bd127;
+}
 
