@@ -7,7 +7,7 @@ import "../../../styles/Registers/ProfessionalRegister.css"
 import { Context } from '../../store/AppContext';
 import M from 'materialize-css';
 
-class Register extends React.Component {
+class RegisterProfesional extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -209,11 +209,12 @@ class Register extends React.Component {
 
                         <GenerateInput onKeyPress={this.validatePasswordRePro} minLength="6" onChange={this.handleChangePasswordRePro} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
 
-                        <button onTouchEnd={() => this.hidPasswordRePro()} onMouseUp={() => this.hidPasswordRePro()} onTouchStart={() => this.displayPasswordRePro()} onMouseDown={() => this.displayPasswordRePro()} type="button" className="show-password-pro">Show</button>
-
                     </div>
 
+                    <button onTouchEnd={() => this.hidPasswordRePro()} onMouseUp={() => this.hidPasswordRePro()} onTouchStart={() => this.displayPasswordRePro()} onMouseDown={() => this.displayPasswordRePro()} type="button" className="show-password-pro"><span className="material-icons color-especial">visibility</span></button>
+
                     <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">Carga de documentos</h4>
+                    <h5 className="accepted-files-letters">Documentos permitidos: jpeg, jpg y pdf</h5>
 
                     <ValidateFiles file={"RUT"} id="register-rut" errorMsg={this.state.rutFileError}/>
 
@@ -235,4 +236,4 @@ class Register extends React.Component {
     }
 }
 
-export default Register;
+export default RegisterProfesional;

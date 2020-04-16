@@ -1,5 +1,5 @@
 .title-profile {
-    margin-top: 5vh;
+    margin-top: 3vh;
     font-family: 'Amatic SC', cursive !important;
     font-size: 50px !important;
     text-align: center;
@@ -53,25 +53,28 @@
 
 .title-autorized {
     font-family: 'Amatic SC', cursive !important;
-    font-size: 35px !important;
+    font-size: 25px !important;
     text-align: left;
 }
 
 .title-notifications {
     font-family: 'Amatic SC', cursive !important;
-    font-size: 30px !important;
+    font-size: 25px !important;
     text-align: left;
+}
+
+.title-autorized-user{
+    font-family: 'Amatic SC', cursive !important;
+    color: #7e7f80;
+    font-size: 25px;
 }
 
 .autorized-icon {
     display: inline-block;
-    float: right;
     width: 10%;
-    padding-right: 130px;
+    padding-right: 180px;
     font-size: 30px;
-    background: -webkit-linear-gradient(#9575cd,#64B5F6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color:#1bd127;
 }
 
 .status-icon {
@@ -98,7 +101,7 @@
 .switch{
     display: grid;
     float: right;
-    padding-right: 80px;
+    padding-right: 100px;
 }
 
 .label-text{

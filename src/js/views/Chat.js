@@ -2,6 +2,7 @@ import React from 'react';
 import io from "socket.io-client";
 import '../../styles/ChatWindow/Chat.css';
 import InfoChatNav from '../component/Chat/InfoChatNav';
+import { Link } from "react-router-dom";
 import { Context } from '../store/AppContext';
 
 let socket = io.connect("http://127.0.0.1:5000");
@@ -119,12 +120,16 @@ class Chat extends React.Component {
         const { store } = this.context;
 
         return (
-            <div className="wrapper">  
-            <i className="material-icons exit-chat-icon">highlight_off</i><div className="exit-chat-letters color-text">Abandonar chat</div>
-            
-            <i className="material-icons icon-active-chat">done_all</i><div className="status-active-letter">Chat inciado</div>
+            <div className="wrapper">
 
-            <div className="home-box-border-bottom"></div>
+            <Link className="" to="/exitchat">
+                <div className="exit-chat-letters color-text exit-button-chat">Abandonar chat</div>
+            </Link>
+
+            <i className="material-icons icon-active-chat">done_all</i>
+            <div className="status-active-letter">Chat inciado</div>
+
+            <div className="border-bottom-chat"></div>
                 
                 <div className="view-messages row">  
                     <ul className="col s12 l6">
@@ -132,9 +137,6 @@ class Chat extends React.Component {
                             store.messages.map((msg,i) =>
                               <li key={i} className={this.classNameBubbleBy(msg.user_id)}>
                                     <div>
-                                        <span>Current Uuser: {store.currentUser.id}</span>
-                                        <span>Mensaje de: {msg.user_id}</span>
-                                        <span>Canal: {msg.channel_id}</span>
                                         <span>Mensaje: {msg.text}</span>
                                     </div>
                                 </li> 

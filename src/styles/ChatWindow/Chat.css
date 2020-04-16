@@ -59,13 +59,31 @@ nav h1 {
 }
 
 .view-messages ul li.left-bubble div {
-    background: #64b5f6;
+    background-color: #cadcfc;
     float: left;
+    position: relative;
+	border: 1px solid #cadcfc !important;
+	border-radius: 10px 0px 10px 0px;
+}
+
+.view-messages ul li.left-bubble div:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 13%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top-color: #cadcfc;
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -15.5px;
+    margin-bottom: -14px;
 }
 
 .view-messages ul li div {
     display: inline-block;
-    width: 50%;
+    width: 83%;
     padding: 16px;
     overflow-wrap: break-word;
 }
@@ -73,13 +91,32 @@ nav h1 {
 .view-messages ul li div span {
     display: inline-block;
     width: 100%;
-    color: #ffffff !important;
+    color: black !important;
 }
 
 .view-messages ul li.right-bubble div {
-    background: rgb(196, 177, 228);
+    background-color: #fcd2fc;
     float: right;
+    position: relative;
+	border: 1px solid #fcd2fc !important;
+	border-radius: 0px 10px 0px 10px;
 }
+
+.view-messages ul li.right-bubble div:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 90%;
+    width: 0;
+    height: 0;
+    border: 25px solid transparent;
+    border-top-color: #fcd2fc;
+    border-bottom: 0;
+    border-right: 0;
+    margin-left: -15.5px;
+    margin-bottom: -15px;
+}
+
 
 .input-chat {
     bottom: 0;
@@ -118,15 +155,6 @@ nav h1 {
     background-color: white !important;
 }
 
-.exit-chat-icon{
-    float: right;
-    padding-right: 30px;
-    font-size: 22px;
-    display: inline-block;
-    color: #7e7f80;
-    padding-top: 9px;
-}
-
 .exit-chat-icon:hover{
     color: #ef5350;
 }
@@ -143,17 +171,29 @@ nav h1 {
 .status-active-letter{
     display: inline-block;
     float: left;
-    padding-left: 15px;
-    padding-top: 10px;
+    padding-left: 35px;
+    padding-top: 15px;
     font-family: 'Handlee', cursive;
     font-size: 15px;
     color: #1bd127
 }
 
 .icon-active-chat{
-    padding-top: 9px;
+    padding-top: 13px;
     padding-left: 5px;
     font-size: 22px;
     color: #1bd127;
 }
 
+.exit-button-chat{
+    border-radius: 20px;
+    padding: 3px 11px;
+    margin-top: 10px;
+    margin-right: 35px;
+    background: #ffcdd2;
+}
+
+.border-bottom-chat {
+    padding-top: 12px;
+    border-bottom: 1px solid #d6d2d2;
+  }
