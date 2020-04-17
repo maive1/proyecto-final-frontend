@@ -10,7 +10,6 @@ const MessagesList = (props) => {
                     props.messages.map(msg => (
                         <li className="card-message">
                             <div>
-                                <span>{props.userId}</span>
                                 <span>{msg}</span>     
                             </div>                  
                         </li>
@@ -21,8 +20,7 @@ const MessagesList = (props) => {
 }
 
 MessagesList.propTypes = {
-    messages: PropTypes.array.isRequired,
-    userId: PropTypes.array.isRequired
+    messages: PropTypes.array.isRequired
 }
 
 export default MessagesList;
