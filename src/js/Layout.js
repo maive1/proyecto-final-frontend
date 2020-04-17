@@ -33,7 +33,7 @@ export const Layout = () => {
 						<Route exact path="/login" component={Login}/>
 						<Route exact path="/ForgotPassword" component={PasswordRecovery}/>
 						<Route exact path="/waiting-window" component={WaitingWindow}/>
-					 {/*	<Route exact path="/chat" component={Chat}/>*/}
+					 	<Route exact path="/chat" component={Chat}/>
 						<Route exact path="/exitchat" component={ExitChat}/>
 						{/*Rutas de Profesional*/}
 						<Route exact path="/registerpro" component={RegisterPro} />

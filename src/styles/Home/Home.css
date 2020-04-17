@@ -168,6 +168,7 @@
   color: #039be5;;
 }
 
+
 @media screen and (min-width:640px) {
   .home-box-links {
     border-left: 2px solid #64B5F6 !important;
@@ -184,5 +185,15 @@
   .link_style .text-body {
     position: relative;
     bottom: 10px;
+  }
+  .welcome-text{
+    padding-top: 0 !important ;
+  }
+  .home-options-container h6 {
+    text-align: center;
+
+  }
+  .title-menu{
+    padding-top: 0 !important;
   }
 }

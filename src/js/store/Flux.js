@@ -213,11 +213,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},			
 			},
 
-			editFiles(e, id, params) {
+			editFiles(e, id, data) {
 				const store = getStore();
 				fetch(`http://localhost:9000/api/professional/editar/${id}`, {
 					method: "PUT",
-					body: params,
+					body: data,
 					headers: {
 						'Content-type': 'aplication/json',
 						'Authorization': 'Bearer' + data.access_token,

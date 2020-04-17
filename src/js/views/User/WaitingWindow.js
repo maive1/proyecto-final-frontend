@@ -14,20 +14,27 @@ export default function WaitingWindow (props) {
 
     return (
         <div className="container">
-
-            <MessageCard message={waitingMessage} />
-            <div className="video-message">Te recomendamos que veas este video mientras esperas.<i className="material-icons color-especial">favorite</i></div>
-
-            <div className="video-container">
-                <video className="responsive-video" controls autoPlay>
-                    <source src="Sources/Guía para calmar mentes en crisis.mp4" type="video/mp4" />
-                </video>
-            </div>
-
-            <h4 className="title-back-home">Sientete con la libertad de volver al inicio si no quieres iniciar la conversación</h4>
-
-            <div className="col s1 l1 push-s5 push-l6 ">
-                <ButtonHome iconname="home"/>
+            <div className="row waiting-container">
+                <div className="col s12 m8 l6 offset-m2 offset-l3">
+                    <div className="row">
+                        <div className="col s12 l12">
+                            <MessageCard message={waitingMessage} />
+                        </div>
+                    </div>
+                    <div className="video-container">
+                        <video className="responsive-video" controls /*autoPlay*/>
+                            <source src="Sources/Guía para calmar mentes en crisis.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div className="row icon-home">
+                        <div className="col s1 l2">
+                            <ButtonHome iconname="home"/>
+                        </div>  
+                        <div className="col s10 l8">                        
+                            <h4 className="title-back-home">Sientete con la libertad de volver al inicio si no quieres iniciar la conversación</h4>
+                        </div>                                              
+                    </div>
+                </div>
             </div>
         </div>
     );

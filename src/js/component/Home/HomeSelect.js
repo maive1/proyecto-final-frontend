@@ -22,12 +22,19 @@ class Homeselect extends Component {
     return (
       <>
         <div className="row">
-          <div className="home-options-container grid-example col s12 m12 home-no-padding">
-          
+          <div className="home-options-container grid-example col s12 m8 l6 offset-m2 offset-l3 center home-no-padding">
             <div className="row">
-              <div className="col s12 m12 home-standar-padding">
-                <h4 className="title-menu color-text">¿Qué sientes?</h4>
-                <h6 className="color-text text-subtitle">Identifica tus síntomas con alguna opción de esta lista</h6>
+              <div className="row">
+                <div className="col m7 l7 offset-m2 offset-l2 hide-on-small-only">
+                  <div><img src="sources/logoblue.gif" className="imageLogo" alt="..." /></div>
+                  <h4 className="title-app">Help me Now</h4>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col s12 m12 l12 home-standar-padding">
+                  <h6 className="title-menu color-text">¿Qué sientes?</h6>
+                  <h6 className="color-text text-subtitle center">Identifica tus síntomas con alguna opción de esta lista</h6>
+                </div>
               </div>
             </div>
             <Link to='/register'>

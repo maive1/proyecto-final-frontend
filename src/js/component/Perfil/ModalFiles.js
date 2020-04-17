@@ -22,11 +22,12 @@ class ModalFiles extends React.Component  {
     static contextType = Context;
 
     componentDidMount() {
-      if (!store.isAuthenticated) props.history.push('/login');
+      const { store } = this.context;
+      if (!store.isAuthenticated) this.props.history.push('/login');
           if (store.currentUser !== null) {
               let img = store.currentUser["user"]["avatar"];
               img = store.baseURL + '/api/user/' + img;
-              setImage(img)
+              this.setState({img: img})
           }
       const options = {
         onOpenStart: () => {
@@ -85,7 +86,7 @@ class ModalFiles extends React.Component  {
 
     editFiles = async (e, id, producto) => {
       e.preventDefault();
-      const store = getStore();
+      const { store } = this.context;
       let formData = new FormData();
       formData.append("rut", producto.nombre);
       formData.append("certification", producto.descripcion);
@@ -104,9 +105,9 @@ class ModalFiles extends React.Component  {
       const dato = await resp.json();
       console.log(dato)
       if (dato.msg) {
-        getActions().setTiendaAdmin();
-        setStore({
-        productoEditado: dato.msg
+        //getActions().setTiendaAdmin();
+        this.setState({
+        fileEdited: dato.msg
         })
       }
       }
