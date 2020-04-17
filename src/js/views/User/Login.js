@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Context } from '../../store/AppContext'
 import { GenerateInput } from "../../component/GenericComponent/InputGenerator"
 import "../../../styles/Login/Login.css"
+import M from 'materialize-css';
 
 class Login extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class Login extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.toastMensajeBackend = this.toastMensajeBackend.bind(this)
     }
 
     static contextType = Context;
@@ -39,26 +41,30 @@ class Login extends React.Component {
         document.getElementById("login-email").focus()
         document.getElementById("login-contrasenya").focus()
         document.getElementById("signin").focus()
+
         if (isEmailValid === true && isPasswordValid === true) {
             let { actions } = this.context
             let email = this.state.email
             let password = this.state.password
-            let sintomas = sessionStorage.getItem("sintomas")
             let entry = {
                 "email": email,
                 "password": password
-            }
-            let entryHelp = {
-                "sintomas": sintomas
             }
             fetch("http://localhost:5000/api/patient/login", {
                 method: 'POST',
                 body: JSON.stringify(entry),
                 headers: { "Content-Type": "application/json" }
             })
-                .then(resp => resp.json())
-                .then(data => { actions.setLoginPatient(data); console.log(data); {this.props.history.push('/waiting-window')}})
-                .then(actions.sendHelpRequest(entryHelp))
+            .then(resp => resp.json())
+            .then(data => {
+                actions.setLoginPatient(data);
+                console.log(data);
+                if(data.login.error != ""){
+                    e.preventDefault();
+                }else{
+                    this.props.history.push('/waiting-window');
+                }
+            });
         }
         else if (this.state.email !== '' && isEmailValid === false) {
             e.preventDefault()
@@ -67,13 +73,25 @@ class Login extends React.Component {
             })
         }
         else {
-            e.preventDefault()
+            e.preventDefault();
         }
     }
 
+    toastMensajeBackend = () => {
+        const { store, actions } = this.context;
+        M.toast({html: store.login.error, classes: 'toast-style'})
+        actions.clearmessage()
+      }
+    
     render() {
+        const { store } = this.context;
+
         return (
             <div className="login">
+                {
+                    store.login.error && this.toastMensajeBackend()
+                }
+
                 <h2 className="title-login color-text">Iniciar sesión</h2>
                 <div className="form-container format">
                     <GenerateInput onKeyPress={this.validateEmail} name="email" onChange={this.handleChange} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />

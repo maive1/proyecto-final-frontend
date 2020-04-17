@@ -17,12 +17,12 @@
 
 .show-password-pro {
   position: absolute;
-  top:30%;
+  top:27%;
   margin-bottom: 10%;
-  left:75%;
+  left:81%;
   background-color: transparent;    
   border: none;
-  color:#64B5F6 ;
+  
   cursor: pointer;
 }
 
@@ -147,7 +147,7 @@
 
 button:focus {
   outline: none;
-  background-color: #9575cd !important;
+  background-color:white !important;
 } 
 
 .submit-but-pro{
@@ -174,5 +174,11 @@ button:focus {
     display: inline-block;
     padding: 20px;
   }
+}
   
+.accepted-files-letters{
+  font-family: 'Handlee', cursive;
+  color: #7e7f80;
+  font-size: 14px;
+  padding-left: 39px;
 }

@@ -1,9 +1,12 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			domain: "http://127.0.0.1:5000",
+			channel_id: null,
 			currentUser: null,
 			isAuthenticated: "false",
 			access_token: null,
+			able_notifications: "",
 			register: {
 				error: "",
 				finish: "false"
@@ -15,14 +18,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			editFiles: {
 				error: "",
 				finish: "false"
-			}
+			},
+			requests: [],
+			messages: []
 		},
 
 		actions: {
 
 			sendHelpRequest: (entry) => {
 				console.log(entry)
-				fetch("http://localhost:5000/api/patient_request", {
+				const store = getStore();
+				fetch(store.domain + "/api/patient_request", {
 					method: 'POST',
 					body: JSON.stringify(entry),
 					headers: { "Content-Type": "application/json" }
@@ -40,8 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						login: data.login
 					})
 					console.log("An error ocurred")
-				}
-				else {
+				} else {
 					setStore({
 						access_token: data.access_token,
 						isAuthenticated: "true",
@@ -79,14 +84,86 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			logout: () => {
-				if (sessionStorage.getItem("currentUser") && sessionStorage.getItem("isAuthenticated")) {
-					sessionStorage.removeItem("currentUser");
-					sessionStorage.removeItem("isAuthenticated");
-					setStore({
-						currentUser: null,
-						isAuthenticated: null
-					});
+				sessionStorage.clear();
+				setStore({
+					channel_id: null,
+					currentUser: null,
+					isAuthenticated: "false",
+					access_token: null,
+					requests: [],
+					messages: []
+				})
+			},
+
+			setHandlingNotifications: async () => {
+				const store = getStore();
+				await fetch(store.domain + "/api/professional/" + store.currentUser.id + "/notifications/state", {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					if(data.state === 1) {
+						setStore({able_notifications: true });
+					}else{
+						setStore({able_notifications: ""});
+					}
+				})
+				.catch(error => {
+					console.log(error);
+					setStore({able_notifications: ""});
+				});
+			},
+
+			changeNotificationsState: async (state) => {
+				if(state === 1) {
+					setStore({able_notifications: true });
+				}else{
+					setStore({able_notifications: ""});
 				}
+
+				const store = getStore();
+				await fetch(store.domain + "/api/professional/handling/notifications", {
+					method: 'POST',
+					body: JSON.stringify({
+						id: store.currentUser.id,
+						state: state
+					}),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					console.log(data.result);
+				})
+				.catch(error => {
+					console.log(error);
+				});
+			},
+
+
+			closeChannel: async () => {
+				const store = getStore();
+				await fetch(store.domain + "/api/channel/close", {
+					method: 'POST',
+					body: JSON.stringify({
+						channel_id: store.channel_id,
+						user_id: store.currentUser.id
+					}),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					setStore({channel_id: null})
+				})
+				.catch(error => {
+					console.log(error);
+				});
 			},
 
 			isUserAuthenticated: () => {
@@ -101,15 +178,118 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			cleanChannel: () => {
+				const store = getStore();
+				if(sessionStorage.getItem("channel_id")){
+					sessionStorage.removeItem("channel_id");
+					setStore({ channel_id: null});
+				}
+				setStore({ channel_id: null});
+			},
+
+			isUserImChannel: () => {
+				const store = getStore();
+				if(sessionStorage.getItem("channel_id") && !store.channel_id){
+					setStore({ channel_id: sessionStorage.getItem("channel_id")})
+				}
+			},
+
+			getAllRequests: async () => {
+				const store = getStore();
+				await fetch(store.domain + "/api/professional/requests", {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					if(data.channels){
+						setStore({requests: data.channels})
+					}else {
+						setStore({requests: []})
+					}
+				})
+				.catch(error => {
+					console.log(error);
+					setStore({requests: []})
+
+				});
+			},
+
+			getAllMessages: async (channel_id) => {
+				const store = getStore();
+				await fetch(store.domain + "/api/channel/"+channel_id+"/messages", {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					if(data.messages){
+						setStore({messages: data.messages})
+					}else {
+						setStore({messages: []})
+					}
+				})
+				.catch(error => {
+					console.log(error);
+					setStore({messages: []})
+
+				});
+			},
+
+			recibeNewMessage: (message) => {
+				const store = getStore();
+				if(message){
+					let messages = store.messages;
+					messages.push(message)
+					setStore({ messages: messages})
+				}
+			},
+
+			setChannelId: (channel_id) => {
+				if(channel_id){
+					setStore({ channel_id: channel_id})
+					sessionStorage.setItem("channel_id", channel_id);
+				}
+			},
+
+			takeRequestAndOpenChat: async (channel) => {
+				const store = getStore();
+				let user_id = JSON.parse(sessionStorage.getItem("currentUser")).id
+				await fetch(store.domain + "/api/professional/" + user_id + "/take/"+ channel, {
+					method: 'POST',
+					body: {},
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				})
+				.then(response => response.json())
+				.then(data => {
+					if(data.channel_id){
+						sessionStorage.setItem("channel_id", data.channel_id);
+					}else if(sessionStorage.getItem("channel_id")){
+						sessionStorage.removeItem("channel_id");
+					}
+				})
+				.catch(error => {
+					console.log(error);
+					if(sessionStorage.getItem("channel_id")){
+						sessionStorage.removeItem("channel_id");
+					}
+				});
+			},
+
 			createRegister(params) {
 				const store = getStore();
 
 				console.log("FORMULARIO ENVIADO CON EXITO");
 
-				fetch('http://localhost:5000/api/professional/register', {
+				fetch(store.domain + '/api/professional/register', {
 					method: "POST",
-					body: params,
-					headers: { "Content-Type": "application/json" }
+					body: params
 				})
 					.then(response => response.json())
 					.then(data => {
@@ -152,7 +332,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			loginProfessional: async (data) => {
 				const store = getStore();
-				await fetch("http://localhost:5000/api/professional/login", {
+				await fetch(store.domain + "/api/professional/login", {
 					method: 'POST',
 					body: JSON.stringify(data),
 					headers: {

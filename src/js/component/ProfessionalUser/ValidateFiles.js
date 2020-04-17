@@ -17,7 +17,7 @@ class ValidateFiles extends Component {
 
   ValidateFiles = (e) => {
     let { value } = e.target;
-    let validate = /\.(|jpe?g|png|webp|pdf)$/i
+    let validate = /\.(|jpe?g|png|pdf)$/i
     if (validate.test(value)) {
       this.setState({ errorFile: "" });
     } else {
