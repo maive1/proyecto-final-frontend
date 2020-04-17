@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import ButtonHome from '../../component/GenericComponent/ButtonHome';
 import MessageCard from '../../component/GenericComponent/MessageCard';
 import '../../../styles/WaitingWindow/WaitingWindow.css'
+import { Context } from '../../store/AppContext'
 
 
-export default function waitingWindow () {
+
+export default function WaitingWindow (props) {
 
     let waitingMessage = "Estamos a unos segundos de que tu solicitud sea atendida. Respira, inhala y exhala."
+    const {store, actions} =  useContext(Context)
+
 
     return (
         <div className="container">

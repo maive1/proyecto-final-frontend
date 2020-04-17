@@ -4,7 +4,8 @@ import injectContext from "./store/AppContext";
 import Home from "./views/User/Home"
 import Register from "./views/User/Register";
 import Login from "./views/User/Login";
-import waitingWindow from "./views/User/WaitingWindow";
+import WaitingWindow from "./views/User/WaitingWindow";
+import Chat from "./views/Chat";
 import ExitChat from "./views/User/ExitChat";
 import HomeMenu from "./views/User/HomeMenu";
 import LoginPro from "./views/professional/LoginPro";
@@ -27,11 +28,11 @@ export const Layout = () => {
 					<Switch>
 						{/*Rutas de Usuario */}
 						<Route exact path="/" component={Home}/>
-						<Route exact path="/homemenu" component={HomeMenu}/>
+						<Route exact path="/homemenu" component={HomeMenu}/> 
 						<Route exact path="/register" component={Register}/>
 						<Route exact path="/login" component={Login}/>
 						<Route exact path="/ForgotPassword" component={PasswordRecovery}/>
-						<Route exact path="/waiting-window" component={waitingWindow}/>
+						<Route exact path="/waiting-window" component={WaitingWindow}/>
 					 {/*	<Route exact path="/chat" component={Chat}/>*/}
 						<Route exact path="/exitchat" component={ExitChat}/>
 						{/*Rutas de Profesional*/}

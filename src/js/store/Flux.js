@@ -20,8 +20,66 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		actions: {
 
+			sendHelpRequest: (entry) => {
+				console.log(entry)
+				fetch("http://localhost:5000/api/patient_request", {
+					method: 'POST',
+					body: JSON.stringify(entry),
+					headers: { "Content-Type": "application/json" }
+				}).then(resp => console.log(resp))
+				
+			},
+
+			setLoginPatient: (data) => {
+				const store = getStore();
+				if (!data.access_token) {
+					setStore({
+						access_token: null,
+						isAuthenticated: "false", 
+						currentUser: null,
+						login: data.login
+					})
+					console.log("An error ocurred")
+				}
+				else {
+					setStore({
+						access_token: data.access_token,
+						isAuthenticated: "true",
+						currentUser: data.user,
+						login: data.login
+					})
+					console.log("Store updated")
+					sessionStorage.setItem("currentUser", JSON.stringify(store.currentUser));
+					sessionStorage.setItem("isAuthenticated", store.isAuthenticated);
+				}
+			},
+
+			setRegisterPatient: (data) => {
+				const store = getStore();
+				if (!data.access_token) {
+					setStore({
+						access_token: null,
+						isAuthenticated: "false", // corregir a booleano
+						currentUser: null,
+						register: data.register
+					})
+					console.log("An error ocurred")
+				}
+				else {
+					setStore({
+						access_token: data.access_token,
+						isAuthenticated: "true",
+						currentUser: data.user,
+						register: data.register
+					})
+					console.log("Store updated")
+					sessionStorage.setItem("currentUser", JSON.stringify(store.currentUser));
+					sessionStorage.setItem("isAuthenticated", store.isAuthenticated);
+				}
+			},
+
 			logout: () => {
-				if(sessionStorage.getItem("currentUser") && sessionStorage.getItem("isAuthenticated")){
+				if (sessionStorage.getItem("currentUser") && sessionStorage.getItem("isAuthenticated")) {
 					sessionStorage.removeItem("currentUser");
 					sessionStorage.removeItem("isAuthenticated");
 					setStore({
@@ -34,7 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			isUserAuthenticated: () => {
 				const store = getStore();
 
-				if(sessionStorage.getItem("currentUser") && !store.currentUser){
+				if (sessionStorage.getItem("currentUser") && !store.currentUser) {
 
 					setStore({
 						currentUser: JSON.parse(sessionStorage.getItem("currentUser")),
@@ -48,28 +106,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				console.log("FORMULARIO ENVIADO CON EXITO");
 
-				fetch('http://localhost:9000/api/professional/register', {
+				fetch('http://localhost:5000/api/professional/register', {
 					method: "POST",
-					body: params
+					body: params,
+					headers: { "Content-Type": "application/json" }
 				})
 					.then(response => response.json())
 					.then(data => {
-
-						if(!data.access_token){
+						console.log(data)
+						if (!data.access_token) {
 							setStore({
 								access_token: null,
-								isAuthenticated:  "false", // corregir a booleano
+								isAuthenticated: "false", // corregir a booleano
 								currentUser: null,
 								register: data.register
 							})
-						}else{
+						} else {
 							setStore({
 								access_token: data.access_token,
-								isAuthenticated:  "true",
+								isAuthenticated: "true",
 								currentUser: data.user,
 								register: data.register
 							})
 						}
+
 						sessionStorage.setItem("currentUser", JSON.stringify(store.currentUser));
 						sessionStorage.setItem("isAuthenticated", store.isAuthenticated);
 					})
@@ -92,53 +152,53 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			loginProfessional: async (data) => {
 				const store = getStore();
-				await fetch("http://localhost:9000/api/professional/login", {
+				await fetch("http://localhost:5000/api/professional/login", {
 					method: 'POST',
 					body: JSON.stringify(data),
 					headers: {
 						'Content-Type': 'application/json'
 					}
 				})
-				.then(response => response.json())
-				.then(data => {
+					.then(response => response.json())
+					.then(data => {
 
-					if(!data.access_token){
-						setStore({
-							access_token: null,
-							isAuthenticated:  "false",
-							currentUser: null,
-							login: data.login
-						})
-					}else{
-						setStore({
-							access_token: data.access_token,
-							isAuthenticated:  "true",
-							currentUser: data.user,
-							login: data.login
-						})
-					}
-					sessionStorage.setItem("currentUser", JSON.stringify(store.currentUser));
-					sessionStorage.setItem("isAuthenticated", store.isAuthenticated);
-				})
-				.catch(error => {
-
-					console.log(error);
-					setStore({
-						currentUser: null,
-						login: {
-							error: error,
-							finish: false,
-						},
-						isAuthenticated: false
+						if (!data.access_token) {
+							setStore({
+								access_token: null,
+								isAuthenticated: "false",
+								currentUser: null,
+								login: data.login
+							})
+						} else {
+							setStore({
+								access_token: data.access_token,
+								isAuthenticated: "true",
+								currentUser: data.user,
+								login: data.login
+							})
+						}
+						sessionStorage.setItem("currentUser", JSON.stringify(store.currentUser));
+						sessionStorage.setItem("isAuthenticated", store.isAuthenticated);
 					})
-					sessionStorage.setItem("currentUser", null);
-					sessionStorage.setItem("isAuthenticated", store.isAuthenticated);
-				});
+					.catch(error => {
+
+						console.log(error);
+						setStore({
+							currentUser: null,
+							login: {
+								error: error,
+								finish: false,
+							},
+							isAuthenticated: false
+						})
+						sessionStorage.setItem("currentUser", null);
+						sessionStorage.setItem("isAuthenticated", store.isAuthenticated);
+					});
 			},
 
 			clearmessage: () => {
 				const store = getStore();
-				if(store.login.error !== "" || store.register.error !== ""){
+				if (store.login.error !== "" || store.register.error !== "") {
 					setStore({
 						login: {
 							...store.login,
