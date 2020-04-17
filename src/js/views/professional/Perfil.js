@@ -19,6 +19,7 @@ class Perfil extends React.Component {
     this.redirectUserNotAuthenticated = this.redirectUserNotAuthenticated.bind(this);
     this.getAllRequests = this.getAllRequests.bind(this);
     this.handleClickOpenChat = this.handleClickOpenChat.bind(this);
+    this.setHandlingNotifications = this.setHandlingNotifications.bind(this);
     
     socket.on("connect", function() {
       socket.send("CONECTADOOOO");
@@ -29,11 +30,10 @@ class Perfil extends React.Component {
 
   componentDidMount() {
     const { store, actions } = this.context;
-
     this.redirectUserNotAuthenticated(store, actions);
     this.getAllRequests(actions);
-
     this.waitByRequests();
+    this.setHandlingNotifications(actions);
   }
 
   componentDidUpdate() {
@@ -41,6 +41,10 @@ class Perfil extends React.Component {
 
     this.redirectUserNotAuthenticated(store, actions);
   }
+
+  setHandlingNotifications = (actions) =>{
+    actions.setHandlingNotifications();
+  };
 
   redirectUserNotAuthenticated = (store, actions) =>{
     actions.isUserAuthenticated();
@@ -61,7 +65,6 @@ class Perfil extends React.Component {
   };
 
   handleClickOpenChat = channel_id => e => {
-    console.log("afbsejbgsgjb")
     console.log(channel_id)
     const { actions } = this.context;
     actions.takeRequestAndOpenChat(channel_id);
@@ -70,10 +73,19 @@ class Perfil extends React.Component {
     this.props.history.push('/chat');
   };
 
+  handleCheckNotifications = (e) =>{
+    const { actions } = this.context;
+    let state;
+    if(e.target.checked){
+      state = 1;
+    } else {
+      state = 0;
+    }
+    actions.changeNotificationsState(state);
+  };
 
   render() {
     const { store } = this.context;
-
 
     return (
       <div>
@@ -84,7 +96,11 @@ class Perfil extends React.Component {
                     <h3 className="title-autorized color-text">Perfil autorizado <span className="material-icons autorized-icon">done</span></h3>
                     <h3 className="title-autorized-user">Bienvenido "Falta nombre"</h3>
                     <h3 className="title-notifications color-text">Notificaciones <div className="switch">
-                        <label className="label-text"> Off <input type="checkbox" /><span className="lever"></span>On</label>
+                        <label className="label-text"> Off
+                          <input onChange={this.handleCheckNotifications} type="checkbox" checked={store.able_notifications} />
+                          <span className="lever"></span>
+                          On
+                        </label>
                     </div></h3>
 
                 </div>

@@ -4,6 +4,7 @@ import MessageCard from '../../component/GenericComponent/MessageCard';
 import '../../../styles/WaitingWindow/WaitingWindow.css'
 import { Context } from '../../store/AppContext'
 import io from "socket.io-client";
+import { Link } from 'react-router-dom';
 
 let socket = io.connect("http://127.0.0.1:5000");
 
@@ -18,6 +19,7 @@ class waitingWindow extends React.Component {
       this.sendNotificationsRequestAttention = this.sendNotificationsRequestAttention.bind(this);
       this.waitingByChannel = this.waitingByChannel.bind(this);
       this.waitingByProfessional = this.waitingByProfessional.bind(this);
+      this.handleExitHome = this.handleExitHome.bind(this);
 
       socket.on("connect", function() {
         socket.send("CONECTADOOOO");
@@ -30,7 +32,7 @@ class waitingWindow extends React.Component {
         const { store, actions } = this.context;
 
         this.redirectUserNotAuthenticated(store, actions);
-        this.sendNotificationsRequestAttention(store);
+        this.sendNotificationsRequestAttention(store, actions);
         this.waitingByChannel(store, actions);
 
     };
@@ -58,14 +60,19 @@ class waitingWindow extends React.Component {
         };
     };
 
-    sendNotificationsRequestAttention = (store) =>{
+    sendNotificationsRequestAttention = (store, actions) =>{
         if (!sessionStorage.getItem("sendRequest")){
             sessionStorage.setItem("sendRequest", true);
+
             // Enviamos el request a todos los profesionales
+            let sintomas = sessionStorage.getItem("sintomas")
+            let entryHelp = { "sintomas": sintomas }
+            actions.sendHelpRequest(entryHelp);
+
             console.log(store.currentUser);
             console.log(store.currentUser.id);
             socket.emit('new_request', {
-                patient_state: "SOS xD", // cambiar esto con el dato de como se siente el paciente
+                patient_state: sintomas,
                 user_id: store.currentUser.id
             });
             console.log("Solicitud de chat enviada");
@@ -84,6 +91,10 @@ class waitingWindow extends React.Component {
         }
     };
 
+    handleExitHome = (e) =>{
+        const { actions } = this.context;
+        actions.logout();
+    };
 
     render() {  
         const { store } = this.context;
@@ -104,7 +115,11 @@ class waitingWindow extends React.Component {
                 <h4 className="title-back-home">Sientete con la libertad de volver al inicio si no quieres iniciar la conversación</h4>
 
                 <div className="col s1 l1 push-s5 push-l6 ">
-                    <ButtonHome iconname="home"/>
+
+                    <div className="col s">
+                        <Link  onClick={this.handleExitHome} className="icon-exit color-icons waves-effect waves-circle btn-small lighten-2" to="/"><i className="material-icons">home</i></Link>
+                    </div>
+
                 </div>
             </div>
         );

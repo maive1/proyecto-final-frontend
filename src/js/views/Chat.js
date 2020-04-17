@@ -23,7 +23,8 @@ class Chat extends React.Component {
       this.redirectUserNotAuthenticated = this.redirectUserNotAuthenticated.bind(this);
       this.setChannelByUser = this.setChannelByUser.bind(this);
       this.openChatToPatient = this.openChatToPatient.bind(this);
-      
+      this.attentiveCloseChannel = this.attentiveCloseChannel.bind(this);     
+
       socket.on("connect", function() {
         socket.send("CONECTADOOOO");
       })
@@ -39,6 +40,27 @@ class Chat extends React.Component {
         this.getAllMessages(actions);
         this.openChatToPatient(store);
         this.getMessagesOnline(store, actions);
+    };
+
+    attentiveCloseChannel = (store, actions) => {
+        let user_type = store.currentUser.user_type;
+        let channel_id = store.channel_id;
+        console.log("escuchando el channel: "+ channel_id);
+        console.log("como: "+ user_type);
+
+        socket.on('channel_closed_' + channel_id, info => {
+            console.log("se ha cerrado el chat: " + channel_id);
+            console.log("como: "+ user_type);
+            console.log("estado del chat: " + info.state);
+
+            if(info.state === "closed" && user_type === "professional") {
+                actions.cleanChannel();
+                this.props.history.push('/perfil');
+            }else if(info.state === "closed" && user_type === "patient") {
+                this.props.history.push('/exitchat');
+                actions.logout();
+            };
+        });
     };
 
     openChatToPatient = (store) => {
@@ -87,11 +109,24 @@ class Chat extends React.Component {
             console.log("Llego un nuevo mensaje: " + message.user_id);
             actions.recibeNewMessage(message);
             this.setState({messages: store.messages});
-		});
+        });
+        this.attentiveCloseChannel(store, actions);
     };
 
     handleChangeMessage = (e) =>{
         this.setState({message: e.target.value});
+    };
+
+    handleClickExitChat = (e) =>{
+        const { store, actions } = this.context;
+        actions.closeChannel();
+        socket.emit('closed_channel', { channel_id: store.channel_id });
+
+        if(store.currentUser.user_type === "professional"){
+            this.props.history.push('/perfil');
+        }else{
+            actions.logout();
+        }
     };
 
     handleClickAddMessage = (e) =>{
@@ -122,7 +157,7 @@ class Chat extends React.Component {
         return (
             <div className="wrapper">
 
-            <Link className="" to="/exitchat">
+            <Link className="" to="/exitchat" onClick={this.handleClickExitChat}>
                 <div className="exit-chat-letters color-text exit-button-chat">Abandonar chat</div>
             </Link>
 
