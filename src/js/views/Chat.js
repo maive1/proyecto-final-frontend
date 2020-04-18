@@ -4,7 +4,7 @@ import '../../styles/ChatWindow/Chat.css';
 import InfoChatNav from '../component/Chat/InfoChatNav';
 import { Link } from "react-router-dom";
 import { Context } from '../store/AppContext';
-
+import $ from 'jquery'
 let socket = io.connect("http://127.0.0.1:5000");
 
 class Chat extends React.Component {
@@ -169,7 +169,8 @@ class Chat extends React.Component {
     };
 
     scrollToBottom = () =>{
-        document.getElementById("chatList").animate(document.getElementById('chat-end').offset().top, 'slow');
+        let container = document.getElementById('chatList')
+        container.scrollTop = container.scrollHeight
     };
 
 
@@ -203,7 +204,6 @@ class Chat extends React.Component {
                             
                         }
                     </ul>
-                    <div id="chat-end"></div>
                 </div>   
 
                 <div className="row input-chat color-icons">
