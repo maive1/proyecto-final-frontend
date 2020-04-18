@@ -23,12 +23,12 @@ class ModalFiles extends React.Component  {
 
     componentDidMount() {
       const { store } = this.context;
-      if (!store.isAuthenticated) this.props.history.push('/login');
+     /* if (!store.isAuthenticated) this.props.history.push('/login');
           if (store.currentUser !== null) {
               let img = store.currentUser["user"]["avatar"];
               img = store.baseURL + '/api/user/' + img;
               this.setState({img: img})
-          }
+          } */
       const options = {
         onOpenStart: () => {
           console.log("Open Start");
@@ -137,24 +137,12 @@ class ModalFiles extends React.Component  {
                       <ValidateFiles file={"Certificado profesional"} errorMsg={this.state.CertificateFileError} id="register-certification"/>
                       <ValidateFiles file={"Nro registro - Supersalud"} errorMsg={this.state.NumberIdFileError} id="register-numberid"/>
                       <ValidateFiles file={"Curriculum profesional"} errorMsg={this.state.CvIdFileError} id="professional-cv"/>
-                      <ValidateFiles file={"Cursos relacionados (Opcional)"} />
+                      
                     </div>
                 </div>
                 {/*input files*/}
 
-                <div>
-                  <form>
-                    <div className="file-field input-field">
-                      <div className="btn">
-                        <span>File</span>
-                        <input type="file" value={this.state.value} name="curriculum" onChange={(e)=>this.handleChangeFile(this.filesCV)}/>
-                      </div>
-                      <div className="file-path-wrapper">
-                        <input className="file-path validate" type="text"/>
-                    </div>
-                    </div>
-                  </form>
-                </div>
+                
 
                 <div className="modal-footer row">
                     <div>

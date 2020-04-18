@@ -109,29 +109,30 @@ class LoginPro extends React.Component {
 
         <Link className="link-style-back" to="/"><div className="icon-back-letter">volver</div><i className="material-icons icon-back">keyboard_arrow_left</i></Link>
       
-      <div className="login">
+      <div className="login row">
 
         {
           store.login.error && this.toastMensajeBackend()
         }
-
-        <h2 className="title-login color-text">Inicia sesión</h2>
-        <div className="form-container format">
-          <GenerateInput onKeyPress={this.validateEmailProLo} onChange={this.handleChangeEmailProLo} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
-          <GenerateInput onKeyPress={this.validatePasswordProLo} onChange={this.handleChangePasswordProLo} id="login-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
-          <Link onClick={e => this.handleSubmitProLo(e)} className="link" to="/perfil" >
-            <button id="signin" className="iniciate-but-pro button-letters btn waves-effect waves-light" type="button" name="action">Acceder</button>
-          </Link>
-          <div className="row">
-            <div className="col s12 m12 login-link">
-              <Link className="link to-login" to="/registerpro">
-                ¿No tienes cuenta? Regístrate
+        <div className="col s12 m5 l4 offset-m3 offset-l3">
+          <h2 className="title-login color-text">Inicia sesión</h2>
+          <div className="form-container format">
+            <GenerateInput onKeyPress={this.validateEmailProLo} onChange={this.handleChangeEmailProLo} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
+            <GenerateInput onKeyPress={this.validatePasswordProLo} onChange={this.handleChangePasswordProLo} id="login-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
+            <Link onClick={e => this.handleSubmitProLo(e)} className="link" to="/perfil" >
+              <button id="signin" className="iniciate-but-pro button-letters btn waves-effect waves-light" type="button" name="action">Acceder</button>
+            </Link>
+            <div className="row">
+              <div className="col s12 m12 login-link">
+                <Link className="link to-login" to="/registerpro">
+                  ¿No tienes cuenta? Regístrate
+                </Link>
+              </div>
+              <div className="col s12 m12 login-link">
+                <Link className="link to-login" to="/forgotpassword" >
+                  ¿Olvidaste tu contraseña?
               </Link>
-            </div>
-            <div className="col s12 m12 login-link">
-              <Link className="link to-login" to="/forgotpassword" >
-                ¿Olvidaste tu contraseña?
-             </Link>
+              </div>
             </div>
           </div>
         </div>

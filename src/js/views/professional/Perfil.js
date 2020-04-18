@@ -95,9 +95,10 @@ class Perfil extends React.Component {
         {/*<Profilepro />*/}
         
         
-        <div className="perfil">
-            <div className="container">
-                <div className="row">
+        <div className="perfil row">
+          <div className="col s12 m8 l6 offset-m2 push-l2">
+            <div className="row">
+                <div className="col">
                     <h2 className="title-profile color-text">Mi perfil</h2>
                     <h3 className="title-autorized color-text">Perfil autorizado <span className="material-icons autorized-icon">done</span></h3>
                     <h3 className="title-autorized-user">Bienvenido "Falta nombre"</h3>
@@ -111,7 +112,8 @@ class Perfil extends React.Component {
 
                 </div>
             </div>
-
+            <br/>
+            <div className="row">
               {
                   
                   store.requests.map((request, i) =>
@@ -126,13 +128,22 @@ class Perfil extends React.Component {
                     </div>
                   )
               }
-            <ModalFiles />
-            <div className="container">
+            </div>
+            <br/>
+            <div className="row">
+              <div className="col modal-files">
+                {/*<ModalFiles />*/}
+              </div>
+            </div>
+            <div className="row button-go-out">
+              <div className="col button-exit">
                 <div className="back-home-p">Salir</div>
                 <ButtonLogout iconname="exit_to_app" />
+              </div>
             </div>
         </div>
-      </div>
+          </div>
+        </div>
     );
   }
 }

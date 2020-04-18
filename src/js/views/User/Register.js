@@ -125,7 +125,7 @@ class Register extends React.Component {
     render() {
         return (
             <div className="register row">
-                <div className="col s12 m8 l7 offset-m2 push-l2 register-container">
+                <div className="col s12 m5 l5 offset-m3 offset-l3 register-container">
                     <div className="col s12 l5 offset-l4">
                         <h2 className="title-register-user color-text center-align">Crear Cuenta</h2>
                     </div>

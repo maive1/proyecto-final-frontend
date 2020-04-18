@@ -186,7 +186,7 @@ class RegisterProfesional extends React.Component {
         const { store } = this.context;
 
         return (
-            <div>
+            <div className="col s12 m8 l7 offset-m2 push-l2">
 
                 {
                    !!store.register.error && this.toastMensajeBackend()
@@ -200,31 +200,33 @@ class RegisterProfesional extends React.Component {
                 
                 </div>
                 
-                <div className="view-bottom-pro">
-                    <div className="form-container format register">
+                <div className="view-bottom-pro row">
+                    <div className="form-container format register col s12 m6 l4">
+                        <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">DATOS PERSONALES</h4>
 
                         <GenerateInput onChange={this.handleChangeNombreRePro} id="register-nombre" placeholder="Nombre" type="text" errorMsg={this.state.nombreError} />
 
                         <GenerateInput onKeyPress={this.validateEmailRePro} onChange={this.handleChangeEmailRePro} id="register-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
-
+                        <div>
                         <GenerateInput onKeyPress={this.validatePasswordRePro} minLength="6" onChange={this.handleChangePasswordRePro} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
+                        <button onTouchEnd={() => this.hidPasswordRePro()} onMouseUp={() => this.hidPasswordRePro()} onTouchStart={() => this.displayPasswordRePro()} onMouseDown={() => this.displayPasswordRePro()} type="button" className="show-password-pro"><icon className="material-icons color-especial">visibility</icon></button>
 
+                        </div>
                     </div>
                     <div className="form-container register-professional col s12 l5"> 
+                        
+                        <button onTouchEnd={() => this.hidPasswordRePro()} onMouseUp={() => this.hidPasswordRePro()} onTouchStart={() => this.displayPasswordRePro()} onMouseDown={() => this.displayPasswordRePro()} type="button" className="show-password-pro"><icon className="material-icons color-especial">visibility</icon></button>
+
                         <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">Carga de documentos</h4>
+                        <h5 className="accepted-files-letters">Documentos permitidos: jpeg, jpg y pdf</h5>
 
-                    <button onTouchEnd={() => this.hidPasswordRePro()} onMouseUp={() => this.hidPasswordRePro()} onTouchStart={() => this.displayPasswordRePro()} onMouseDown={() => this.displayPasswordRePro()} type="button" className="show-password-pro"><span className="material-icons color-especial">visibility</span></button>
+                        <ValidateFiles file={"RUT"} id="register-rut" errorMsg={this.state.rutFileError}/>
 
-                    <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">Carga de documentos</h4>
-                    <h5 className="accepted-files-letters">Documentos permitidos: jpeg, jpg y pdf</h5>
+                        <ValidateFiles file={"Certificado profesional"} errorMsg={this.state.CertificateFileError} id="register-certification"/>
 
-                    <ValidateFiles file={"RUT"} id="register-rut" errorMsg={this.state.rutFileError}/>
+                        <ValidateFiles file={"Nro registro - Supersalud"} errorMsg={this.state.NumberIdFileError} id="register-numberid"/>
 
-                    <ValidateFiles file={"Certificado profesional"} errorMsg={this.state.CertificateFileError} id="register-certification"/>
-
-                    <ValidateFiles file={"Nro registro - Supersalud"} errorMsg={this.state.NumberIdFileError} id="register-numberid"/>
-
-                    <ValidateFiles file={"Curriculum profesional"} errorMsg={this.state.CvIdFileError} id="professional-cv"/>
+                        <ValidateFiles file={"Curriculum profesional"} errorMsg={this.state.CvIdFileError} id="professional-cv"/>
 
                         <ValidateFiles file={"Cursos relacionados (Opcional)"} />
                     </div>

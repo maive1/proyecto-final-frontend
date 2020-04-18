@@ -95,7 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			setHandlingNotifications: async () => {
+			setHandlingNotifications: async (id) => {
 				const store = getStore();
 				await fetch(store.domain + "/api/professional/" + store.currentUser.id + "/notifications/state", {
 					method: 'GET',

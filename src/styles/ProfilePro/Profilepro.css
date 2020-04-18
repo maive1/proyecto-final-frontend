@@ -130,3 +130,10 @@
     margin: auto;
     max-width: 400px;
 }
+
+.button-go-out {
+    position: fixed;
+    top: 700px !important;
+    right: 50%;
+    overflow: hidden;
+}
