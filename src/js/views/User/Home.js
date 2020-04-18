@@ -23,6 +23,8 @@ class Home extends React.Component {
             this.props.history.push('/homemenu');
         };
       }
+    
+    
 
     render() {
 
