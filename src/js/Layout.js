@@ -15,6 +15,7 @@ import ExitPro from "./views/professional/ExitPro";
 import PasswordRecovery from "./views/PasswordRecovery";
 import Materialize from 'materialize-css'
 import 'materialize-css/dist/css/materialize.min.css'
+import noProsFound from './views/User/NoProsFound'
 
 Materialize.AutoInit();
 
@@ -32,6 +33,7 @@ export const Layout = () => {
 						<Route exact path="/ForgotPassword" component={PasswordRecovery}/>
 						<Route exact path="/waiting-window" component={WaitingWindow}/>
 						<Route exact path="/exitchat" component={ExitChat}/>
+						<Route exact path='/pronotfound' component={noProsFound} />
 						{/*Rutas de Profesional*/}
 						<Route exact path="/registerpro" component={RegisterPro} />
 						<Route exact path="/loginpro" component={LoginPro} />

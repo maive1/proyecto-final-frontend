@@ -35,6 +35,8 @@ class waitingWindow extends React.Component {
         this.sendNotificationsRequestAttention(store, actions);
         this.waitingByChannel(store, actions);
 
+        setTimeout(this.petititonFailed, 300000)
+
     };
 
     waitingByProfessional = (channel_id) =>{
@@ -95,6 +97,13 @@ class waitingWindow extends React.Component {
         const { actions } = this.context;
         actions.logout();
     };
+
+    petititonFailed = () => {
+        let path = window.location.pathname
+        if(path == '/waiting-window') {
+            this.props.history.push('/')
+        }
+    }
 
     render() {  
         const { store } = this.context;

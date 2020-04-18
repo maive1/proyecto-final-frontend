@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { GenerateInput } from "../../component/GenericComponent/InputGenerator"
 import "../../../styles/Registers/RegisterUser.css"
 import { Context } from '../../store/AppContext';
-import getState from '../../store/Flux'
+
 
 class Register extends React.Component {
     constructor(props) {

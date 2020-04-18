@@ -10,6 +10,7 @@ export default function ExitChat(props) {
     const {store, actions} =  useContext(Context)
     
     useEffect( () => {
+        actions.isUserAuthenticated()
         if (store.isAuthenticated !== 'true') {
             props.history.push("/")
         }
