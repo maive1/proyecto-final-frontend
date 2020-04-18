@@ -42,6 +42,10 @@ class Chat extends React.Component {
         this.getMessagesOnline(store, actions);
     };
 
+    componentDidUpdate = () => {
+        this.scrollToBottom();
+    }
+
     attentiveCloseChannel = (store, actions) => {
         let user_type = store.currentUser.user_type;
         let channel_id = store.channel_id;
@@ -103,6 +107,18 @@ class Chat extends React.Component {
         }
     };
 
+    UserTalk = (user_id) =>{
+        if(parseInt(user_id) === parseInt(this.state.currentUser.id)){
+            return "Tu:";
+        }else{
+            if(this.state.currentUser.user_type === "professional"){
+                return "Paciente:";
+            }else{
+                return "Profesional:";
+            }
+        }
+    };
+
     getMessagesOnline = (store, actions) => {
         //escucha los mensajes que son emitidos en el chat
         socket.on('channel-' + store.channel_id, message => {
@@ -111,13 +127,7 @@ class Chat extends React.Component {
             this.setState({messages: store.messages});
         });
         this.attentiveCloseChannel(store, actions);
-        this.scrollToBottom();
     };
-
-    scrollToBottom = () => {
-        const chat = document.getElementById("chatList");
-        chat.scrollTop = chat.scrollHeight;
-      };
 
     handleChangeMessage = (e) =>{
         this.setState({message: e.target.value});
@@ -158,6 +168,11 @@ class Chat extends React.Component {
         document.getElementById("message").value = "";
     };
 
+    scrollToBottom = () =>{
+        document.getElementById("chatList").animate(document.getElementById('chat-end').offset().top, 'slow');
+    };
+
+
     render() {  
         const { store } = this.context;
 
@@ -176,15 +191,19 @@ class Chat extends React.Component {
                 <div className="view-messages row" id="chatList">  
                     <ul className="col s12 l6">
                         {
+                            
                             store.messages.map((msg,i) =>
-                              <li key={i} className={this.classNameBubbleBy(msg.user_id)}>
+                            <li key={i} className={this.classNameBubbleBy(msg.user_id)}>
                                     <div>
+                                        <span>{this.UserTalk(msg.user_id)}</span>
                                         <span>Mensaje: {msg.text}</span>
                                     </div>
-                                </li> 
+                                </li>
                             )
+                            
                         }
                     </ul>
+                    <div id="chat-end"></div>
                 </div>   
 
                 <div className="row input-chat color-icons">
@@ -210,7 +229,6 @@ class Chat extends React.Component {
                         </div>
                     </form>      
                 </div>
-
             </div>
         );
     }

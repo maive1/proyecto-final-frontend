@@ -19,9 +19,9 @@
 
 .show-password {
   position: absolute;
-  top:47%;
+  top:58%;
   margin-bottom: 10%;
-  left:75%;
+  left:81%;
   background-color: transparent;    
   border: none;
   color:#64B5F6;
@@ -33,7 +33,7 @@
 }
 
 .title-register-user {
-  padding-top: 20px;
+  padding-top: 50px;
   font-size: 50px !important;
   font-family: 'Amatic SC', cursive;
   text-align: center;

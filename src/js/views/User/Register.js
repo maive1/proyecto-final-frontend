@@ -110,11 +110,11 @@ class Register extends React.Component {
             fetch("http://localhost:5000/api/patient/register", {
                 method: 'POST',
                 body: JSON.stringify(entry),
-                headers: { "Content-Type": "application/json" }                
+                headers: { "Content-Type": "application/json" }
             })
-            .then(resp => resp.json())
-            .then(data => { actions.setRegisterPatient(data); console.log(data); {this.props.history.push('/waiting-window')}})
-            .then(actions.sendHelpRequest(entryHelp))
+                .then(resp => resp.json())
+                .then(data => { actions.setRegisterPatient(data); console.log(data); { this.props.history.push('/waiting-window') } })
+                .then(actions.sendHelpRequest(entryHelp))
         }
 
         else {
@@ -124,25 +124,29 @@ class Register extends React.Component {
     }
     render() {
         return (
-            <div className="register">
-                <h2 className="title-register-user color-text">Crear Cuenta</h2>
-                <div className="view-bottom">
-                    <div className="form-container format">
-                        <GenerateInput onChange={this.handleChangeNombre} id="register-nombre" placeholder="Nombre" type="text" errorMsg={this.state.nombreError} />
-                        <GenerateInput onKeyPress={this.validateEmail} onChange={this.handleChangeEmail} id="register-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
-                        <GenerateInput onKeyPress={this.validatePassword} minLength="6" onChange={this.handleChangePassword} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
-                        <button onTouchEnd={() => this.hidPassword()} onMouseUp={() => this.hidPassword()} onTouchStart={() => this.displayPassword()} onMouseDown={() => this.displayPassword()} type="button" className="show-password">Show</button>
-                        <button onClick={e => this.handleSubmit(e)} id="signup" className="submit-but-user btn waves-effect waves-light button-letters" type="button" name="action">Iniciar</button>
-                    </div>
-                    <div className="row">
-                        <div className="col s12 m12 login-link">
-                            <Link className="link to-login" to="/login">
-                                ¿Tienes una cuenta? Inicia sesión
+            <>
+                <Link className="link-style-back" to="/"><div className="icon-back-letter">volver</div><i className="material-icons icon-back">keyboard_arrow_left</i></Link>
+                <div className="register">
+                    <h2 className="title-register-user color-text">Crear Cuenta</h2>
+                    <div className="view-bottom">
+                        <div className="form-container format">
+                            <GenerateInput onChange={this.handleChangeNombre} id="register-nombre" placeholder="Nombre" type="text" errorMsg={this.state.nombreError} />
+                            <GenerateInput onKeyPress={this.validateEmail} onChange={this.handleChangeEmail} id="register-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
+                            <GenerateInput onKeyPress={this.validatePassword} minLength="6" onChange={this.handleChangePassword} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
+                            <button onClick={e => this.handleSubmit(e)} id="signup" className="submit-but-user btn waves-effect waves-light button-letters" type="button" name="action">Solicitar Atención</button>
+                        </div>
+                        
+                        <div className="row">
+                            <div className="col s12 m12 login-link">
+                                <Link className="link to-login" to="/login">
+                                    ¿Tienes una cuenta? Inicia sesión
                             </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <button onTouchEnd={() => this.hidPassword()} onMouseUp={() => this.hidPassword()} onTouchStart={() => this.displayPassword()} onMouseDown={() => this.displayPassword()} type="button" className="show-password"><span className="material-icons color-especial">visibility</span></button>
+            </>
         )
     }
 }

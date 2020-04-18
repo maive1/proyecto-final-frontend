@@ -25,7 +25,9 @@ class Homeselect extends Component {
           <div className="home-options-container grid-example col s12 m12 home-no-padding">
           
             <div className="row">
+              <Link className="link-style-back" to="/"><div className="icon-back-letter padding-top-letter-icon">volver</div><i className="material-icons icon-back padding-top-icon">keyboard_arrow_left</i></Link>
               <div className="col s12 m12 home-standar-padding">
+              
                 <h4 className="title-menu color-text">¿Qué sientes?</h4>
                 <h6 className="color-text text-subtitle">Identifica tus síntomas con alguna opción de esta lista</h6>
               </div>

@@ -94,7 +94,7 @@ class Perfil extends React.Component {
                 <div className="row">
                     <h2 className="title-profile color-text">Mi perfil</h2>
                     <h3 className="title-autorized color-text">Perfil autorizado <span className="material-icons autorized-icon">done</span></h3>
-                    <h3 className="title-autorized-user">Bienvenido "Falta nombre"</h3>
+                    {/*<h3 className="title-autorized-user">Bienvenido "Falta nombre"</h3>*/}
                     <h3 className="title-notifications color-text">Notificaciones <div className="switch">
                         <label className="label-text"> Off
                           <input onChange={this.handleCheckNotifications} type="checkbox" checked={store.able_notifications} />

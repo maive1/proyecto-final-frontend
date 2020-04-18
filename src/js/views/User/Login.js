@@ -24,7 +24,7 @@ class Login extends React.Component {
 
     componentDidMount() {
         const { store } = this.context
-        if(store.isAuthenticated == true && store.currentUser.user_type == "patient") {
+        if (store.isAuthenticated == true && store.currentUser.user_type == "patient") {
             this.props.history.push('/waiting-window')
         }
     }
@@ -33,7 +33,7 @@ class Login extends React.Component {
             [e.target.name]: e.target.value
         })
     }
-    
+
     handleSubmit(e) {
         let isPasswordValid = document.getElementById("login-contrasenya").checkValidity()
         let isEmailValid = document.getElementById("login-email").checkValidity()
@@ -55,16 +55,16 @@ class Login extends React.Component {
                 body: JSON.stringify(entry),
                 headers: { "Content-Type": "application/json" }
             })
-            .then(resp => resp.json())
-            .then(data => {
-                actions.setLoginPatient(data);
-                console.log(data);
-                if(data.login.error != ""){
-                    e.preventDefault();
-                }else{
-                    this.props.history.push('/waiting-window');
-                }
-            });
+                .then(resp => resp.json())
+                .then(data => {
+                    actions.setLoginPatient(data);
+                    console.log(data);
+                    if (data.login.error != "") {
+                        e.preventDefault();
+                    } else {
+                        this.props.history.push('/waiting-window');
+                    }
+                });
         }
         else if (this.state.email !== '' && isEmailValid === false) {
             e.preventDefault()
@@ -79,41 +79,44 @@ class Login extends React.Component {
 
     toastMensajeBackend = () => {
         const { store, actions } = this.context;
-        M.toast({html: store.login.error, classes: 'toast-style'})
+        M.toast({ html: store.login.error, classes: 'toast-style' })
         actions.clearmessage()
-      }
-    
+    }
+
     render() {
         const { store } = this.context;
 
         return (
-            <div className="login">
-                {
-                    store.login.error && this.toastMensajeBackend()
-                }
+            <>
+                <Link className="link-style-back" to="/"><div className="icon-back-letter">volver</div><i className="material-icons icon-back">keyboard_arrow_left</i></Link>
+                <div className="login">
+                    {
+                        store.login.error && this.toastMensajeBackend()
+                    }
 
-                <h2 className="title-login color-text">Iniciar sesión</h2>
-                <div className="form-container format">
-                    <GenerateInput onKeyPress={this.validateEmail} name="email" onChange={this.handleChange} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
+                    <h2 className="title-login color-text">Iniciar sesión</h2>
+                    <div className="form-container format">
+                        <GenerateInput onKeyPress={this.validateEmail} name="email" onChange={this.handleChange} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
 
-                    <GenerateInput onKeyPress={this.validatePassword} name="password" onChange={this.handleChange} id="login-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
-                    <p className="gen-error">{this.state.generalError}</p>
-                    <button onClick={e => this.handleSubmit(e)} id="signin" className="submit-but iniciate-but-user button-letters btn waves-effect waves-lightt" type="submit" name="action">Solicitar Atención</button>
+                        <GenerateInput onKeyPress={this.validatePassword} name="password" onChange={this.handleChange} id="login-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
+                        <p className="gen-error">{this.state.generalError}</p>
+                        <button onClick={e => this.handleSubmit(e)} id="signin" className="submit-but iniciate-but-user button-letters btn waves-effect waves-lightt" type="submit" name="action">Solicitar Atención</button>
 
-                    <div className="row">
-                        <div className="col s12 m12 login-link">
-                            <Link className="link to-login" to="/register">
-                                ¿No tienes cuenta? Regístrate
+                        <div className="row">
+                            <div className="col s12 m12 login-link">
+                                <Link className="link to-login" to="/register">
+                                    ¿No tienes cuenta? Regístrate
                             </Link>
-                        </div>
-                        <div className="col s12 m12 login-link">
-                            <Link className="link to-login" to="/ForgotPassword">
-                                ¿Olvidaste tu contraseña?
+                            </div>
+                            <div className="col s12 m12 login-link">
+                                <Link className="link to-login" to="/ForgotPassword">
+                                    ¿Olvidaste tu contraseña?
                             </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </>
         )
     }
 }
