@@ -26,7 +26,7 @@ class Chat extends React.Component {
       this.attentiveCloseChannel = this.attentiveCloseChannel.bind(this);     
 
       socket.on("connect", function() {
-        socket.send("CONECTADOOOO");
+        socket.send("CONECTADO");
       })
 
     }
@@ -111,7 +111,13 @@ class Chat extends React.Component {
             this.setState({messages: store.messages});
         });
         this.attentiveCloseChannel(store, actions);
+        this.scrollToBottom();
     };
+
+    scrollToBottom = () => {
+        const chat = document.getElementById("chatList");
+        chat.scrollTop = chat.scrollHeight;
+      };
 
     handleChangeMessage = (e) =>{
         this.setState({message: e.target.value});
@@ -126,6 +132,7 @@ class Chat extends React.Component {
             this.props.history.push('/perfil');
         }else{
             actions.logout();
+            this.props.history.push('/exitchat');
         }
     };
 
@@ -166,7 +173,7 @@ class Chat extends React.Component {
 
             <div className="border-bottom-chat"></div>
                 
-                <div className="view-messages row">  
+                <div className="view-messages row" id="chatList">  
                     <ul className="col s12 l6">
                         {
                             store.messages.map((msg,i) =>

@@ -9,11 +9,12 @@ import { Context } from '../../store/AppContext'
 export default function ExitChat(props) {
     const {store, actions} =  useContext(Context)
     
-    useEffect( () => {
+    /*useEffect( () => {
         if (store.isAuthenticated !== 'true') {
             props.history.push("/")
         }
     })
+    */
     return (
         <div className="view-exit" id="exit-window">
             <div className="container">
