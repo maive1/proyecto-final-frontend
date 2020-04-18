@@ -124,21 +124,27 @@ class Register extends React.Component {
     }
     render() {
         return (
-            <div className="register">
-                <h2 className="title-register-user color-text">Crear Cuenta</h2>
-                <div className="view-bottom">
-                    <div className="form-container format">
-                        <GenerateInput onChange={this.handleChangeNombre} id="register-nombre" placeholder="Nombre" type="text" errorMsg={this.state.nombreError} />
-                        <GenerateInput onKeyPress={this.validateEmail} onChange={this.handleChangeEmail} id="register-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
-                        <GenerateInput onKeyPress={this.validatePassword} minLength="6" onChange={this.handleChangePassword} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
-                        <button onTouchEnd={() => this.hidPassword()} onMouseUp={() => this.hidPassword()} onTouchStart={() => this.displayPassword()} onMouseDown={() => this.displayPassword()} type="button" className="show-password">Show</button>
-                        <button onClick={e => this.handleSubmit(e)} id="signup" className="submit-but-user btn waves-effect waves-light button-letters" type="button" name="action">Iniciar</button>
+            <div className="register row">
+                <div className="col s12 m5 l5 offset-m3 offset-l3 register-container">
+                    <div className="col s12 l5 offset-l4">
+                        <h2 className="title-register-user color-text center-align">Crear Cuenta</h2>
                     </div>
-                    <div className="row">
-                        <div className="col s12 m12 login-link">
-                            <Link className="link to-login" to="/login">
-                                ¿Tienes una cuenta? Inicia sesión
-                            </Link>
+                    <div className="view-bottom">
+                        <div className="form-container format">
+                            <div className="col s12 m12 l9 offset-l2">
+                                <GenerateInput onChange={this.handleChangeNombre} id="register-nombre" placeholder="Nombre" type="text" errorMsg={this.state.nombreError} />
+                                <GenerateInput onKeyPress={this.validateEmail} onChange={this.handleChangeEmail} id="register-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
+                                <GenerateInput onKeyPress={this.validatePassword} minLength="6" onChange={this.handleChangePassword} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
+                                <button onTouchEnd={() => this.hidPassword()} onMouseUp={() => this.hidPassword()} onTouchStart={() => this.displayPassword()} onMouseDown={() => this.displayPassword()} type="button" className="show-password">Show</button>
+                                <button onClick={e => this.handleSubmit(e)} id="signup" className="submit-but-user btn waves-effect waves-light button-letters" type="button" name="action">Iniciar</button>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s12 m12 l5 offset-l4 login-link">
+                                <Link className="link to-login" to="/login">
+                                    ¿Tienes una cuenta? Inicia sesión
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

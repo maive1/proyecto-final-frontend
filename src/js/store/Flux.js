@@ -15,6 +15,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				error: "",
 				finish: "false"
 			},
+			editFiles: {
+				error: "",
+				finish: "false"
+			},
 			requests: [],
 			messages: []
 		},
@@ -91,7 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			setHandlingNotifications: async () => {
+			setHandlingNotifications: async (id) => {
 				const store = getStore();
 				await fetch(store.domain + "/api/professional/" + store.currentUser.id + "/notifications/state", {
 					method: 'GET',
@@ -386,8 +390,56 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					});
 				}
+			},			
 			},
-		},
+
+			editFiles(e, id, data) {
+				const store = getStore();
+				fetch(`http://localhost:9000/api/professional/editar/${id}`, {
+					method: "PUT",
+					body: data,
+					headers: {
+						'Content-type': 'aplication/json',
+						'Authorization': 'Bearer' + data.access_token,
+					}
+				})
+					.then(response => response.json())
+					.then(data => {
+
+						if(!data.access_token){
+							setStore({
+								access_token: null,
+								isAuthenticated:  "false", // corregir a booleano
+								currentUser: null,
+								editFiles: data.editFiles
+							})
+						}else{
+							setStore({
+								access_token: data.access_token,
+								isAuthenticated:  "true",
+								currentUser: data.user,
+								editFiles: data.editFiles
+							})
+						}
+						sessionStorage.setItem("currentUser", JSON.stringify(store.currentUser));
+						sessionStorage.setItem("isAuthenticated", store.isAuthenticated);
+					})
+					.catch(error => {
+						//error handling
+						console.log(error);
+						setStore({
+							currentUser: null,
+							register: {
+								error: error,
+								finish: false,
+							},
+							isAuthenticated: "false"
+						})
+
+						sessionStorage.setItem("currentUser", null);
+						sessionStorage.setItem("isAuthenticated", store.isAuthenticated);
+					});
+			},
 	};
 };
 

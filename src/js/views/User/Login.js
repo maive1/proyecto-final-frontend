@@ -87,29 +87,31 @@ class Login extends React.Component {
         const { store } = this.context;
 
         return (
-            <div className="login">
+            <div className="login row">
+                <div className="col s12 m5 l4 offset-m3 offset-l4">
                 {
                     store.login.error && this.toastMensajeBackend()
                 }
 
-                <h2 className="title-login color-text">Iniciar sesión</h2>
-                <div className="form-container format">
-                    <GenerateInput onKeyPress={this.validateEmail} name="email" onChange={this.handleChange} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
+                    <h2 className="title-login color-text">Iniciar sesión</h2>
+                    <div className="form-container format">
+                        <GenerateInput onKeyPress={this.validateEmail} name="email" onChange={this.handleChange} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
 
-                    <GenerateInput onKeyPress={this.validatePassword} name="password" onChange={this.handleChange} id="login-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
-                    <p className="gen-error">{this.state.generalError}</p>
-                    <button onClick={e => this.handleSubmit(e)} id="signin" className="submit-but iniciate-but-user button-letters btn waves-effect waves-lightt" type="submit" name="action">Solicitar Atención</button>
+                        <GenerateInput onKeyPress={this.validatePassword} name="password" onChange={this.handleChange} id="login-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
+                        <p className="gen-error">{this.state.generalError}</p>
+                        <button onClick={e => this.handleSubmit(e)} id="signin" className="submit-but iniciate-but-user button-letters btn waves-effect waves-lightt" type="submit" name="action">Solicitar Atención</button>
 
-                    <div className="row">
-                        <div className="col s12 m12 login-link">
-                            <Link className="link to-login" to="/register">
-                                ¿No tienes cuenta? Regístrate
-                            </Link>
-                        </div>
-                        <div className="col s12 m12 login-link">
-                            <Link className="link to-login" to="/ForgotPassword">
-                                ¿Olvidaste tu contraseña?
-                            </Link>
+                        <div className="row">
+                            <div className="col s12 m12 login-link">
+                                <Link className="link to-login" to="/register">
+                                    ¿No tienes cuenta? Regístrate
+                                </Link>
+                            </div>
+                            <div className="col s12 m12 login-link">
+                                <Link className="link to-login" to="/ForgotPassword">
+                                    ¿Olvidaste tu contraseña?
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

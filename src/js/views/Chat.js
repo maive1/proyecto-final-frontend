@@ -1,7 +1,6 @@
 import React from 'react';
 import io from "socket.io-client";
 import '../../styles/ChatWindow/Chat.css';
-import InfoChatNav from '../component/Chat/InfoChatNav';
 import { Link } from "react-router-dom";
 import { Context } from '../store/AppContext';
 
@@ -35,7 +34,7 @@ class Chat extends React.Component {
 
     componentDidMount = () => {
         const { store, actions } = this.context;
-        this.redirectUserNotAuthenticated(store, actions);    
+        //this.redirectUserNotAuthenticated(store, actions);    
         this.setChannelByUser(store, actions);
         this.getAllMessages(actions);
         this.openChatToPatient(store);

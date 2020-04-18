@@ -3,13 +3,13 @@
     margin: 2.5rem 0 -5rem 0 !important;
     border-radius: 2px;
     background-color: #fff;
-    font-family: 'Handlee', cursive;
+    font-family: 'Amatic SC', cursive;
 }
 
 .video-message{
     padding-top: 70px;
     padding-left: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     font-family: 'Handlee', cursive;
     font-size: 18px;
     color: #9575cd;
@@ -28,5 +28,41 @@
     font-family: 'Handlee', cursive;
     color: #7e7f80;
     font-size: 18px;
-    text-align: center;
+    text-align: left;
+    margin-left: 20px !important;
+    margin-top: 0 !important;
+    
+}
+.waiting-container{
+    margin-top: 50px !important;
+}
+.video-container {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+.icon-exit{
+    margin-left: 0 !important;
+    
+}
+
+@media screen and (min-width:640px) {
+    .card-panel-waiting{
+        width: 100%;
+    }
+    .video-container {
+        margin-top: 80px;
+        margin-bottom: 50px;
+    }
+    .icon-exit{
+        margin-left: 0 !important;
+    }
+    .title-back-home{
+        margin-left: 0px !important;
+    }
+}
+@media screen and (min-width:1080px){
+    .title-back-home{
+        margin-left: -20px !important;
+    }
 }

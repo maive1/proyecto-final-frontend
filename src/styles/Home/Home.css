@@ -29,8 +29,7 @@
 }
 
 .proiconstyle {
-  padding-top: 3px;
-  display: inline-block;
+  margin-right: 5px;
   float: left;
   background: -webkit-linear-gradient(#9575cd,#64B5F6);
   -webkit-background-clip: text;
@@ -66,7 +65,7 @@
 
 .home-box-links {
   display: inline-block;
-  width: 100%;
+  width: 390px;
   padding: 16px 10px;
   border-top: 1px solid #64B5F6;
 }
@@ -167,4 +166,34 @@
   padding-top: 4px;
   font-weight: 500;
   color: #039be5;;
+}
+
+
+@media screen and (min-width:640px) {
+  .home-box-links {
+    border-left: 2px solid #64B5F6 !important;
+    border-right: 2px solid #64B5F6 !important;
+    height: 70px;
+    padding: 10px;
+    margin-bottom: -5px;
+  }
+  .home-links-text {
+    margin: 0px 2px 0px ;
+    position: relative;
+    top: -40px;
+  }
+  .link_style .text-body {
+    position: relative;
+    bottom: 10px;
+  }
+  .welcome-text{
+    padding-top: 0 !important ;
+  }
+  .home-options-container h6 {
+    text-align: center;
+
+  }
+  .title-menu{
+    padding-top: 0 !important;
+  }
 }

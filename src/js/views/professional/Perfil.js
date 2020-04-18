@@ -1,6 +1,9 @@
 import React from "react";
 import '../../../styles/ProfilePro/Profilepro.css';
 import { Context } from '../../store/AppContext';
+//import Profilepro from "../../component/Perfil/ProfilePro";
+import ModalFiles from "../../component/Perfil/ModalFiles";
+
 import { Link } from 'react-router-dom';
 import ButtonLogout from '../../component/GenericComponent/ButtonLogout';
 import io from "socket.io-client";
@@ -89,9 +92,13 @@ class Perfil extends React.Component {
 
     return (
       <div>
-        <div className="perfil">
-            <div className="container">
-                <div className="row">
+        {/*<Profilepro />*/}
+        
+        
+        <div className="perfil row">
+          <div className="col s12 m8 l6 offset-m2 push-l2">
+            <div className="row">
+                <div className="col">
                     <h2 className="title-profile color-text">Mi perfil</h2>
                     <h3 className="title-autorized color-text">Perfil autorizado <span className="material-icons autorized-icon">done</span></h3>
                     <h3 className="title-autorized-user">Bienvenido "Falta nombre"</h3>
@@ -105,7 +112,8 @@ class Perfil extends React.Component {
 
                 </div>
             </div>
-
+            <br/>
+            <div className="row">
               {
                   
                   store.requests.map((request, i) =>
@@ -120,13 +128,22 @@ class Perfil extends React.Component {
                     </div>
                   )
               }
-
-            <div className="container">
+            </div>
+            <br/>
+            <div className="row">
+              <div className="col modal-files">
+                {/*<ModalFiles />*/}
+              </div>
+            </div>
+            <div className="row button-go-out">
+              <div className="col button-exit">
                 <div className="back-home-p">Salir</div>
                 <ButtonLogout iconname="exit_to_app" />
+              </div>
             </div>
         </div>
-      </div>
+          </div>
+        </div>
     );
   }
 }
