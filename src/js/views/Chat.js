@@ -4,7 +4,6 @@ import '../../styles/ChatWindow/Chat.css';
 import InfoChatNav from '../component/Chat/InfoChatNav';
 import { Link } from "react-router-dom";
 import { Context } from '../store/AppContext';
-import $ from 'jquery'
 let socket = io.connect("http://127.0.0.1:5000");
 
 class Chat extends React.Component {
