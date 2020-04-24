@@ -11,10 +11,13 @@ export default function ExitChat(props) {
     
     useEffect( () => {
         actions.isUserAuthenticated()
+    })
+    /*useEffect( () => {
         if (store.isAuthenticated !== 'true') {
             props.history.push("/")
         }
     })
+    */
     return (
         <div className="view-exit" id="exit-window">
             <div className="container">

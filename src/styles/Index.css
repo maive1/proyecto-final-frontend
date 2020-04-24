@@ -2,10 +2,6 @@ h1{
   line-height: 60% !important;
 }
 
-.register {
-  margin-top:50px;
-}
-
 .register * {
   font-family: 'Handlee', cursive;
 }
@@ -73,3 +69,10 @@ body {
   background-color: #ef5350 !important;
 }
 
+.padding-top-letter-icon{
+  padding-top: 25px !important;
+}
+
+.padding-top-icon{
+  padding-top: 22px !important;
+}

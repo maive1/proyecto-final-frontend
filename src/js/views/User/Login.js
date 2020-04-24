@@ -24,7 +24,7 @@ class Login extends React.Component {
 
     componentDidMount() {
         const { store } = this.context
-        if(store.isAuthenticated == true && store.currentUser.user_type == "patient") {
+        if (store.isAuthenticated == true && store.currentUser.user_type == "patient") {
             this.props.history.push('/waiting-window')
         }
     }
@@ -33,7 +33,7 @@ class Login extends React.Component {
             [e.target.name]: e.target.value
         })
     }
-    
+
     handleSubmit(e) {
         let isPasswordValid = document.getElementById("login-contrasenya").checkValidity()
         let isEmailValid = document.getElementById("login-email").checkValidity()
@@ -55,16 +55,16 @@ class Login extends React.Component {
                 body: JSON.stringify(entry),
                 headers: { "Content-Type": "application/json" }
             })
-            .then(resp => resp.json())
-            .then(data => {
-                actions.setLoginPatient(data);
-                console.log(data);
-                if(data.login.error != ""){
-                    e.preventDefault();
-                }else{
-                    this.props.history.push('/waiting-window');
-                }
-            });
+                .then(resp => resp.json())
+                .then(data => {
+                    actions.setLoginPatient(data);
+                    console.log(data);
+                    if (data.login.error != "") {
+                        e.preventDefault();
+                    } else {
+                        this.props.history.push('/waiting-window');
+                    }
+                });
         }
         else if (this.state.email !== '' && isEmailValid === false) {
             e.preventDefault()
@@ -79,15 +79,17 @@ class Login extends React.Component {
 
     toastMensajeBackend = () => {
         const { store, actions } = this.context;
-        M.toast({html: store.login.error, classes: 'toast-style'})
+        M.toast({ html: store.login.error, classes: 'toast-style' })
         actions.clearmessage()
-      }
-    
+    }
+
     render() {
         const { store } = this.context;
 
         return (
+            
             <div className="login row">
+                <Link className="link-style-back" to="/"><div className="icon-back-letter">volver</div><i className="material-icons icon-back">keyboard_arrow_left</i></Link>
                 <div className="col s12 m5 l4 offset-m3 offset-l4">
                 {
                     store.login.error && this.toastMensajeBackend()
@@ -116,6 +118,7 @@ class Login extends React.Component {
                     </div>
                 </div>
             </div>
+           
         )
     }
 }

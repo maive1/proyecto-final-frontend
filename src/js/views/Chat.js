@@ -3,7 +3,6 @@ import io from "socket.io-client";
 import '../../styles/ChatWindow/Chat.css';
 import { Link } from "react-router-dom";
 import { Context } from '../store/AppContext';
-
 let socket = io.connect("http://127.0.0.1:5000");
 
 class Chat extends React.Component {
@@ -25,7 +24,7 @@ class Chat extends React.Component {
       this.attentiveCloseChannel = this.attentiveCloseChannel.bind(this);     
 
       socket.on("connect", function() {
-        socket.send("CONECTADOOOO");
+        socket.send("CONECTADO");
       })
 
     }
@@ -40,6 +39,10 @@ class Chat extends React.Component {
         this.openChatToPatient(store);
         this.getMessagesOnline(store, actions);
     };
+
+    componentDidUpdate = () => {
+        this.scrollToBottom();
+    }
 
     attentiveCloseChannel = (store, actions) => {
         let user_type = store.currentUser.user_type;
@@ -102,6 +105,18 @@ class Chat extends React.Component {
         }
     };
 
+    UserTalk = (user_id) =>{
+        if(parseInt(user_id) === parseInt(this.state.currentUser.id)){
+            return "Tu:";
+        }else{
+            if(this.state.currentUser.user_type === "professional"){
+                return "Paciente:";
+            }else{
+                return "Profesional:";
+            }
+        }
+    };
+
     getMessagesOnline = (store, actions) => {
         //escucha los mensajes que son emitidos en el chat
         socket.on('channel-' + store.channel_id, message => {
@@ -125,6 +140,7 @@ class Chat extends React.Component {
             this.props.history.push('/perfil');
         }else{
             actions.logout();
+            this.props.history.push('/exitchat');
         }
     };
 
@@ -150,6 +166,12 @@ class Chat extends React.Component {
         document.getElementById("message").value = "";
     };
 
+    scrollToBottom = () =>{
+        let container = document.getElementById('chatList')
+        container.scrollTop = container.scrollHeight
+    };
+
+
     render() {  
         const { store } = this.context;
 
@@ -165,16 +187,19 @@ class Chat extends React.Component {
 
             <div className="border-bottom-chat"></div>
                 
-                <div className="view-messages row">  
+                <div className="view-messages row" id="chatList">  
                     <ul className="col s12 l6">
                         {
+                            
                             store.messages.map((msg,i) =>
-                              <li key={i} className={this.classNameBubbleBy(msg.user_id)}>
+                            <li key={i} className={this.classNameBubbleBy(msg.user_id)}>
                                     <div>
+                                        <span>{this.UserTalk(msg.user_id)}</span>
                                         <span>Mensaje: {msg.text}</span>
                                     </div>
-                                </li> 
+                                </li>
                             )
+                            
                         }
                     </ul>
                 </div>   
@@ -202,7 +227,6 @@ class Chat extends React.Component {
                         </div>
                     </form>      
                 </div>
-
             </div>
         );
     }
