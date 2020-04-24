@@ -24,7 +24,7 @@ class Login extends React.Component {
 
     componentDidMount() {
         const { store } = this.context
-        if (store.isAuthenticated == true && store.currentUser.user_type == "patient") {
+        if (store.isAuthenticated === true && store.currentUser.user_type === "patient") {
             this.props.history.push('/waiting-window')
         }
     }
@@ -59,7 +59,7 @@ class Login extends React.Component {
                 .then(data => {
                     actions.setLoginPatient(data);
                     console.log(data);
-                    if (data.login.error != "") {
+                    if (data.login.error !== "") {
                         e.preventDefault();
                     } else {
                         this.props.history.push('/waiting-window');
@@ -90,7 +90,8 @@ class Login extends React.Component {
             
             <div className="login row">
                 <Link className="link-style-back" to="/"><div className="icon-back-letter">volver</div><i className="material-icons icon-back">keyboard_arrow_left</i></Link>
-                <div className="col s12 m5 l4 offset-m3 offset-l4">
+                <div className="col l4 hide-on-med-and-down"><img src="sources/logohmn.png" className="imageLogohmn" alt="..." /></div>
+                <div className="col s12 m5 l4 offset-m3 offset-l2">
                 {
                     store.login.error && this.toastMensajeBackend()
                 }

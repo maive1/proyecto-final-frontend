@@ -6,7 +6,7 @@ import { Context } from '../../store/AppContext'
 import io from "socket.io-client";
 import { Link } from 'react-router-dom';
 
-let socket = io.connect("http://127.0.0.1:5000");
+let socket = io.connect("https://127.0.0.1:5000");
 
 class waitingWindow extends React.Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class waitingWindow extends React.Component {
     }
 
     static contextType = Context;
-
+    
     componentDidMount = () => {
         const { store, actions } = this.context;
 
@@ -38,7 +38,7 @@ class waitingWindow extends React.Component {
         setTimeout(this.petititonFailed, 300000)
 
     };
-
+    
     waitingByProfessional = (channel_id) =>{
         console.log(sessionStorage.getItem("channel_id"));
         socket.on('wait_professional_channel_' + channel_id, info => {
@@ -100,7 +100,7 @@ class waitingWindow extends React.Component {
 
     petititonFailed = () => {
         let path = window.location.pathname
-        if(path == '/waiting-window') {
+        if(path === '/waiting-window') {
             this.props.history.push('/')
         }
     }
@@ -114,21 +114,24 @@ class waitingWindow extends React.Component {
 
                 <MessageCard message="Estamos a unos segundos de que tu solicitud sea atendida. Respira, inhala y exhala." />
                 <div className="video-message">Te recomendamos que veas este video mientras esperas.<i className="material-icons color-especial">favorite</i></div>
-
-                <div className="video-container">
-                    <video className="responsive-video" controls autoPlay>
-                        <source src="Sources/Guía para calmar mentes en crisis.mp4" type="video/mp4" />
-                    </video>
-                </div>
-
-                <h4 className="title-back-home">Sientete con la libertad de volver al inicio si no quieres iniciar la conversación</h4>
-
-                <div className="col s1 l1 push-s5 push-l6 ">
-
-                    <div className="col s">
-                        <Link  onClick={this.handleExitHome} className="icon-exit color-icons waves-effect waves-circle btn-small lighten-2" to="/"><i className="material-icons">home</i></Link>
+                <div className="row video">
+                    <div className="col s12 l8 push-l2">
+                        <div className="video-container">
+                            <video className="responsive-video" controls autoPlay>
+                                <source src="Sources/Guía para calmar mentes en crisis.mp4" type="video/mp4" />
+                            </video>
+                        </div>
                     </div>
-
+                </div>
+                <div className="row button-home">
+                    <div className="col s1 m1 l1 offset-l8 button-home-exit ">
+                        <div>
+                            <Link  onClick={this.handleExitHome} className="icon-exit color-icons waves-effect waves-circle btn-small lighten-2" to="/"><i className="material-icons">home</i></Link>
+                        </div>
+                    </div>
+                    <div className="col s11 m7 l8 offset-l5 button-text">
+                        <h4 className="title-back-home">Sientete con la libertad de volver al inicio si no quieres iniciar la conversación</h4>
+                    </div>
                 </div>
             </div>
         );

@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			domain: "http://127.0.0.1:5000",
+			domain: "https://127.0.0.1:5000",
 			channel_id: null,
 			currentUser: null,
 			isAuthenticated: "false",
@@ -395,7 +395,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			editFiles(e, id, data) {
 				const store = getStore();
-				fetch(`http://localhost:9000/api/professional/editar/${id}`, {
+				fetch(`http://localhosts:9000/api/professional/editar/${id}`, {
 					method: "PUT",
 					body: data,
 					headers: {

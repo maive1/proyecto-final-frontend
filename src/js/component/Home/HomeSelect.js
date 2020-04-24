@@ -45,18 +45,14 @@ class Homeselect extends Component {
             </Link>
             <Link to='/register'>
             <div className="home-box-links">
-              
                 <i className="material-icons home-links-icon">sentiment_very_dissatisfied</i>
                 <span id="1" onClick={e => this.handleSintomas(e)} className="text_order-1 color-text home-links-text text-body">Incomodidad, tristeza, agitación, susto, taquicardia, escalofrío</span>
-              
             </div>
             </Link>
             <Link to='/register'>
             <div className="home-box-links home-box-border-bottom">
-              
                 <i className="material-icons home-links-icon">arrow_upward</i>
                 <span id="2" onClick={e => this.handleSintomas(e)} className="text_order-1 color-text home-links-text text-body">Me siento identificado/a con todos los síntomas anteriores</span>
-              
             </div>
             </Link>
           </div>

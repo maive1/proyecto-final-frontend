@@ -30,7 +30,7 @@ class Home extends React.Component {
 
         return (
         <>
-            <div className="container">
+            <div className="home-view">
                 <MessageHome />
             </div>
         </>

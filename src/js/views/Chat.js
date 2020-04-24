@@ -3,7 +3,7 @@ import io from "socket.io-client";
 import '../../styles/ChatWindow/Chat.css';
 import { Link } from "react-router-dom";
 import { Context } from '../store/AppContext';
-let socket = io.connect("http://127.0.0.1:5000");
+let socket = io.connect("https://127.0.0.1:5000");
 
 class Chat extends React.Component {
     

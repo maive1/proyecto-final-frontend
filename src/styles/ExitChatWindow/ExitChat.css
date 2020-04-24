@@ -37,3 +37,24 @@
     font-size: 15px;
     text-align: center;
 }
+
+@media screen and (min-width:640px) {
+    .home-app{
+      margin-top: 30px;
+      margin-left: -80px !important;
+    }
+    .links-info {
+      border-left: 2px solid #64B5F6 !important;
+      border-right: 2px solid #64B5F6 !important;
+    }
+    #exit-window{
+        margin-top: 50px !important;
+    }
+    .back-home-q h6{
+        width: 100px;
+    }
+    .button-nonepro{
+        position: relative;
+        right: -60px;
+    }
+  }

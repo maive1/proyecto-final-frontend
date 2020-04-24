@@ -46,6 +46,17 @@
     
 }
 
+.video{
+    margin-top: -100px !important;
+    
+}
+
+.button-home{
+    position: fixed !important;
+    bottom: 0 !important;
+}
+
+
 @media screen and (min-width:640px) {
     .card-panel-waiting{
         width: 100%;
@@ -59,10 +70,13 @@
     }
     .title-back-home{
         margin-left: 0px !important;
+        text-align: center;
+    }
+    .button-home-exit{
+        margin-top: 10px !important;
+    }
+    .button-text{
+        margin-top: 5px !important;
     }
 }
-@media screen and (min-width:1080px){
-    .title-back-home{
-        margin-left: -20px !important;
-    }
-}
+

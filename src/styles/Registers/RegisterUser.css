@@ -72,9 +72,16 @@ span.helper-text.file-fields-error {
   padding-left: 10px;
   font-size: 10px;
 }
+
+.color-especial{
+  font-family: 'Material Icons';
+}
+
 @media screen and (min-width:640px) {
   .register-container{
     padding-top: 0 !important;
+    
+    margin-top: 60px;
     
   }
   .title-register-user{
@@ -82,5 +89,14 @@ span.helper-text.file-fields-error {
     margin: 0;
     text-align: center !important;
     
+  }
+  .imageLogohmn{
+    width: 600px;
+  }
+
+  .show-password{
+    position: relative;
+    left: -90px;
+    top: 200px;
   }
 }

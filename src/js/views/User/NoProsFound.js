@@ -17,14 +17,14 @@ export default function NoProsFound(props) {
         actions.sendHelpRequest(entryHelp)
         props.history.push('/waiting-window')
     }
-
+    /*
     useEffect( () => {
         actions.isUserAuthenticated()
         if (store.isAuthenticated !== 'true') {
             props.history.push("/")
         }
     })
-
+    */
     return (
         <div className="view-exit" id="exit-window">
             <div className="container">
@@ -33,20 +33,29 @@ export default function NoProsFound(props) {
                 </div>
             </div>
             <div className="row">
-                <TabInformation titleTab="Links de ayuda" />
-            </div>
-            <TabHelpChannels titleTab="Canales de Ayuda 24 horas" />
-            <div className="row">
-                <div className="back-home-q">Volver a inicio</div>
-                <ButtonHome iconname="home" />
-            </div>
-            <div className="row">
-                <div className="back-home-q">Reintentar petición</div>
-                <div className="col s">
-                    <p className="icon-exit color-icons waves-effect waves-circle btn-small lighten-2" onClick={(e) => retryRequest()}><i className="material-icons">cached</i></p>
+                <div className="col l4 offset-l2">
+                    <TabInformation titleTab="Links de ayuda" />
+                </div>
+                <div className="col l4">
+                    <TabHelpChannels titleTab="Canales de Ayuda 24 horas" />
                 </div>
             </div>
-            <ScrollTop />
+            <div className="row button-nonepro">
+                <div className="col l1 offset-l8 back-home-q"><h6>Volver a inicio</h6></div>
+                <div className="col l1">
+                    <ButtonHome iconname="home" />
+                </div>
+            </div>
+            <div className="row button-nonepro">
+                <div className="col l1 offset-l8 back-home-q new-chance">Reintentar petición</div>
+                <div className="col l1 ">
+                    <p className="icon-exit color-icons waves-effect waves-circle btn-small lighten-2" onClick={(e) => retryRequest()}><i className="material-icons">cached</i></p>
+                </div>
+                
+            </div>
+            <div className="hide-on-large-only">
+                <ScrollTop />
+            </div>
         </div>
     )
 }

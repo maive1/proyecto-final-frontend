@@ -6,10 +6,12 @@ class MessageHome extends React.Component {
   render() {
     return (
       <>
-        <div className="row">
-          <div className="col s12 m8 l6 offset-m2 offset-l3">
-            <div className="card-panel card_info row">
-              <div className="col s10 m9 l10 offset-m2 offset-l2">
+      <div className="">
+        <div className="row home-app">
+          <div className="col l4 offset-l1 hide-on-med-and-down"><img src="sources/logohmn.png" className="imageLogohmn" alt="..." /></div>
+          <div className="col s12 m8 l4 offset-m2 offset-l2">
+            <div className="card-panel card_info row ">
+              <div className="col s10 m9 offset-m1 hide-on-large-only center">
                 <div><img src="sources/logoblue.gif" className="imageLogo" alt="..." /></div>
                 <h4 className="title-app">Help me Now</h4>
               </div>
@@ -25,6 +27,7 @@ class MessageHome extends React.Component {
             <i className="material-icons proiconstyle">account_circle</i>            
           </div>
         </div>
+      </div>
       </>
     )
   }
