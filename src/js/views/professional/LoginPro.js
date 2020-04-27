@@ -106,15 +106,13 @@ class LoginPro extends React.Component {
 
     return (
       <>
-
-        <Link className="link-style-back" to="/"><div className="icon-back-letter">volver</div><i className="material-icons icon-back">keyboard_arrow_left</i></Link>
-      
-      <div className="login row">
-
+        <div className="login row">
+          <Link className="link-style-back" to="/"><div className="icon-back-letter">volver</div><i className="material-icons icon-back">keyboard_arrow_left</i></Link>
         {
           store.login.error && this.toastMensajeBackend()
         }
-        <div className="col s12 m5 l4 offset-m3 offset-l3">
+        <div className="col l6 hide-on-med-and-down"><img src="sources/logohmn.png" className="imageLogohmn imglogologin" alt="..." /></div>
+        <div className="col s12 m5 l4 push-m2">
           <h2 className="title-login color-text">Inicia sesión</h2>
           <div className="form-container format">
             <GenerateInput onKeyPress={this.validateEmailProLo} onChange={this.handleChangeEmailProLo} id="login-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />

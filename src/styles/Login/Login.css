@@ -50,6 +50,9 @@
     font-family: 'Material Icons';
 }
 
-@media screen and (min-width:640px) {
-    
+@media screen and (min-width:601px) {
+    .imglogologin{
+        width: 100% !important;
+        margin: 2% auto !important;
+    }
 }

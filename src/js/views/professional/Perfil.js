@@ -2,7 +2,7 @@ import React from "react";
 import '../../../styles/ProfilePro/Profilepro.css';
 import { Context } from '../../store/AppContext';
 //import Profilepro from "../../component/Perfil/ProfilePro";
-import ModalFiles from "../../component/Perfil/ModalFiles";
+import ModalFilesTwo from "../../component/Perfil/ModalFilesTwo";
 
 import { Link } from 'react-router-dom';
 import ButtonLogout from '../../component/GenericComponent/ButtonLogout';
@@ -33,16 +33,30 @@ class Perfil extends React.Component {
 
   componentDidMount() {
     const { store, actions } = this.context;
-    this.redirectUserNotAuthenticated(store, actions);
-    this.getAllRequests(actions);
-    this.waitByRequests();
-    this.setHandlingNotifications(actions);
+    //this.redirectUserNotAuthenticated(store, actions);
+    //this.getAllRequests(actions);
+    //this.waitByRequests();
+    //this.setHandlingNotifications(actions);
+    /*
+    if (store.currentUser !== null) {
+            let professionalId = store.currentUser["user"]["id"];
+            console.log(professionalId);
+            this.setState({
+              professionalId: professionalId
+            })
+            actions.setProfessional(professionalId);
+            let nameProfessional = store.professional["professional"]["name"];
+            this.setState({
+              nameProfessional: nameProfessional
+            })
+    }
+    */
   }
 
   componentDidUpdate() {
     const { store, actions } = this.context;
 
-    this.redirectUserNotAuthenticated(store, actions);
+    //this.redirectUserNotAuthenticated(store, actions);
   }
 
   setHandlingNotifications = (actions) =>{
@@ -96,7 +110,8 @@ class Perfil extends React.Component {
         
         
         <div className="perfil row">
-          <div className="col s12 m8 l6 offset-m2 push-l2">
+          <div className="col l5 xl5 hide-on-med-and-down"><img src="sources/logohmn.png" className="imageLogohmn imglogologin" alt="..." /></div>
+          <div className="col s12 m8 l4 offset-m2 offset-l1">
             <div className="row">
                 <div className="col">
                     <h2 className="title-profile color-text">Mi perfil</h2>
@@ -131,12 +146,12 @@ class Perfil extends React.Component {
             </div>
             <br/>
             <div className="row">
-              <div className="col modal-files">
-                {/*<ModalFiles />*/}
+              <div className="col s5 modal-files">
+                <ModalFilesTwo/>
               </div>
             </div>
             <div className="row button-go-out">
-              <div className="col button-exit">
+              <div className="col s offset-s4 button-exit">
                 <div className="back-home-p">Salir</div>
                 <ButtonLogout iconname="exit_to_app" />
               </div>

@@ -91,7 +91,8 @@ span.helper-text.file-fields-error {
     
   }
   .imageLogohmn{
-    width: 600px;
+    width: 110% !important;
+    margin: 2% auto !important;
   }
 
   .show-password{

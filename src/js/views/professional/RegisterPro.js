@@ -186,58 +186,63 @@ class RegisterProfesional extends React.Component {
         const { store } = this.context;
 
         return (
-            <div className="col s12 m8 l7 offset-m2 push-l2">
+            <>
+                <div className="row register-view ">
+                    <Link className="link-style-back" to="/LoginPro"><div className="icon-back-letter">volver</div><i className="material-icons icon-back">keyboard_arrow_left</i></Link>
+                    <div className="col m4 l4 xl-5 hide-on-med-and-down">
+                        <img src="sources/logohmn.png" className="imageLogohmn" id="logoloadfile" alt="..." />
+                    </div>
+                    <div className="col s12 m4 l4 xl-4 welcome-section">
 
-                {
-                   !!store.register.error && this.toastMensajeBackend()
-                }
+                        {
+                        !!store.register.error && this.toastMensajeBackend()
+                        }
 
-                <Link className="link-style-back" to="/LoginPro"><div className="icon-back-letter">volver</div><i className="material-icons icon-back">keyboard_arrow_left</i></Link>
+                        <div className="row title-register">
+                            <div className="center">
+                                <h4 className="title-menu-pro color-text">Bienvenido</h4>
+                            </div>
+                        </div>
+                        <div className="view-bottom-pro row">
+                            <div className="">
+                                <div className=" col s12 m12 l5 xl5  form-container format register">
+                                    <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">DATOS PERSONALES</h4>
+                                    <GenerateInput onChange={this.handleChangeNombreRePro} id="register-nombre" placeholder="Nombre" type="text" errorMsg={this.state.nombreError} />
+                                    <GenerateInput onKeyPress={this.validateEmailRePro} onChange={this.handleChangeEmailRePro} id="register-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
+                                    <GenerateInput onKeyPress={this.validatePasswordRePro} minLength="6" onChange={this.handleChangePasswordRePro} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
+                                    <button onTouchEnd={() => this.hidPasswordRePro()} onMouseUp={() => this.hidPasswordRePro()} onTouchStart={() => this.displayPasswordRePro()} onMouseDown={() => this.displayPasswordRePro()} type="button" className="show-password-pro"><icon className="material-icons color-especial">visibility</icon></button>
+                                </div>
+                            </div>
+                            <div className="">
+                                <div className="col s12 m12 l7 xl7 form-container register-professional"> 
+                                    
 
-                <div>
-                <h4 className="title-menu-pro color-text">Bienvenido</h4>
+                                    <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">Carga de documentos</h4>
+                                    <h5 className="accepted-files-letters">Documentos permitidos: jpeg, jpg y pdf</h5>
 
-                
-                </div>
-                
-                <div className="view-bottom-pro row">
-                    <div className="form-container format register col s12 m6 l4">
-                        <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">DATOS PERSONALES</h4>
+                                    <ValidateFiles file={"RUT"} id="register-rut" errorMsg={this.state.rutFileError}/>
 
-                        <GenerateInput onChange={this.handleChangeNombreRePro} id="register-nombre" placeholder="Nombre" type="text" errorMsg={this.state.nombreError} />
+                                    <ValidateFiles file={"Certificado profesional"} errorMsg={this.state.CertificateFileError} id="register-certification"/>
 
-                        <GenerateInput onKeyPress={this.validateEmailRePro} onChange={this.handleChangeEmailRePro} id="register-email" placeholder="Email" type="email" errorMsg={this.state.emailError} />
-                        <div>
-                        <GenerateInput onKeyPress={this.validatePasswordRePro} minLength="6" onChange={this.handleChangePasswordRePro} id="register-contrasenya" placeholder="Contraseña" type="password" errorMsg={this.state.passwordError} />
-                        <button onTouchEnd={() => this.hidPasswordRePro()} onMouseUp={() => this.hidPasswordRePro()} onTouchStart={() => this.displayPasswordRePro()} onMouseDown={() => this.displayPasswordRePro()} type="button" className="show-password-pro"><icon className="material-icons color-especial">visibility</icon></button>
+                                    <ValidateFiles file={"Nro registro - Supersalud"} errorMsg={this.state.NumberIdFileError} id="register-numberid"/>
 
+                                    <ValidateFiles file={"Curriculum profesional"} errorMsg={this.state.CvIdFileError} id="professional-cv"/>
+
+                                    <ValidateFiles file={"Cursos relacionados (Opcional)"} />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="hide-on-large-only">                            
+                            <ScrollTop />                            
+                        </div>
+                        <div className="row">
+                            <Link onClick={e => this.handleSubmitRePro(e)} to="/perfil">
+                                <button id="signup" className="submit-but-pro btn waves-effect waves-light" type="button" name="action">Crear cuenta</button>
+                            </Link>
                         </div>
                     </div>
-                    <div className="form-container register-professional col s12 l5"> 
-                        
-                        <button onTouchEnd={() => this.hidPasswordRePro()} onMouseUp={() => this.hidPasswordRePro()} onTouchStart={() => this.displayPasswordRePro()} onMouseDown={() => this.displayPasswordRePro()} type="button" className="show-password-pro"><icon className="material-icons color-especial">visibility</icon></button>
-
-                        <h4 className="menu-section-upload color-text color-text padding-tb-subtitle">Carga de documentos</h4>
-                        <h5 className="accepted-files-letters">Documentos permitidos: jpeg, jpg y pdf</h5>
-
-                        <ValidateFiles file={"RUT"} id="register-rut" errorMsg={this.state.rutFileError}/>
-
-                        <ValidateFiles file={"Certificado profesional"} errorMsg={this.state.CertificateFileError} id="register-certification"/>
-
-                        <ValidateFiles file={"Nro registro - Supersalud"} errorMsg={this.state.NumberIdFileError} id="register-numberid"/>
-
-                        <ValidateFiles file={"Curriculum profesional"} errorMsg={this.state.CvIdFileError} id="professional-cv"/>
-
-                        <ValidateFiles file={"Cursos relacionados (Opcional)"} />
-                    </div>
                 </div>
-
-                <ScrollTop />
-
-                <Link onClick={e => this.handleSubmitRePro(e)} to="/perfil">
-                    <button id="signup" className="submit-but-pro btn waves-effect waves-light" type="button" name="action">Crear cuenta</button>
-                </Link>
-            </div>
+            </>
         )
     }
 }

@@ -127,8 +127,8 @@ class Register extends React.Component {
             <>
             <Link className="link-style-back" to="/"><div className="icon-back-letter">volver</div><i className="material-icons icon-back">keyboard_arrow_left</i></Link>
             <div className="register row">
-                <div className="col l4 hide-on-med-and-down"><img src="sources/logohmn.png" className="imageLogohmn" alt="..." /></div>
-                <div className="col s12 m5 l6 offset-m3 register-container">
+                <div className="col l5 xl5 hide-on-med-and-down"><img src="sources/logohmn.png" className="imageLogohmn" alt="..." /></div>
+                <div className="col s12 m6 l5 xl5 offset-m1 register-container">
                     <div className="col s12 l5 offset-l4">
                         <h2 className="title-register-user color-text center-align">Crear Cuenta</h2>
                     </div>

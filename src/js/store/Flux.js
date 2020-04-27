@@ -20,7 +20,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				finish: "false"
 			},
 			requests: [],
-			messages: []
+			messages: [],
+			modifiedFiles: null,
+			professional: [],
 		},
 
 		actions: {
@@ -95,7 +97,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			setHandlingNotifications: async (id) => {
+			setHandlingNotifications: async () => {
 				const store = getStore();
 				await fetch(store.domain + "/api/professional/" + store.currentUser.id + "/notifications/state", {
 					method: 'GET',
@@ -393,53 +395,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},			
 			},
 
-			editFiles(e, id, data) {
+			editFiles:  async (files, id) => {
 				const store = getStore();
-				fetch(`http://localhosts:9000/api/professional/editar/${id}`, {
-					method: "PUT",
-					body: data,
+				const { domain } = store;				
+				let data = JSON.parse(sessionStorage.getItem("currentUser"))
+				
+				const res = await fetch(domain + `/api/professional/files-edit/${id}`, {
+					method: 'PUT',
+					body: files,
 					headers: {
-						'Content-type': 'aplication/json',
-						'Authorization': 'Bearer' + data.access_token,
+						'Authorization': 'Bearer ' + data.access_token,
+					},
+				})
+				const info = await res.json();
+				console.log(info)
+				if (info.msg) {
+					setStore({
+						modifiedFiles: info.msg
+					})
+				}
+			},
+
+			setProfessional: async (id) => {
+				const store = getStore();
+				const { domain } = store;
+				let data = JSON.parse(sessionStorage.getItem("currentUser"));
+				const res = await fetch(domain + `/api/professional/${id}`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': 'Bearer ' + data.access_token,
 					}
 				})
-					.then(response => response.json())
-					.then(data => {
-
-						if(!data.access_token){
-							setStore({
-								access_token: null,
-								isAuthenticated:  "false", // corregir a booleano
-								currentUser: null,
-								editFiles: data.editFiles
-							})
-						}else{
-							setStore({
-								access_token: data.access_token,
-								isAuthenticated:  "true",
-								currentUser: data.user,
-								editFiles: data.editFiles
-							})
-						}
-						sessionStorage.setItem("currentUser", JSON.stringify(store.currentUser));
-						sessionStorage.setItem("isAuthenticated", store.isAuthenticated);
+				const info = await res.json();
+				console.log(info)
+				if (info.professional) {
+					setStore({
+						professional: info.professional
 					})
-					.catch(error => {
-						//error handling
-						console.log(error);
-						setStore({
-							currentUser: null,
-							register: {
-								error: error,
-								finish: false,
-							},
-							isAuthenticated: "false"
-						})
-
-						sessionStorage.setItem("currentUser", null);
-						sessionStorage.setItem("isAuthenticated", store.isAuthenticated);
-					});
-			},
+				}				
+			}
 	};
 };
 

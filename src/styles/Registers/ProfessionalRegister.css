@@ -165,20 +165,69 @@ button:focus {
   font-family: 'Handlee', cursive;
 }
 
-@media screen and (min-width:640px) {
-  .view-bottom{
-   
-  }
-  .register-professional{
-    width: 50% !important;
-    display: inline-block;
-    padding: 20px;
-  }
+#logoloadfile{
+  width: 100% !important;
 }
+
+
   
 .accepted-files-letters{
   font-family: 'Handlee', cursive;
   color: #7e7f80;
   font-size: 14px;
   padding-left: 39px;
+}
+
+@media only screen and (min-width: 601px){
+  
+  
+  .welcome-section{
+    margin-left: 15% !important;
+    width: 80% !important;
+  }
+}
+
+@media screen and (min-width:800px) {
+  
+  
+  .view-bottom-pro{    
+    
+    margin-top: 40px;
+  }
+ 
+  .title-register{
+    margin-top: 0 !important;
+    margin-bottom: -40px !important;
+  }
+
+  .welcome-section {
+    width: 49% !important;
+    margin-left: 0 !important ;
+  }
+  
+  .title-menu-pro{
+    padding-top: 0;
+    font-weight: bold;
+    margin: 5px auto -15px; 
+    position: relative;
+    right: 0.5em;
+  }
+  #logoloadfile{
+    width: 100% !important;
+    margin: 30% auto !important;
+  }
+  .format .padding-tb-subtitle{
+    margin-bottom: 42px;
+  }
+  .padding-tb-subtitle {
+    padding-left: 60px !important;
+    padding-right: 10px !important;
+    font-size: 2em !important;
+    line-height: normal !important;
+  }
+  .submit-but-pro{
+    position: relative;
+    left: 10em;
+  }
+  
 }

@@ -7,9 +7,9 @@ class MessageHome extends React.Component {
     return (
       <>
       <div className="">
-        <div className="row home-app">
-          <div className="col l4 offset-l1 hide-on-med-and-down"><img src="sources/logohmn.png" className="imageLogohmn" alt="..." /></div>
-          <div className="col s12 m8 l4 offset-m2 offset-l2">
+        <div className="row">
+          <div className="col l6 xl5 offset-xl1 hide-on-med-and-down"><img src="sources/logohmn.png" className="imageLogohmn imglogohome" alt="..." /></div>
+          <div className="col s12 m7 l4 xl4 offset-m2 offset-l1 offset-xl1">
             <div className="card-panel card_info row ">
               <div className="col s10 m9 offset-m1 hide-on-large-only center">
                 <div><img src="sources/logoblue.gif" className="imageLogo" alt="..." /></div>

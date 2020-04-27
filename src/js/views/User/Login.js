@@ -90,8 +90,8 @@ class Login extends React.Component {
             
             <div className="login row">
                 <Link className="link-style-back" to="/"><div className="icon-back-letter">volver</div><i className="material-icons icon-back">keyboard_arrow_left</i></Link>
-                <div className="col l4 hide-on-med-and-down"><img src="sources/logohmn.png" className="imageLogohmn" alt="..." /></div>
-                <div className="col s12 m5 l4 offset-m3 offset-l2">
+                <div className="col l5 xl5 hide-on-med-and-down"><img src="sources/logohmn.png" className="imageLogohmn imglogologin" alt="..." /></div>
+                <div className="col s12 m8 l4 xl-5 pull-m1 offset-m3">
                 {
                     store.login.error && this.toastMensajeBackend()
                 }
