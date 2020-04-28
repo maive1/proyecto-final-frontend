@@ -37,6 +37,12 @@
     font-size: 15px;
     text-align: center;
 }
+@media screen and (min-width:400px) {
+    .links-info {
+        border-left: 2px solid #64B5F6 !important;
+        border-right: 2px solid #64B5F6 !important;
+      }
+}
 
 @media screen and (min-width:640px) {
     .home-app{
@@ -51,10 +57,15 @@
         margin-top: 50px !important;
     }
     .back-home-q h6{
-        width: 100px;
+        width: auto;
+        line-height: normal !important;
     }
     .button-nonepro{
         position: relative;
         right: -60px;
+    }
+    .btn-exit-chat{
+        position: relative;
+        left: -1.5em !important ;
     }
   }

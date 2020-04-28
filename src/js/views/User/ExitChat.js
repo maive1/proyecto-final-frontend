@@ -26,14 +26,23 @@ export default function ExitChat(props) {
                 </div>
             </div>
             <div className="row">
-                <TabInformation titleTab="Links de ayuda" />
+                <div className="col s12 m8 l4 offset-m2 offset-l2">
+                    <TabInformation titleTab="Links de ayuda" />
+                </div>
+                <div className="col m8 l4 offset-m2">
+                    <TabHelpChannels titleTab="Canales de Ayuda 24 horas" />
+                </div>
             </div>
-                <TabHelpChannels titleTab="Canales de Ayuda 24 horas" />
-            <div className="row">
-                <div className="back-home-q">¿Quieres volver al inicio?</div>
-                <ButtonHome iconname="home"/>
+                
+            <div className="row ">
+                <div className="col m12 back-home-q">¿Quieres volver al inicio?</div>
+                <div className="col s1 m1 l1 xl1 offset-s6 offset-m6 offset-l6 offset-xl6 btn-exit-chat">
+                    <ButtonHome iconname="home"/>
+                </div>
             </div>
+                <div className="hide-on-large-only">
                 <ScrollTop />
+                </div>
         </div>        
     );
 }

@@ -33,21 +33,21 @@ export default function NoProsFound(props) {
                 </div>
             </div>
             <div className="row">
-                <div className="col l4 offset-l2">
+                <div className="col l4 offset-m4 offset-l2">
                     <TabInformation titleTab="Links de ayuda" />
                 </div>
-                <div className="col l4">
+                <div className="col l4 offset-m3">
                     <TabHelpChannels titleTab="Canales de Ayuda 24 horas" />
                 </div>
             </div>
             <div className="row button-nonepro">
-                <div className="col l1 offset-l8 back-home-q"><h6>Volver a inicio</h6></div>
+                <div className="col m1 l1 offset-m8 offset-l8  back-home-q"><h6>Volver al inicio</h6></div>
                 <div className="col l1">
                     <ButtonHome iconname="home" />
                 </div>
             </div>
             <div className="row button-nonepro">
-                <div className="col l1 offset-l8 back-home-q new-chance">Reintentar petición</div>
+                <div className="col m1 l1 offset-m8 offset-l8 back-home-q new-chance">Reintentar petición</div>
                 <div className="col l1 ">
                     <p className="icon-exit color-icons waves-effect waves-circle btn-small lighten-2" onClick={(e) => retryRequest()}><i className="material-icons">cached</i></p>
                 </div>

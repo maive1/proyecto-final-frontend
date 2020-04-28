@@ -60,7 +60,7 @@ class ModalFilesTwo extends React.Component  {
             })
             actions.setProfessional(professionalId);
         }
-        //this.uploadFiles(store)
+        this.uploadFiles(store)
     };
 
     uploadFiles = (store) => {

@@ -33,7 +33,7 @@ class Chat extends React.Component {
 
     componentDidMount = () => {
         const { store, actions } = this.context;
-        //this.redirectUserNotAuthenticated(store, actions);    
+        this.redirectUserNotAuthenticated(store, actions);    
         this.setChannelByUser(store, actions);
         this.getAllMessages(actions);
         this.openChatToPatient(store);
@@ -176,56 +176,59 @@ class Chat extends React.Component {
         const { store } = this.context;
 
         return (
-            <div className="wrapper">
+            <div>
+                <div className="row wrapper ">
+                    <div className="col s12 m9 l6 offset-m2 offset-l3 chat-wrapper">
+                        <Link className="" to="/exitchat" onClick={this.handleClickExitChat}>
+                            <div className="exit-chat-letters color-text exit-button-chat">Abandonar chat</div>
+                        </Link>
 
-            <Link className="" to="/exitchat" onClick={this.handleClickExitChat}>
-                <div className="exit-chat-letters color-text exit-button-chat">Abandonar chat</div>
-            </Link>
+                        <i className="material-icons icon-active-chat">done_all</i>
+                        <div className="status-active-letter">Chat inciado</div>
 
-            <i className="material-icons icon-active-chat">done_all</i>
-            <div className="status-active-letter">Chat inciado</div>
+                        <div className="border-bottom-chat"></div>
+                        
+                        <div className="view-messages row" id="chatList">  
+                            <ul className="col s12 l6">
+                                {
+                                    
+                                    store.messages.map((msg,i) =>
+                                    <li key={i} className={this.classNameBubbleBy(msg.user_id)}>
+                                            <div>
+                                                <span>{this.UserTalk(msg.user_id)}</span>
+                                                <span>Mensaje: {msg.text}</span>
+                                            </div>
+                                        </li>
+                                    )
+                                    
+                                }
+                            </ul>
+                        </div>   
 
-            <div className="border-bottom-chat"></div>
-                
-                <div className="view-messages row" id="chatList">  
-                    <ul className="col s12 l6">
-                        {
-                            
-                            store.messages.map((msg,i) =>
-                            <li key={i} className={this.classNameBubbleBy(msg.user_id)}>
-                                    <div>
-                                        <span>{this.UserTalk(msg.user_id)}</span>
-                                        <span>Mensaje: {msg.text}</span>
+                        <div className="row input-chat color-icons">
+                            <form className="col s12 m12 l12 xl12 form" onSubmit={this.handleClickAddMessage}>
+                                <div className="row">
+                                    <div className=" col s9 m9 l10 xl10">  
+                                        <input 
+                                            className="msg_input style-chat-input" 
+                                            id="message"
+                                            type="text" 
+                                            name="message"
+                                            placeholder="Escribe un mensaje" 
+                                            onChange={this.handleChangeMessage}
+                                        />  
                                     </div>
-                                </li>
-                            )
-                            
-                        }
-                    </ul>
-                </div>   
-
-                <div className="row input-chat color-icons">
-                    <form className="col s12 form" onSubmit={this.handleClickAddMessage}>
-                        <div className="row">
-                            <div className=" col s10">  
-                                <input 
-                                    className="msg_input style-chat-input" 
-                                    id="message"
-                                    type="text" 
-                                    name="message"
-                                    placeholder="Escribe un mensaje" 
-                                    onChange={this.handleChangeMessage}
-                                 />  
-                            </div>
-                            <div className="col s1">
-                                <button 
-                                    className="btn-floating z-depth-2 button-chat-style text-send" 
-                                    onClick={this.handleClickAddMessage}>
-                                    <i className="material-icons left icon-send-text">send</i>
-                                </button>
-                            </div>
+                                    <div className="col s1 m1 l1 xl1 offset-s1 offset-m2 offset-xl1 offset-l1">
+                                        <button 
+                                            className="btn-floating z-depth-2 button-chat-style text-send" 
+                                            onClick={this.handleClickAddMessage}>
+                                            <i className="material-icons left icon-send-text">send</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>      
                         </div>
-                    </form>      
+                    </div>
                 </div>
             </div>
         );

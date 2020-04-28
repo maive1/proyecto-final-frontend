@@ -14,7 +14,8 @@ class Perfil extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: ["vero", "jose", "juan"],
+      professionalId: null,
+      nameProfessional: null,
       requests: []
     };
 
@@ -39,16 +40,16 @@ class Perfil extends React.Component {
     //this.setHandlingNotifications(actions);
     /*
     if (store.currentUser !== null) {
-            let professionalId = store.currentUser["user"]["id"];
-            console.log(professionalId);
-            this.setState({
-              professionalId: professionalId
-            })
-            actions.setProfessional(professionalId);
-            let nameProfessional = store.professional["professional"]["name"];
-            this.setState({
-              nameProfessional: nameProfessional
-            })
+      let professionalId = store.currentUser["user"]["id"];
+      console.log(professionalId);
+      this.setState({
+        professionalId: professionalId
+      })
+      actions.setProfessional(professionalId);
+      let nameProfessional = store.professional["professional"]["name"];
+      this.setState({
+        nameProfessional: nameProfessional
+      })
     }
     */
   }
@@ -56,7 +57,7 @@ class Perfil extends React.Component {
   componentDidUpdate() {
     const { store, actions } = this.context;
 
-    //this.redirectUserNotAuthenticated(store, actions);
+    this.redirectUserNotAuthenticated(store, actions);
   }
 
   setHandlingNotifications = (actions) =>{
@@ -111,12 +112,12 @@ class Perfil extends React.Component {
         
         <div className="perfil row">
           <div className="col l5 xl5 hide-on-med-and-down"><img src="sources/logohmn.png" className="imageLogohmn imglogologin" alt="..." /></div>
-          <div className="col s12 m8 l4 offset-m2 offset-l1">
+          <div className="col s12 m8 l4 offset-m2 offset-l1 perfil-wrapper">
             <div className="row">
                 <div className="col">
                     <h2 className="title-profile color-text">Mi perfil</h2>
                     <h3 className="title-autorized color-text">Perfil autorizado <span className="material-icons autorized-icon">done</span></h3>
-                    {/*<h3 className="title-autorized-user">Bienvenido "Falta nombre"</h3>*/}
+                    {/*<h3 className="title-autorized-user">{this.state.nameProfessional}</h3>*/}
                     <h3 className="title-notifications color-text">Notificaciones <div className="switch">
                         <label className="label-text"> Off
                           <input onChange={this.handleCheckNotifications} type="checkbox" checked={store.able_notifications} />
@@ -146,16 +147,14 @@ class Perfil extends React.Component {
             </div>
             <br/>
             <div className="row">
-              <div className="col s5 modal-files">
+              <div className="col s3 m3 l3  modal-files">
                 <ModalFilesTwo/>
               </div>
-            </div>
-            <div className="row button-go-out">
-              <div className="col s offset-s4 button-exit">
+              <div className="col btn-exit-profile">
                 <div className="back-home-p">Salir</div>
                 <ButtonLogout iconname="exit_to_app" />
               </div>
-            </div>
+            </div>            
         </div>
           </div>
         </div>

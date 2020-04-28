@@ -131,13 +131,33 @@
     max-width: 400px;
 }
 
-.button-go-out {
-    position: fixed;
-    top: 700px !important;
-    right: 50%;
-    overflow: hidden;
-}
+
 .modal-files {
     position: fixed;
     bottom: 40px;
+}
+
+.modal-trigger{
+    background: -webkit-linear-gradient(#9575cd,#64B5F6);
+}
+
+@media screen and (min-width:0) {
+.btn-exit-profile{
+    position: fixed;
+    bottom: 2.5em;
+    right: 5em;
+}
+}
+
+@media screen and (min-width:640px) {
+    .perfil-wrapper{
+        border-left: 2px solid #64B5F6 !important;
+        border-right: 2px solid #64B5F6 !important;
+        height: 635px !important;
+    }
+    .btn-exit-profile{
+        position: fixed;
+        bottom: 2.5em;
+        right: 17em;
+    }
 }
